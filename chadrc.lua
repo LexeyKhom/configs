@@ -5,4 +5,10 @@ M.ui = {
   theme = "onedark", 
 }
 
+M.plugins = { 
+  user = {
+    ["goolord/alpha-nvim"] = require("custom.plugins.alpha-nvim"),
+  }
+}
+
 return M
