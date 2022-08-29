@@ -13,6 +13,7 @@ M.plugins = {
 
   override = {
     ["kyazdani42/nvim-tree.lua"] = require("custom.plugins.nvim-tree"),
+    ["nvim-treesitter/nvim-treesitter"] = require("custom.plugins.nvim-treesitter"),
   },
 }
 
