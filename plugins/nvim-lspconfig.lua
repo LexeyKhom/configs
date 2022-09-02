@@ -31,6 +31,8 @@ return {
 
         -- Other
         "marksman",
+        "bashls",
+        "dockerls",
       }
 
       for _, lsp in ipairs(servers) do

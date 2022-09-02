@@ -5,11 +5,13 @@ return {
     "chrome-debug-adapter",
     "firefox-debug-adapter",
     "node-debug2-adapter",
+    "bash-debug-adapter",
 
     -- ------ --
     -- Linter --
     "eslint_d",
     "gitlint",
+    "textlint",
 
     -- --------- --
     -- Formatter --
@@ -44,6 +46,8 @@ return {
     "vim-language-server",
 
     -- Other
+    "marksman",
     "bash-language-server",
+    "dockerfile-language-server",
   },
 }
