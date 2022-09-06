@@ -10,6 +10,7 @@ M.plugins = {
     ["goolord/alpha-nvim"] = require("custom.plugins.alpha-nvim"),
     ["folke/which-key.nvim"] = require("custom.plugins.which-key"),
     ["neovim/nvim-lspconfig"] = require("custom.plugins.nvim-lspconfig"),
+    ["jose-elias-alvarez/null-ls.nvim"] = require("custom.plugins.null-ls"),
   },
 
   override = {
