@@ -1,34 +1,38 @@
 return {
-  auto_install = true,
+  override_options = function()
+    return {
+      auto_install = true,
 
-  ensure_installed = {
-    -- HTML
-    "html",
+      ensure_installed = {
+        -- HTML
+        "html",
 
-    -- CSS
-    "css",
-    "scss",
+        -- CSS
+        "css",
+        "scss",
 
-    -- JavaScript
-    "javascript",
-    "typescript",
-    "svelte",
-    "vue",
+        -- JavaScript
+        "javascript",
+        "typescript",
+        "svelte",
+        "vue",
 
-    -- JSON
-    "json",
-    "json5",
+        -- JSON
+        "json",
+        "json5",
 
-    -- Lua/Vim
-    "lua",
-    "vim",
+        -- Lua/Vim
+        "lua",
+        "vim",
 
-    -- Other
-    "bash",
-    "fish",
-    "gitignore",
-    "comment",
-    "regex",
-    "markdown",
-  },
+        -- Other
+        "bash",
+        "fish",
+        "gitignore",
+        "comment",
+        "regex",
+        "markdown",
+      },
+    }
+  end,
 }
