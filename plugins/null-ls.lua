@@ -30,6 +30,7 @@ return {
 
       -- Markdown
       b.diagnostics.markdownlint,
+      b.formatting.markdownlint,
 
       -- Git
       b.code_actions.gitsigns,
@@ -38,9 +39,6 @@ return {
 
       -- Other
       b.code_actions.refactoring,
-      b.code_actions.proselint,
-      b.diagnostics.proselint,
-      b.completion.spell,
       b.completion.tags,
       b.completion.vsnip,
     }
