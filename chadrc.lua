@@ -17,4 +17,6 @@ M.plugins = {
   ["nvim-treesitter/nvim-treesitter"] = require "custom.plugins.nvim-treesitter",
 }
 
+M.mappings = require "custom.mappings"
+
 return M
