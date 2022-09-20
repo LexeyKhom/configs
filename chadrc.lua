@@ -18,6 +18,7 @@ M.plugins = {
   ["jose-elias-alvarez/null-ls.nvim"] = require "custom.plugins.null-ls",
   ["Pocco81/TrueZen.nvim"] = require "custom.plugins.trueZen",
   ["Pocco81/auto-save.nvim"] = require "custom.plugins.autosave",
+  ["sindrets/diffview.nvim"] = require "custom.plugins.diffview",
 }
 
 M.mappings = require "custom.mappings"
