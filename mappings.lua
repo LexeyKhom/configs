@@ -11,6 +11,12 @@ M.general = {
   },
 }
 
+M.autosave = {
+  n = {
+    ["<leader>as"] = { "<cmd> ASToggle <CR>", "autosave toggle" },
+  }
+}
+
 M.truezen = {
   n = {
     ["<leader>ta"] = { "<cmd> TZAtaraxis <CR>", "truezen" },

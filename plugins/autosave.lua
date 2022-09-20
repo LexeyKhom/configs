@@ -3,7 +3,7 @@ return {
   module = "auto-save",
   config = function()
     require("auto-save").setup {
-      enabled = true,
+      enabled = false,
     }
   end,
 }
