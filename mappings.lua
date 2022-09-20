@@ -7,6 +7,7 @@ M.general = {
 
   i = {
     ["jk"] = { "<ESC>", "escape vim" },
+    ["kj"] = { "<ESC>", "escape vim" },
   },
 }
 
