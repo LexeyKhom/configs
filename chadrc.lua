@@ -11,6 +11,7 @@ M.plugins = {
   ["neovim/nvim-lspconfig"] = require "custom.plugins.nvim-lspconfig",
   ["jose-elias-alvarez/null-ls.nvim"] = require "custom.plugins.null-ls",
   ["Pocco81/TrueZen.nvim"] = require "custom.plugins.trueZen",
+  ["Pocco81/auto-save.nvim"] = require "custom.plugins.autosave",
 
   -- Override
   ["williamboman/mason.nvim"] = require "custom.plugins.mason",
