@@ -10,4 +10,10 @@ M.general = {
   },
 }
 
+M.truezen = {
+  n = {
+    ["<leader>ta"] = { "<cmd> TZAtaraxis <CR>", "truezen" },
+  },
+}
+
 return M

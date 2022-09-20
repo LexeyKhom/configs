@@ -10,6 +10,7 @@ M.plugins = {
   ["folke/which-key.nvim"] = require "custom.plugins.which-key",
   ["neovim/nvim-lspconfig"] = require "custom.plugins.nvim-lspconfig",
   ["jose-elias-alvarez/null-ls.nvim"] = require "custom.plugins.null-ls",
+  ["Pocco81/TrueZen.nvim"] = require "custom.plugins.trueZen",
 
   -- Override
   ["williamboman/mason.nvim"] = require "custom.plugins.mason",
