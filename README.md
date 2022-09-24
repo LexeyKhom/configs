@@ -1,2 +1,3 @@
-# configs
-My configs.
+# Configs
+
+- [NvChad](https://github.com/LexeyKhom/configs/tree/NvChad)
