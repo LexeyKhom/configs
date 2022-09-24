@@ -3,10 +3,13 @@
 ## Setup
 
 1. [Install](https://nvchad.com/quickstart/install) NeoVim and NvChad.
-2. Install [this](https://github.com/LexeyKhom/configs/tree/NvChad) config:
+2. Install this config:
 
    ```bash
-   git clone https://github.com/LexeyKhom/configs/tree/NvChad ~/.config/nvim/lua/custom --depth 1 && nvim
+   git clone git@github.com:LexeyKhom/configs.git ~/.config/nvim/lua/custom
+   cd ~/.config/nvim/lua/custom
+   git checkout NvChad
    ```
 
-3. Use `:MasonInstallAll` to install Mason configs.
+3. Use `:PackerSync` to update settings.
+4. Use `:MasonInstallAll` to install Mason configs.
