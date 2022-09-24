@@ -1,4 +1,5 @@
 return {
+  after = "mason-lspconfig.nvim",
   config = function()
     require "plugins.configs.lspconfig"
 

@@ -14,6 +14,7 @@ M.plugins = {
   -- User
   ["goolord/alpha-nvim"] = require "custom.plugins.alpha",
   ["folke/which-key.nvim"] = require "custom.plugins.which-key",
+  ["williamboman/mason-lspconfig.nvim"] = require "custom.plugins.mason-lspconfig",
   ["neovim/nvim-lspconfig"] = require "custom.plugins.lspconfig",
   ["jose-elias-alvarez/null-ls.nvim"] = require "custom.plugins.null-ls",
   ["Pocco81/TrueZen.nvim"] = require "custom.plugins.trueZen",
