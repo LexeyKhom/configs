@@ -20,6 +20,7 @@ M.plugins = {
   ["Pocco81/TrueZen.nvim"] = require "custom.plugins.trueZen",
   ["Pocco81/auto-save.nvim"] = require "custom.plugins.autosave",
   ["sindrets/diffview.nvim"] = require "custom.plugins.diffview",
+  ["windwp/nvim-spectre"] = require "custom.plugins.spectre",
 }
 
 M.mappings = require "custom.mappings"
