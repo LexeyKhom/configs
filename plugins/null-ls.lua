@@ -11,7 +11,6 @@ return {
     local sources = {
       -- Prettier (Html, CSS/SCSS, JS, JSON)
       b.formatting.prettier,
-      b.formatting.prettier_standard, -- Eslint + Prettier
 
       -- CSS
       b.diagnostics.stylelint,
@@ -40,7 +39,6 @@ return {
       -- Other
       b.code_actions.refactoring,
       b.completion.tags,
-      b.completion.vsnip,
     }
 
     null_ls.setup {
