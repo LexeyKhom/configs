@@ -9,8 +9,9 @@ return {
 
     local b = null_ls.builtins
     local sources = {
-      -- Prettier (Html, CSS/SCSS, JS, JSON)
+      -- Global (Html, CSS/SCSS, JS, JSON)
       b.formatting.prettier,
+      -- b.diagnostics.editorconfig_checker,
 
       -- CSS
       b.diagnostics.stylelint,
@@ -22,7 +23,7 @@ return {
       b.formatting.eslint_d,
 
       -- JSON
-      b.diagnostics.jsonlint,
+      -- b.diagnostics.jsonlint,
 
       -- Lua/Vim
       b.formatting.stylua,
