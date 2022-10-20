@@ -8,6 +8,7 @@ M.ui = {
 M.plugins = {
   -- Override
   ["williamboman/mason.nvim"] = require "custom.plugins.mason",
+  ["hrsh7th/nvim-cmp"] = require "custom.plugins.cmp",
   ["kyazdani42/nvim-tree.lua"] = require "custom.plugins.tree",
   ["nvim-treesitter/nvim-treesitter"] = require "custom.plugins.treesitter",
 
