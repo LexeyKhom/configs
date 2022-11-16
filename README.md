@@ -2,6 +2,12 @@
 
 ## Setup
 
+0. Install dependencies:
+
+   ```bash
+   sudo dnf install noevim ripgrep clang tree-sitter-cli
+   ```
+
 1. [Install](https://nvchad.com/quickstart/install) NeoVim and NvChad.
 2. Install this config:
 
