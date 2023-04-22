@@ -1,3 +1,5 @@
-# Configs
+# Fish
 
-- [NvChad](https://github.com/LexeyKhom/configs/tree/NvChad)
+Fish config.
+
+<!-- !TODO: guide for fish install -->
