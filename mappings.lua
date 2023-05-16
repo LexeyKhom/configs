@@ -229,4 +229,13 @@ M.gitsigns = {
     },
   },
 }
+
+M.undotree = {
+  plugin = true,
+
+  n = {
+    ["<leader>tu"] = { "<cmd> UndotreeToggle <CR> <cmd> UndotreeFocus <CR>", "Toggle UndoTree" },
+  },
+}
+
 return M

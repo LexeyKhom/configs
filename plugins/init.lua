@@ -7,4 +7,8 @@ return require("custom.utils").loadPlugins {
   -- Files
   "nvim-tree",
   "telescope",
+
+  -- Other
+  "nvterm",
+  "undotree",
 }
