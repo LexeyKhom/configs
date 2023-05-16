@@ -3,4 +3,8 @@ return require("custom.utils").loadPlugins {
   "lspconfig",
   "treesitter",
   "cmp",
+
+  -- Files
+  "nvim-tree",
+  "telescope",
 }
