@@ -102,7 +102,130 @@ M.telescope = {
     ["<leader>st"] = { "<cmd> Telescope themes <CR>", "Switch theme" },
 
     -- Git
-    ["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
+    ["<leader>gl"] = { "<cmd> Telescope git_commits <CR>", "Git log" },
     ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "Git status" },
+  },
+}
+
+M.nvterm = {
+  plugin = true,
+
+  n = {
+    ["<leader>gc"] = {
+      function()
+        local nvterm = require "nvterm.terminal"
+        nvterm.send(" git commit ", "float")
+        nvterm.toggle "float"
+      end,
+      "Git commit",
+    },
+  },
+}
+
+M.gitsigns = {
+  plugin = true,
+
+  n = {
+    -- Navigation through hunks
+    ["]g"] = {
+      function()
+        if vim.wo.diff then
+          return "]g"
+        end
+        vim.schedule(function()
+          require("gitsigns").next_hunk()
+        end)
+        return "<Ignore>"
+      end,
+      "Next git hunk",
+      opts = { expr = true },
+    },
+
+    ["[g"] = {
+      function()
+        if vim.wo.diff then
+          return "[g"
+        end
+        vim.schedule(function()
+          require("gitsigns").prev_hunk()
+        end)
+        return "<Ignore>"
+      end,
+      "Previous git hunk",
+      opts = { expr = true },
+    },
+
+    -- Actions
+    ["<leader>ga"] = {
+      function()
+        require("gitsigns").stage_hunk()
+      end,
+      "Git add hunk",
+    },
+
+    ["<leader>gA"] = {
+      function()
+        require("gitsigns").stage_buffer()
+      end,
+      "Git add buffer",
+    },
+
+    ["<leader>gu"] = {
+      function()
+        require("gitsigns").undo_stage_hunk()
+      end,
+      "Git undo add hunk",
+    },
+
+    ["<leader>gr"] = {
+      function()
+        require("gitsigns").reset_hunk()
+      end,
+      "Git reset hunk",
+    },
+
+    ["<leader>gR"] = {
+      function()
+        require("gitsigns").reset_buffer()
+      end,
+      "Git reset buffer",
+    },
+
+    ["<leader>gb"] = {
+      function()
+        require("gitsigns").blame_line()
+      end,
+      "Git blame line",
+    },
+
+    ["<leader>gp"] = {
+      function()
+        require("gitsigns").preview_hunk()
+      end,
+      "Git preview hunk",
+    },
+  },
+
+  v = {
+    ["<leader>gs"] = {
+      function()
+        require("gitsigns").select_hunk()
+      end,
+      "Git select hunk",
+    },
+
+    ["<leader>ga"] = {
+      function()
+        require("gitsigns").stage_hunk { vim.fn.line ".", vim.fn.line "v" }
+      end,
+      "Git add select",
+    },
+
+    ["<leader>gr"] = {
+      function()
+        require("gitsigns").reset_hunk { vim.fn.line ".", vim.fn.line "v" }
+      end,
+      "Git reset select",
+    },
   },
 }
