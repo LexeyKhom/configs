@@ -26,3 +26,41 @@ autocmd("VimResized", {
   command = "tabdo wincmd =",
 })
 
+------ Globals ------
+
+local g = vim.g
+
+g.lsp = {
+  -- HTML
+  "html",
+  "emmet_ls",
+
+  -- CSS
+  "cssls",
+  "cssmodules_ls",
+  "stylelint_lsp",
+
+  -- JavaScript
+  "eslint",
+  "tsserver",
+  "svelte",
+
+  -- Vue
+  "volar",
+  "vuels",
+
+  -- JSON
+  "jsonls",
+
+  -- Lua/Vim
+  "vimls",
+
+  -- C/C++
+  "clangd",
+
+  -- Other
+  "marksman",
+  "bashls",
+  "dockerls",
+  -- "pasls", -- Pascal
+}
