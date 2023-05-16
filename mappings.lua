@@ -229,3 +229,4 @@ M.gitsigns = {
     },
   },
 }
+return M
