@@ -3,8 +3,8 @@ local highlights = require "custom.highlights" -- Path to overriding theme and h
 local M = {}
 
 M.ui = {
-  theme = "onedark",
-  theme_toggle = { "onedark", "onedark" },
+  theme = "yoru",
+  theme_toggle = { "yoru", "yoru" },
 
   hl_override = highlights.override,
   hl_add = highlights.add,

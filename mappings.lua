@@ -204,6 +204,13 @@ M.gitsigns = {
       end,
       "Git preview hunk",
     },
+
+    ["<leader>gt"] = {
+      function()
+        require("gitsigns").preview_hunk()
+      end,
+      "Git toggle deleted",
+    },
   },
 
   v = {

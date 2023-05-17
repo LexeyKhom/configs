@@ -13,9 +13,6 @@ opt.scrolloff = 8
 opt.hlsearch = true
 opt.incsearch = true
 
--- Undo
-opt.undodir = os.getenv "HOME" .. "/.nvim/undodir"
-
 ------ Autocmd ------
 
 local autocmd = vim.api.nvim_create_autocmd
