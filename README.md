@@ -5,7 +5,7 @@
 0. Install dependencies:
 
    ```bash
-   sudo dnf install noevim clang ripgrep sed tree-sitter-cli
+   sudo dnf install noevim clang clang-check ripgrep sed tree-sitter-cli
    ```
 
 1. Install [NvChad](https://nvchad.com/quickstart/install).

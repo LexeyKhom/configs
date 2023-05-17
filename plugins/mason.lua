@@ -16,10 +16,19 @@ return {
       "markdownlint",
 
       ------ Linter ------
+      -- CSS
+      "stylelint",
+
+      -- JavaScript
       "eslint_d",
+
+      -- JSON
+      "jsonlint",
+
+      -- Other
+      "shellcheck",
       "gitlint",
       "textlint",
-      "luacheck",
 
       ------ LSP ------
       -- HTML
