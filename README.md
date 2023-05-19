@@ -1,4 +1,4 @@
 # Configs
 
-- [NvChad](https://github.com/LexeyKhom/configs/tree/NvChad)
+- [nvim](https://github.com/LexeyKhom/configs/tree/nvim)
 - [fish](https://github.com/LexeyKhom/configs/tree/fish)
