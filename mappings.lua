@@ -237,6 +237,16 @@ M.gitsigns = {
   },
 }
 
+M.diffview = {
+  plugin = true,
+
+  n = {
+    ["<leader>gd"] = { "<cmd> DiffviewOpen <CR>", "Git diff" },
+    ["<leader>gl"] = { "<cmd> DiffviewFileHistory <CR>", "Git log" },
+    ["<leader>gx"] = { "<cmd> DiffviewClose <CR>", "Git close" },
+  },
+}
+
 M.undotree = {
   plugin = true,
 
