@@ -110,6 +110,9 @@ M.telescope = {
     ["<leader>ft"] = { "<cmd> Telescope terms <CR>", "Find term" },
     ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
 
+    -- Git
+    ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "Git status" },
+
     -- Theme switcher
     ["<leader>st"] = { "<cmd> Telescope themes <CR>", "Switch theme" },
   },
