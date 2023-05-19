@@ -1,8 +1,8 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-    require "custom.plugins.mason-lspconfig",
-    require "custom.plugins.null-ls",
+    "williamboman/mason-lspconfig",
+    "jose-elias-alvarez/null-ls.nvim",
   },
   config = function()
     require "plugins.configs.lspconfig"

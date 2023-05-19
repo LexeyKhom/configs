@@ -1,6 +1,9 @@
 return require("custom.utils").loadPlugins {
   -- LSP
   "lspconfig",
+  "mason",
+  "mason-lspconfig",
+  "null-ls",
   "treesitter",
   "cmp",
 

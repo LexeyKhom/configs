@@ -1,7 +1,7 @@
 return {
   "williamboman/mason-lspconfig",
   dependencies = {
-    require "custom.plugins.mason",
+    "williamboman/mason.nvim",
   },
   opts = {
     ensure_installed = vim.g.lsp,
