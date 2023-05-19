@@ -8,6 +8,7 @@ return {
         n = {
           ["q"] = actions.close,
           ["<leader>x"] = actions.close,
+          ["o"] = actions.select_default,
         },
 
         i = {

@@ -30,6 +30,8 @@ M.disabled = {
     ["<leader>rh"] = "",
     ["<leader>ph"] = "",
     ["<leader>td"] = "",
+    ["<leader>h"] = "",
+    ["<leader>v"] = "",
   },
 }
 
@@ -81,6 +83,16 @@ M.general = {
   v = {
     ["J"] = { ":m '>+1 <CR> gv=gv", "Mode down", { silent = true } },
     ["K"] = { ":m '<-2 <CR> gv=gv", "Mode up", { silent = true } },
+
+    -- Wrap in
+    ["'"] = { "c''<Esc>P<Right>", "Wrap in ''" },
+    ['"'] = { 'c""<Esc>P<Right>', 'Wrap in ""' },
+    ["("] = { "c()<Esc>P<Right>", "Wrap in ()" },
+    [")"] = { "c()<Esc>P<Right>", "Wrap in ()" },
+    ["{"] = { "c{}<Esc>P<Right>", "Wrap in {}" },
+    ["}"] = { "c{}<Esc>P<Right>", "Wrap in {}" },
+    ["["] = { "c[]<Esc>P<Right>", "Wrap in []" },
+    ["]"] = { "c[]<Esc>P<Right>", "Wrap in []" },
   },
 }
 
@@ -100,10 +112,6 @@ M.telescope = {
 
     -- Theme switcher
     ["<leader>st"] = { "<cmd> Telescope themes <CR>", "Switch theme" },
-
-    -- Git
-    ["<leader>gl"] = { "<cmd> Telescope git_commits <CR>", "Git log" },
-    ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "Git status" },
   },
 }
 
