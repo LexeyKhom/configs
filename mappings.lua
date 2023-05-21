@@ -96,6 +96,78 @@ M.general = {
   },
 }
 
+M.dap = {
+  plugin = true,
+
+  n = {
+    ["<F1>"] = {
+      function()
+        require("dap").toggle_breakpoint()
+      end,
+      "DAP toggle breakpoint",
+    },
+
+    ["<F2>"] = {
+      function()
+        require("dap").toggle_breakpoint(nil, nil, vim.fn.input "Log point message: ")
+      end,
+      "DAP toggle logpoint",
+    },
+
+    ["<F3>"] = {
+      function()
+        require("dap").clear_breakpoints()
+      end,
+      "DAP clear breakpoints",
+    },
+
+    ["<F4>"] = {
+      function()
+        require("dapui").toggle()
+      end,
+      "DAP toggle",
+    },
+
+    ["<F5>"] = {
+      function()
+        require("dap").continue()
+        require("dapui").open()
+        require "nvim-dap-virtual-text"
+      end,
+      "DAP start",
+    },
+
+    ["<F6>"] = {
+      function()
+        require("dap").step_into()
+      end,
+      "DAP step into",
+    },
+
+    ["<F7>"] = {
+      function()
+        require("dap").step_over()
+      end,
+      "DAP step over",
+    },
+
+    ["<F8>"] = {
+      function()
+        require("dap").step_out()
+      end,
+      "DAP step out",
+    },
+
+    ["<F9>"] = {
+      function()
+        require("dap").terminate()
+        require("dapui").close()
+      end,
+      "DAP stop",
+    },
+  },
+}
+
 M.telescope = {
   plugin = true,
 

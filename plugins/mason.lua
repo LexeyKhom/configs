@@ -5,7 +5,7 @@ return {
       ------ Debug ------
       "chrome-debug-adapter",
       "firefox-debug-adapter",
-      "node-debug2-adapter",
+      "js-debug-adapter",
       "bash-debug-adapter",
 
       ------ Formatter ------
