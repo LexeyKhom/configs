@@ -8,10 +8,10 @@ return {
       type_opts = {
         float = {
           relative = "editor",
-          row = 0.1,
-          col = 0.05,
-          width = 0.9,
-          height = 0.8,
+          row = 0,
+          col = 0,
+          width = 1,
+          height = 0.9,
           border = "none",
         },
         horizontal = { location = "rightbelow", split_ratio = 0.5 },

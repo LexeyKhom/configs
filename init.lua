@@ -27,6 +27,9 @@ autocmd("VimResized", {
 
 local g = vim.g
 
+-- Default term
+g.term = "float"
+
 g.lsp = {
   -- HTML
   "html",

@@ -66,8 +66,10 @@ M.general = {
       "Sed word in file",
     },
 
-    -- !TODO: For all langs
-    -- ["<leader>nd"] = { "<cmd>!node %<CR>", "NodeJS" },
+    ["<C-e>"] = {
+      require("custom.utils").execute,
+      "Execute this",
+    },
   },
 
   -- Insert
@@ -296,11 +298,18 @@ M.nvterm = {
     ["<leader>gc"] = {
       function()
         local nvterm = require "nvterm.terminal"
-        nvterm.send(" git commit ", "float")
-        nvterm.toggle "float"
+        local term = vim.g.term
+        nvterm.toggle(term)
+        nvterm.send("git commit ", term)
+        vim.cmd "startinsert"
       end,
       "Git commit",
     },
+  },
+
+  t = {
+    ["<C-e>"] = { "<C-d>", "Close term" },
+    ["<C-q>"] = { "<C-d>", "Close term" },
   },
 }
 
