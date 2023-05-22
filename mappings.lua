@@ -32,6 +32,15 @@ M.disabled = {
     ["<leader>td"] = "",
     ["<leader>h"] = "",
     ["<leader>v"] = "",
+    ["<leader>D"] = "",
+    ["<leader>ra"] = "",
+    ["<leader>ca"] = "",
+    ["<leader>f"] = "",
+    ["<leader>fm"] = "",
+    ["<leader>wa"] = "",
+    ["<leader>wr"] = "",
+    ["<leader>wl"] = "",
+    ["<leader>q"] = "",
   },
 }
 
@@ -93,6 +102,96 @@ M.general = {
     ["}"] = { "c{}<Esc>P<Right>", "Wrap in {}" },
     ["["] = { "c[]<Esc>P<Right>", "Wrap in []" },
     ["]"] = { "c[]<Esc>P<Right>", "Wrap in []" },
+  },
+}
+
+M.lspconfig = {
+  plugin = true,
+
+  n = {
+    ["[d"] = {
+      function()
+        vim.diagnostic.goto_prev { float = { border = "single" } }
+      end,
+      "Previous diagnostic",
+    },
+
+    ["]d"] = {
+      function()
+        vim.diagnostic.goto_next { float = { border = "single" } }
+      end,
+      "Next diagnostic",
+    },
+
+    ["<leader>ls"] = {
+      function()
+        vim.lsp.buf.signature_help()
+      end,
+      "LSP signature help",
+    },
+
+    ["<leader>ld"] = {
+      function()
+        vim.lsp.buf.type_definition()
+      end,
+      "LSP definition type",
+    },
+
+    ["<leader>lr"] = {
+      function()
+        require("nvchad_ui.renamer").open()
+      end,
+      "LSP rename",
+    },
+
+    ["<leader>lc"] = {
+      function()
+        vim.lsp.buf.code_action()
+      end,
+      "LSP code action",
+    },
+
+    ["<leader>lf"] = {
+      function()
+        vim.diagnostic.open_float { border = "single" }
+      end,
+      "LSP Floating diagnostic",
+    },
+
+    ["<leader>ll"] = {
+      function()
+        vim.diagnostic.setloclist()
+      end,
+      "LSP Diagnostic setloclist",
+    },
+
+    ["<C-f>"] = {
+      function()
+        vim.lsp.buf.format { async = true }
+      end,
+      "LSP formatting",
+    },
+
+    ["<leader>lwa"] = {
+      function()
+        vim.lsp.buf.add_workspace_folder()
+      end,
+      "Add workspace folder",
+    },
+
+    ["<leader>lwr"] = {
+      function()
+        vim.lsp.buf.remove_workspace_folder()
+      end,
+      "Remove workspace folder",
+    },
+
+    ["<leader>lwl"] = {
+      function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+      end,
+      "List workspace folders",
+    },
   },
 }
 
