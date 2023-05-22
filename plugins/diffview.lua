@@ -5,7 +5,6 @@ return {
   cmd = {
     "DiffviewFileHistory",
     "DiffviewOpen",
-    "DiffviewClose",
   },
   keys = function()
     require("core.utils").load_mappings "diffview"
