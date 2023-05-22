@@ -16,4 +16,3 @@
    cd ~/.config/fish;
    git checkout fish;
    ```
-
