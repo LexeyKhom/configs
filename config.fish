@@ -5,3 +5,6 @@ if status is-interactive
     set -gx DENO_INSTALL "/home/lexey/.deno"
     set -gxa PATH "$DENO_INSTALL/bin"
 end
+
+# For NoeVim tests
+alias tvim='XDG_DATA_HOME=~/Documents/NeoVim/.local/share XDG_CONFIG_HOME=~/Documents/NeoVim/ nvim'
