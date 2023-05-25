@@ -1,0 +1,13 @@
+{
+  "name": "Snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "typescript"
+        ],
+        "path": "./typescript.json"
+      }
+    ]
+  }
+}
