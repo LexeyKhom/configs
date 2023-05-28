@@ -1,5 +1,3 @@
--- local actions = require "diffview.actions"
-
 return {
   "sindrets/diffview.nvim",
   cmd = {
