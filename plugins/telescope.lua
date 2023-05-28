@@ -2,6 +2,9 @@ local actions = require "telescope.actions"
 
 return {
   "nvim-telescope/telescope.nvim",
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter",
+  },
   opts = {
     defaults = {
       mappings = {
