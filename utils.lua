@@ -73,31 +73,31 @@ M.execute = function()
   local fileName = vim.fn.expand "%:t"
   local fileType = vim.bo.filetype
 
-  local execute = {
-    javascript = function(name)
-      nvterm.toggle(term)
-      nvterm.send("node " .. name, term)
-      vim.cmd "startinsert"
-    end,
+  local execute = {}
 
-    typescript = function(name)
-      nvterm.toggle(term)
-      nvterm.send("deno run " .. name, term)
-      vim.cmd "startinsert"
-    end,
+  execute.javascript = function(name)
+    nvterm.toggle(term)
+    nvterm.send("node " .. name, term)
+    vim.cmd "startinsert"
+  end
 
-    terminal = function(_)
-      nvterm.toggle(term)
-    end,
-  }
+  execute.typescript = function(name)
+    nvterm.toggle(term)
+    nvterm.send("deno run " .. name, term)
+    vim.cmd "startinsert"
+  end
 
-  local err = function(type)
+  execute.terminal = function(_)
+    nvterm.toggle(term)
+  end
+
+  execute.other = function(type)
     return function(name)
-      print("No function defined: Type '" .. type .. "', File: '" .. name .. "'")
+      print("No execute defined: Type '" .. type .. "', File: '" .. name .. "'")
     end
   end
 
-  local fn = execute[fileType] or err(fileType)
+  local fn = execute[fileType] or execute.other(fileType)
   fn(fileName)
 end
 
