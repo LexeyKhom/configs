@@ -8,7 +8,7 @@
    sudo dnf install noevim clang clang-check ripgrep sed tree-sitter-cli
    ```
 
-1. Install [NvChad](https://nvchad.com/quickstart/install).
+1. Install [NvChad](https://nvchad.com/docs/quickstart/install).
 2. Install this config:
 
    ```bash
