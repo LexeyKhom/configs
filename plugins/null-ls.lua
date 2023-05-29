@@ -3,6 +3,9 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
+  keys = function()
+    require("core.utils").load_mappings "null"
+  end,
   opts = function()
     local loadSources = function()
       local builtins = require("null-ls").builtins

@@ -167,13 +167,6 @@ M.lspconfig = {
       "LSP Diagnostic setloclist",
     },
 
-    ["<C-f>"] = {
-      function()
-        vim.lsp.buf.format { async = true }
-      end,
-      "LSP formatting",
-    },
-
     ["<leader>lwa"] = {
       function()
         vim.lsp.buf.add_workspace_folder()
@@ -193,6 +186,19 @@ M.lspconfig = {
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end,
       "List workspace folders",
+    },
+  },
+}
+
+M.null = {
+  plugin = true,
+
+  n = {
+    ["<C-f>"] = {
+      function()
+        vim.lsp.buf.format { async = true }
+      end,
+      "Formatting",
     },
   },
 }
