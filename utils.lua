@@ -1,5 +1,23 @@
 local M = {}
 
+M.split = function(str, regexp)
+  local res = {}
+  for s in string.gmatch(str, regexp) do
+    table.insert(res, s)
+  end
+  return table.unpack(res)
+end
+
+M.contains = function(tb, x)
+  local found = false
+  for _, v in pairs(tb) do
+    if v == x then
+      found = true
+    end
+  end
+  return found
+end
+
 M.loadPlugins = function(list)
   local path = "custom.plugins"
   local plugins = {}
@@ -10,6 +28,41 @@ M.loadPlugins = function(list)
   end
 
   return plugins
+end
+
+M.loadLangs = function(pluginName, filter)
+  local langs = require "custom.langs"
+  local contains = M.contains
+
+  local res = {}
+
+  for _, configs in pairs(langs) do
+    if configs[pluginName] then
+      for _, value in pairs(configs[pluginName]) do
+        local isTable = type(value) == "table"
+        local isFiltered = isTable and value.filter and contains(value.filter, filter) or false
+        local val = isTable and value[1] or value
+        if not contains(res, val) and not isFiltered then
+          table.insert(res, val)
+        end
+      end
+    end
+
+    if pluginName == "mason" then
+      for _, config in pairs(configs) do
+        for _, value in pairs(config) do
+          local val = type(value) == "table" and value["mason"] or nil
+          if val then
+            if not contains(res, val) then
+              table.insert(res, val)
+            end
+          end
+        end
+      end
+    end
+  end
+
+  return res
 end
 
 M.execute = function()

@@ -5,15 +5,8 @@ return {
     "mfussenegger/nvim-dap",
   },
   opts = {
-    automatic_installation = true,
+    ensure_installed = require("custom.utils").loadLangs "dap",
 
-    ensure_installed = {
-      "cppdbg",
-      "node2",
-      "chrome",
-      "firefox",
-      "js",
-      "bash",
-    },
+    automatic_installation = true,
   },
 }

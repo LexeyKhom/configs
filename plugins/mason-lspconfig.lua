@@ -4,7 +4,7 @@ return {
     "williamboman/mason.nvim",
   },
   opts = {
-    ensure_installed = vim.g.lsp,
+    ensure_installed = require("custom.utils").loadLangs("lsp", "mason"),
     automatic_installation = true,
   },
 }

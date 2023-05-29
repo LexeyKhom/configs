@@ -6,7 +6,7 @@ return {
   },
   config = function()
     require "plugins.configs.lspconfig"
-    local servers = vim.g.lsp
+    local servers = require("custom.utils").loadLangs "lsp"
 
     local lspconfig = require "lspconfig"
     local on_attach = require("plugins.configs.lspconfig").on_attach

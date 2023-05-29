@@ -4,62 +4,31 @@ return {
     "nvim-lua/plenary.nvim",
   },
   opts = function()
-    local b = require("null-ls").builtins
-    local f = b.formatting
-    local d = b.diagnostics
-    local a = b.code_actions
-    local c = b.completion
+    local loadSources = function()
+      local builtins = require("null-ls").builtins
+      local split = require("custom.utils").split
+      local strArr = require("custom.utils").loadLangs "null"
+      local def = {
+        a = "code_actions",
+        c = "completion",
+        d = "diagnostics",
+        f = "formatting",
+      }
+
+      local res = {}
+
+      for _, str in pairs(strArr) do
+        local mode, name = split(str, "[^%.]+")
+        local r = builtins[def[mode]][name]
+        table.insert(res, r)
+      end
+
+      return res
+    end
 
     return {
       debug = true,
-      sources = {
-
-        -- Global (Html, CSS/SCSS, JS/TS, JSON, React, Vue, Markdown)
-        f.prettier,
-
-        -- CSS
-        d.stylelint,
-        f.stylelint,
-
-        -- JavaScript
-        a.eslint_d,
-        d.eslint_d,
-        f.eslint_d,
-
-        -- JSON
-        d.jsonlint,
-
-        -- C/C++
-        d.clang_check,
-        f.clang_format,
-
-        -- Lua/Vim
-        f.stylua,
-
-        -- Git
-        a.gitsigns,
-        a.gitrebase,
-        d.gitlint,
-
-        -- Markdown
-        d.markdownlint,
-        f.markdownlint,
-
-        -- Bash / Fish
-        a.shellcheck,
-        d.shellcheck,
-        d.fish,
-        f.fish_indent,
-
-        -- Other
-        a.refactoring,
-        c.tags,
-        d.todo_comments,
-        -- d.editorconfig_checker,
-
-        -- Pascal
-        f.ptop,
-      },
+      sources = loadSources(),
     }
   end,
 }
