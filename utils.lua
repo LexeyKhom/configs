@@ -71,7 +71,7 @@ M.execute = function()
 
   -- https://vimdoc.sourceforge.net/htmldoc/cmdline.html#filename-modifiers
   -- local fileName = vim.fn.expand "%:t"
-  local fileName = vim.fn.expand "%"
+  local fileName = vim.fn.expand "%:p:~:."
   local fileType = vim.bo.filetype
 
   local execute = {}
@@ -85,6 +85,14 @@ M.execute = function()
   execute.typescript = function(name)
     nvterm.toggle(term)
     nvterm.send("deno run " .. name, term)
+    vim.cmd "startinsert"
+  end
+
+  execute.pascal = function(name)
+    nvterm.toggle(term)
+    nvterm.send("fpc " .. name, term)
+    local exeName = string.sub(name, 1, -5)
+    nvterm.send("./" .. exeName, term)
     vim.cmd "startinsert"
   end
 
