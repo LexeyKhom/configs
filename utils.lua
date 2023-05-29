@@ -70,7 +70,8 @@ M.execute = function()
   local term = vim.g.term
 
   -- https://vimdoc.sourceforge.net/htmldoc/cmdline.html#filename-modifiers
-  local fileName = vim.fn.expand "%:t"
+  -- local fileName = vim.fn.expand "%:t"
+  local fileName = vim.fn.expand "%"
   local fileType = vim.bo.filetype
 
   local execute = {}
