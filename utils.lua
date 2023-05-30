@@ -90,9 +90,13 @@ M.execute = function()
 
   execute.pascal = function(name)
     nvterm.toggle(term)
-    nvterm.send("fpc " .. name, term)
-    local exeName = string.sub(name, 1, -5)
-    nvterm.send("./" .. exeName, term)
+
+    local compile = "fpc " .. name
+    local separator = "echo -e '\n------\n'"
+    local exeFileName = string.sub(name, 1, -5)
+    local run = "./" .. exeFileName
+    nvterm.send(compile .. " && " .. separator .. " && " .. run, term)
+
     vim.cmd "startinsert"
   end
 
@@ -100,13 +104,13 @@ M.execute = function()
     nvterm.toggle(term)
   end
 
-  execute.other = function(type)
+  execute.err = function(type)
     return function(name)
-      print("No execute defined: Type '" .. type .. "', File: '" .. name .. "'")
+      print("No execute defined. Type: '" .. type .. "', File: '" .. name .. "'")
     end
   end
 
-  local fn = execute[fileType] or execute.other(fileType)
+  local fn = execute[fileType] or execute.err(fileType)
   fn(fileName)
 end
 
