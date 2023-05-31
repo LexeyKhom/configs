@@ -104,6 +104,8 @@ M.general = {
     ["}"] = { "c{}<Esc>P<Right>", "Wrap in {}" },
     ["["] = { "c[]<Esc>P<Right>", "Wrap in []" },
     ["]"] = { "c[]<Esc>P<Right>", "Wrap in []" },
+    ["_"] = { "c__<Esc>P<Right>", "Wrap in __" },
+    ["*"] = { "c****<Esc><Left>P<Right><Right>", "Wrap in ****" },
   },
 }
 
