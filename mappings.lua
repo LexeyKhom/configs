@@ -49,6 +49,7 @@ M.general = {
   n = {
     [";"] = { ":", "Enter command mode", opts = { nowait = true } },
     ["<C-q>"] = { "<cmd> q <CR>", "Quit", opts = { nowait = true } },
+    ["<C-s>"] = { "<cmd> w <CR><cmd> e <CR>", "Save and Redraw" },
     ["<leader>tn"] = { "<cmd> set nu! <CR>", "Toggle line number" },
     ["<leader>tr"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
 
