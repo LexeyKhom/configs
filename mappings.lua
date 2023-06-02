@@ -291,6 +291,7 @@ M.telescope = {
     ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
     ["<leader>ft"] = { "<cmd> Telescope terms <CR>", "Find term" },
     ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
+    ["<leader>fl"] = { "<cmd> Telescope resume <CR>", "Find last" },
 
     -- Git
     ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "Git status" },
