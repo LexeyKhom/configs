@@ -1,8 +1,8 @@
--- Treesitter: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
--- Mason: https://mason-registry.dev/registry/list
--- LSP: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
--- DAP: https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
--- Null-ls: https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+-- Treesitter: (https://github.com/nvim-treesitter/nvim-treesitter#supported-languages)
+-- LSP: (https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md)
+-- Null-ls: (https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md)
+-- DAP: (https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation)
+-- Mason: (https://mason-registry.dev/registry/list)
 
 local M = {}
 
