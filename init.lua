@@ -3,7 +3,7 @@
 local opt = vim.opt
 
 -- Relative Number
-opt.relativenumber = true
+opt.relativenumber = false
 
 -- Scroll
 opt.wrap = false
