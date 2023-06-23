@@ -75,9 +75,8 @@ M.javaScript = {
   },
 
   null = {
-    { "a.eslint", mason = "eslint" },
-    { "d.eslint", mason = "eslint" },
-    { "f.eslint", mason = "eslint" },
+    "a.eslint",
+    "f.eslint",
   },
 
   dap = {
