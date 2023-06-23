@@ -335,6 +335,7 @@ M.nvterm = {
   n = {
     ["<leader>gc"] = {
       function()
+        vim.cmd "DiffviewClose"
         local nvterm = require "nvterm.terminal"
         local term = vim.g.term
         nvterm.toggle(term)
