@@ -35,35 +35,31 @@ M.loadLangs = function(pluginName, filter)
   local langs = require "custom.langs"
   local contains = M.contains
 
-  local res = {}
-
-  for _, configs in pairs(langs) do
-    if configs[pluginName] then
-      for _, value in pairs(configs[pluginName]) do
-        local isTable = type(value) == "table"
-        local isFiltered = isTable and value.filter and contains(value.filter, filter) or false
-        local val = isTable and value[1] or value
-        if not contains(res, val) and not isFiltered then
-          table.insert(res, val)
+  local results = {}
+  for _, lang in pairs(langs) do
+    if lang[pluginName] then
+      local pluginConfigs = lang[pluginName]
+      for _, config in pairs(pluginConfigs) do
+        local isTable = type(config) == "table"
+        local isFiltered = isTable and config.filter and contains(config.filter, filter)
+        local result = isTable and config[1] or config
+        if not isFiltered and not contains(results, result) then
+          table.insert(results, result)
         end
       end
     end
-
     if pluginName == "mason" then
-      for _, config in pairs(configs) do
-        for _, value in pairs(config) do
-          local val = type(value) == "table" and value["mason"] or nil
-          if val then
-            if not contains(res, val) then
-              table.insert(res, val)
-            end
+      for _, pluginConfigs in pairs(lang) do
+        for _, config in pairs(pluginConfigs) do
+          local val = type(config) == "table" and config["mason"] or nil
+          if val and not contains(results, val) then
+            table.insert(results, val)
           end
         end
       end
     end
   end
-
-  return res
+  return results
 end
 
 M.execute = function()
