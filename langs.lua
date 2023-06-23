@@ -17,7 +17,19 @@ M.html = {
   },
 
   null = {
-    { "f.prettier", mason = "prettier" },
+    {
+      "f.prettier",
+      mason = "prettier",
+      setting = {
+        disabled_filetypes = {
+          "javascript",
+          "typescript",
+          "typescriptreact",
+          "javascriptreact",
+          "vue",
+        },
+      },
+    },
   },
 }
 
