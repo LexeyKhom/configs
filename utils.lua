@@ -8,6 +8,10 @@ M.split = function(str, regexp)
   return table.unpack(res)
 end
 
+M.join = function(tb, str)
+  return table.concat(tb, str)
+end
+
 M.contains = function(tb, x)
   local found = false
   for _, v in pairs(tb) do
