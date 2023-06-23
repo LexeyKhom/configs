@@ -14,6 +14,7 @@ return require("custom.utils").loadPlugins {
   -- Files
   "nvim-tree",
   "telescope",
+  "spectre",
 
   -- Git
   "diffview",
