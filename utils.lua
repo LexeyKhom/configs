@@ -69,8 +69,7 @@ M.execute = function()
   local nvterm = require "nvterm.terminal"
   local term = vim.g.term
 
-  -- https://vimdoc.sourceforge.net/htmldoc/cmdline.html#filename-modifiers
-  -- local fileName = vim.fn.expand "%:t"
+  -- (https://vimdoc.sourceforge.net/htmldoc/cmdline.html#filename-modifiers)
   local fileName = vim.fn.expand "%:p:~:."
   local fileType = vim.bo.filetype
 
@@ -92,15 +91,17 @@ M.execute = function()
     nvterm.toggle(term)
 
     local compile = "fpc " .. name
-    local separator = "echo -e '\n------\n'"
+    local separator = "clear"
     local exeFileName = string.sub(name, 1, -5)
     local run = "./" .. exeFileName
-    nvterm.send(compile .. " && " .. separator .. " && " .. run, term)
 
+    local cmd = M.join({ compile, separator, run }, "&&")
+    nvterm.send(cmd, term)
     vim.cmd "startinsert"
   end
 
   execute.terminal = function(_)
+    nvterm.send("clear", term)
     nvterm.toggle(term)
   end
 
