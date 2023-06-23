@@ -18,15 +18,12 @@ M.contains = function(tb, x)
   return found
 end
 
-M.loadPlugins = function(list)
-  local path = "custom.plugins"
+M.loadPlugins = function(path, list)
   local plugins = {}
-
   for _, fileName in pairs(list) do
     local plugin = require(path .. "." .. fileName)
     table.insert(plugins, plugin)
   end
-
   return plugins
 end
 

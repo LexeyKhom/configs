@@ -1,4 +1,5 @@
-return require("custom.utils").loadPlugins {
+local path = "custom.plugins"
+local plugins = {
   -- LSP
   "lspconfig",
   "mason",
@@ -23,3 +24,5 @@ return require("custom.utils").loadPlugins {
   "nvterm",
   "undotree",
 }
+
+return require("custom.utils").loadPlugins(path, plugins)
