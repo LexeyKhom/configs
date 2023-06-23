@@ -10,7 +10,7 @@ return {
     local loadSources = function()
       local builtins = require("null-ls").builtins
       local split = require("custom.utils").split
-      local strArr = require("custom.utils").loadLangs "null"
+      local configs = require("custom.utils").loadLangs "null"
       local def = {
         a = "code_actions",
         c = "completion",
@@ -18,15 +18,14 @@ return {
         f = "formatting",
       }
 
-      local res = {}
-
-      for _, str in pairs(strArr) do
-        local mode, name = split(str, "[^%.]+")
-        local r = builtins[def[mode]][name]
-        table.insert(res, r)
+      local sources = {}
+      for _, config in pairs(configs) do
+        local shortMode, name = split(config, "[^%.]+") -- split(str, ".") not working
+        local mode = def[shortMode]
+        local source = builtins[mode][name]
+        table.insert(sources, source)
       end
-
-      return res
+      return sources
     end
 
     return {
