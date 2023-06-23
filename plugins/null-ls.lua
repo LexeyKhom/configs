@@ -1,7 +1,7 @@
 local loadSources = function()
   local builtins = require("null-ls").builtins
   local split = require("custom.utils").split
-  local configs = require("custom.utils").loadLangs "null"
+  local configs, settings = require("custom.utils").loadLangs "null"
   local def = {
     a = "code_actions",
     c = "completion",
@@ -13,7 +13,8 @@ local loadSources = function()
   for _, config in pairs(configs) do
     local shortMode, name = split(config, "[^%.]+") -- split(str, ".") not working
     local mode = def[shortMode]
-    local source = builtins[mode][name]
+    local setting = settings[config]
+    local source = builtins[mode][name].with(setting)
     table.insert(sources, source)
   end
   return sources

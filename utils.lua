@@ -36,6 +36,7 @@ M.loadLangs = function(pluginName, filter)
   local contains = M.contains
 
   local results = {}
+  local settings = {}
   for _, lang in pairs(langs) do
     if lang[pluginName] then
       local pluginConfigs = lang[pluginName]
@@ -43,8 +44,10 @@ M.loadLangs = function(pluginName, filter)
         local isTable = type(config) == "table"
         local isFiltered = isTable and config.filter and contains(config.filter, filter)
         local result = isTable and config[1] or config
+        local setting = isTable and config.setting or {}
         if not isFiltered and not contains(results, result) then
           table.insert(results, result)
+          settings[result] = setting
         end
       end
     end
@@ -59,7 +62,7 @@ M.loadLangs = function(pluginName, filter)
       end
     end
   end
-  return results
+  return results, settings
 end
 
 M.execute = function()
