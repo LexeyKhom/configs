@@ -20,6 +20,9 @@ local plugins = {
   -- Git
   "diffview",
 
+  -- AI
+  "huggingface",
+
   -- Other
   "nvterm",
   "undotree",
