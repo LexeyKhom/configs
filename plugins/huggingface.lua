@@ -5,9 +5,6 @@ return {
     "HFccToggleAutoSuggest",
   },
   opts = {
-    accept_keymap = "<Tab>",
-    dismiss_keymap = "<S-Tab>",
-
     -- can be a model ID or an http(s) endpoint
     model = "bigcode/starcoder",
 
@@ -18,5 +15,16 @@ return {
       top_p = 0.95,
       stop_token = "<|endoftext|>",
     },
+
+    -- set this if the model supports fill in the middle
+    fim = {
+      enabled = true,
+      prefix = "<fim_prefix>",
+      middle = "<fim_middle>",
+      suffix = "<fim_suffix>",
+    },
+
+    accept_keymap = "<Tab>",
+    dismiss_keymap = "<S-Tab>",
   },
 }
