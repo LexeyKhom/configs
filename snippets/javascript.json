@@ -1,6 +1,0 @@
-{
-  "async immediately-invoked function expression": {
-    "prefix": "aiife",
-    "body": "(async () => {\n\t${0}\n})();"
-  }
-}

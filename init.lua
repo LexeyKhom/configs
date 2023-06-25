@@ -28,7 +28,7 @@ autocmd("VimResized", {
 local g = vim.g
 
 -- VsCode format for snippets (json)
-g.vscode_snippets_path = "~/.config/nvim/lua/custom/snippets/"
+g.vscode_snippets_path = "~/.config/nvim/lua/custom/"
 
 -- Default term
 g.term = "float"

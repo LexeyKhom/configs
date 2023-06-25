@@ -1,6 +1,7 @@
 return {
   "hrsh7th/nvim-cmp",
   dependencies = {
+    { "rafamadriz/friendly-snippets", enabled = false },
     { "kdheepak/cmp-latex-symbols" },
   },
   opts = {
