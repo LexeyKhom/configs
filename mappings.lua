@@ -67,7 +67,7 @@ M.general = {
       "Sed word in file",
     },
 
-    ["<C-e>"] = {
+    ["<C-j>"] = {
       require("custom.utils").execute,
       "Execute this",
     },
