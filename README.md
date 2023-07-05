@@ -1,6 +1,6 @@
 # Nvim
 
-## Setup
+## Install
 
 0. Install dependencies:
 
