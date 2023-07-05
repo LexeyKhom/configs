@@ -1,11 +1,21 @@
 local M = {}
 
+M.unpack = function(tb, i)
+  i = i or 1
+  if i < #tb then
+    return tb[i], M.unpack(tb, i + 1)
+  end
+  if i == #tb then
+    return tb[i]
+  end
+end
+
 M.split = function(str, regexp)
   local res = {}
   for s in string.gmatch(str, regexp) do
     table.insert(res, s)
   end
-  return table.unpack(res)
+  return M.unpack(res)
 end
 
 M.join = function(tb, str)
