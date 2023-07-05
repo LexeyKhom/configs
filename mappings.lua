@@ -309,20 +309,21 @@ M.spectre = {
 
   n = {
     ["<leader>so"] = { '<cmd>lua require("spectre").open()<CR>', "Open Spectre" },
+    ["<leader>sx"] = { '<cmd>lua require("spectre").close()<CR>', "Close Spectre" },
 
-    ["<leader>sc"] = {
+    ["<leader>sa"] = {
       '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
-      "Search current word",
+      "Search all",
     },
 
     ["<leader>sf"] = {
       '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
-      "Search on current file",
+      "Search in file",
     },
   },
 
   v = {
-    ["<leader>sw"] = {
+    ["<leader>s"] = {
       '<esc><cmd>lua require("spectre").open_visual()<CR>',
       "Search current word",
     },
