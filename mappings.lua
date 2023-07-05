@@ -198,6 +198,8 @@ M.null = {
   plugin = true,
 
   n = {
+    -- For format all files use:
+    -- args ./**/*.json | argdo "lua vim.lsp.buf.format()" | w
     ["<C-f>"] = {
       function()
         vim.lsp.buf.format { async = true }
