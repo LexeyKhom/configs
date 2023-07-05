@@ -11,8 +11,7 @@
 2. Install this config:
 
    ```bash
-   rm -rf ~/.config/fish/;
-   git clone git@github.com:LexeyKhom/configs.git ~/.config/fish;
-   cd ~/.config/fish;
-   git checkout fish;
+   rm -rf ~/.config/fish &&
+   git clone -b fish git@github.com:LexeyKhom/configs.git ~/.config/fish ||
+   git clone -b fish https://github.com/LexeyKhom/configs ~/.config/fish
    ```
