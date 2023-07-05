@@ -67,7 +67,6 @@ M.javaScript = {
   lsp = {
     { "eslint", mason = "eslint-lsp" },
     { "tsserver", mason = "typescript-language-server" },
-    { "denols", mason = "deno" },
     { "svelte", mason = "svelte-language-server" },
     { "volar", mason = "vue-language-server" },
     { "angularls", mason = "angular-language-server" },
@@ -239,10 +238,6 @@ M.md = {
   tree = {
     "markdown",
     "markdown_inline",
-  },
-
-  lsp = {
-    { "marksman", mason = "marksman" },
   },
 
   null = {
