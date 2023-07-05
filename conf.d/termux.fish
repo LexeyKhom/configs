@@ -1,8 +1,17 @@
 if status is-interactive
     if test -n "$TERMUX_VERSION"
+        set -gx isTermux true
+    else
+        set -gx isTermux false
+    end
+
+    if test "$isTermux" = true
+        echo hello
         if ! test -d /tmp
-            command termux-chroot ||
-                { pkg install proot && termux-chroot }
+            if ! command termux-chroot
+                command pkg install proot
+                command termux-chroot
+            end
         end
     end
 end
