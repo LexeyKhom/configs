@@ -5,8 +5,12 @@ local opt = vim.opt
 -- Relative Number
 opt.relativenumber = false
 
+-- Wrap
+opt.linebreak = true
+opt.breakindent = true
+opt.breakindentopt = "shift:2"
+
 -- Scroll
-opt.wrap = false
 opt.scrolloff = 8
 
 -- Search
