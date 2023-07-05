@@ -17,14 +17,8 @@
 2. Install this config:
 
    ```bash
-   {
-   git clone git@github.com:LexeyKhom/configs.git
-       ~/.config/nvim/lua/custom --depth 1 ||
-   git clone https://github.com/LexeyKhom/configs
-       ~/.config/nvim/lua/custom --depth 1
-   } &&
-   cd ~/.config/nvim/lua/custom &&
-   git checkout nvim
+   git clone -b nvim git@github.com:LexeyKhom/configs.git ~/.config/nvim/lua/custom ||
+   git clone -b nvim https://github.com/LexeyKhom/configs ~/.config/nvim/lua/custom
    ```
 
 3. Use `:MasonInstallAll` to install Mason.
