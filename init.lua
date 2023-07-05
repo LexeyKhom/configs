@@ -36,3 +36,5 @@ g.vscode_snippets_path = "~/.config/nvim/lua/custom/"
 
 -- Default term
 g.term = "float"
+
+g.isTermux = os.getenv "isTermux"

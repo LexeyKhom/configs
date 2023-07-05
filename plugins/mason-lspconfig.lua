@@ -1,5 +1,6 @@
 return {
   "williamboman/mason-lspconfig",
+  enabled = not vim.g.isTermux,
   dependencies = {
     "williamboman/mason.nvim",
   },
