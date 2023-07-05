@@ -4,6 +4,9 @@ return {
     "HFccSuggestion",
     "HFccToggleAutoSuggest",
   },
+  keys = function()
+    require("core.utils").load_mappings "huggingface"
+  end,
   opts = {
     -- can be a model ID or an http(s) endpoint
     model = "bigcode/starcoder",
@@ -24,7 +27,7 @@ return {
       suffix = "<fim_suffix>",
     },
 
-    accept_keymap = "<Tab>",
-    dismiss_keymap = "<S-Tab>",
+    accept_keymap = "<C-w>",
+    dismiss_keymap = "<C-x>",
   },
 }

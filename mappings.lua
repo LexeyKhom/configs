@@ -477,6 +477,14 @@ M.diffview = {
   },
 }
 
+M.huggingface = {
+  plugin = true,
+
+  n = {
+    ["<C-w>"] = { "<cmd> HFccSuggestion <CR>", "Huggingface Suggestion" },
+  },
+}
+
 M.undotree = {
   plugin = true,
 
