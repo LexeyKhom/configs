@@ -14,6 +14,8 @@ function fish_user_key_bindings
     bind -M insert \eh backward-delete-char
     bind -M insert \el execute
 
+    bind -M insert \ed exit
+
     # NORMAL MODE
 
     bind -M default j history-search-forward
