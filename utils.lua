@@ -116,6 +116,12 @@ M.execute = function()
     vim.cmd "startinsert"
   end
 
+  execute.sh = function(name)
+    nvterm.toggle(term)
+    nvterm.send("./" .. name, term)
+    vim.cmd "startinsert"
+  end
+
   execute.terminal = function(_)
     nvterm.send("clear", term)
     nvterm.toggle(term)
