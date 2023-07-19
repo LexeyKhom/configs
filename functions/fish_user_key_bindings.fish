@@ -28,4 +28,6 @@ function fish_user_key_bindings
     bind -M default \ek history-search-backward
     bind -M default \eh backward-delete-char
     bind -M default \el execute
+
+    bind -M default \ed exit
 end
