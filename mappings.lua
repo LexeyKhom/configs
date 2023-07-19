@@ -75,7 +75,6 @@ M.general = {
     ["<C-d>"] = { "<C-d>zz", "Screen down" },
     ["n"] = { "nzzzv", "Next search" },
     ["N"] = { "Nzzzv", "Previous search" },
-    ["J"] = { "mzJ`z", "Join" },
 
     -- Sed
     ["<leader>sw"] = {
@@ -120,13 +119,13 @@ M.general = {
 
   -- Visual and Select
   v = {
-    ["J"] = { ":m '>+1 <CR> gv=gv", "Mode down", { silent = true } },
-    ["K"] = { ":m '<-2 <CR> gv=gv", "Mode up", { silent = true } },
+    ["J"] = { ":m '>+1 <CR> gv=gv", "Move down", { silent = true } },
+    ["K"] = { ":m '<-2 <CR> gv=gv", "Move up", { silent = true } },
 
     -- Wrap in
     ["'"] = { "c''<Esc>P<Right>", "Wrap in ''" },
     ['"'] = { 'c""<Esc>P<Right>', 'Wrap in ""' },
-    ["`"] = { "c``<Esc>P<Right>", "Wrap in ``", { nowait = true } },
+    ["`"] = { "c``<Esc>P<Right>", "Wrap in ``" },
     ["("] = { "c()<Esc>P<Right>", "Wrap in ()" },
     [")"] = { "c()<Esc>P<Right>", "Wrap in ()" },
     ["{"] = { "c{}<Esc>P<Right>", "Wrap in {}" },
