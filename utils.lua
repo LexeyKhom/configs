@@ -97,6 +97,12 @@ M.execute = function()
     vim.cmd "startinsert"
   end
 
+  execute.html = function(name)
+    nvterm.toggle(term)
+    nvterm.send("firefox '" .. name .. "'", term)
+    vim.cmd "startinsert"
+  end
+
   execute.pascal = function(name)
     nvterm.toggle(term)
 
