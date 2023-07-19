@@ -27,7 +27,7 @@ return {
       suffix = "<fim_suffix>",
     },
 
-    accept_keymap = "<C-w>",
+    accept_keymap = "<A-w>",
     dismiss_keymap = "<C-x>",
   },
 }

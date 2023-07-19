@@ -52,8 +52,19 @@ M.disabled = {
 M.general = {
   -- Normal
   n = {
+    ["<A-h>"] = { "<BS>", "Backspace" },
+    ["<A-l>"] = { "<Enter>", "Enter" },
+
+    ["<A-u>"] = { "<C-u>", "Scroll up" },
+    ["<A-d>"] = { "<C-d>", "Scroll down" },
+    ["<A-a>"] = { "<C-a>", "Increment" },
+    ["<A-x>"] = { "<C-x>", "Decrement" },
+    ["<A-r>"] = { "<C-r>", "Redo" },
+
     [";"] = { ":", "Enter command mode", opts = { nowait = true } },
+    ["<A-q>"] = { "<cmd> q <CR>", "Quit", opts = { nowait = true } },
     ["<C-q>"] = { "<cmd> q <CR>", "Quit", opts = { nowait = true } },
+    ["<A-s>"] = { "<cmd> w <CR><cmd> e <CR>", "Save and Redraw" },
     ["<C-s>"] = { "<cmd> w <CR><cmd> e <CR>", "Save and Redraw" },
     ["<leader>tn"] = { "<cmd> set nu! <CR>", "Toggle line number" },
     ["<leader>tr"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
@@ -71,28 +82,39 @@ M.general = {
       [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
       "Sed word in file",
     },
-
-    ["<C-j>"] = {
-      require("custom.utils").execute,
-      "Execute this",
-    },
   },
 
   -- Insert
   i = {
     ["kj"] = { "<Esc>", "Go to Normal mode" },
-    ["jk"] = { "<Esc>", "Go to Normal mode" },
+
+    ["<A-h>"] = { "<BS>", "Backspace" },
+    ["<C-h>"] = { "<Left>", "Move Left" },
+    ["<A-l>"] = { "<Enter>", "Enter" },
+    ["<C-l>"] = { "<Right>", "Move Right" },
+    ["<A-j>"] = { "<Down>", "Move Down" },
+    ["<C-j>"] = { "<Down>", "Move Down" },
+    ["<A-k>"] = { "<Up>", "Move Up" },
+    ["<C-k>"] = { "<Up>", "Move Up" },
   },
 
   -- Command-line
   c = {
+    ["kj"] = { "<C-c>", "Exit from Command mode" },
+
     -- Navigate within command mode
+    ["<A-h>"] = { "<BS>", "Backspace" },
     ["<C-h>"] = { "<Left>", "Move left" },
+    ["<A-l>"] = { "<Enter>", "Enter" },
     ["<C-l>"] = { "<Right>", "Move right" },
+    ["<A-j>"] = { "<Down>", "Move down in history" },
     ["<C-j>"] = { "<Down>", "Move down in history" },
+    ["<A-k>"] = { "<Up>", "Move up in history" },
     ["<C-k>"] = { "<Up>", "Move up in history" },
 
+    ["<A-b>"] = { "<Home>", "Beginning of line" },
     ["<C-b>"] = { "<Home>", "Beginning of line" },
+    ["<A-e>"] = { "<End>", "End of line" },
     ["<C-e>"] = { "<End>", "End of line" },
   },
 
@@ -205,6 +227,12 @@ M.null = {
   n = {
     -- For format all files use:
     -- args ./**/*.json | argdo "lua vim.lsp.buf.format()" | w
+    ["<A-f>"] = {
+      function()
+        vim.lsp.buf.format { async = true }
+      end,
+      "Formatting",
+    },
     ["<C-f>"] = {
       function()
         vim.lsp.buf.format { async = true }
@@ -339,6 +367,15 @@ M.nvterm = {
   plugin = true,
 
   n = {
+    ["<A-e>"] = {
+      require("custom.utils").execute,
+      "Execute this",
+    },
+    ["<C-e>"] = {
+      require("custom.utils").execute,
+      "Execute this",
+    },
+
     ["<leader>gc"] = {
       function()
         vim.cmd "DiffviewClose"
@@ -353,8 +390,16 @@ M.nvterm = {
   },
 
   t = {
+    ["<A-c>"] = { "<C-c>", "Cancel" },
+    ["<A-d>"] = { "<C-d>", "Close term" },
+
+    ["<A-e>"] = { "<C-d>", "Close term" },
     ["<C-e>"] = { "<C-d>", "Close term" },
+    ["<A-q>"] = { "<C-d>", "Close term" },
     ["<C-q>"] = { "<C-d>", "Close term" },
+
+    ["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" },
+    ["<A-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" },
   },
 }
 
@@ -473,6 +518,46 @@ M.gitsigns = {
   },
 }
 
+M.nvimtree = {
+  plugin = true,
+
+  n = {
+    ["<A-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+    ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+
+    ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
+  },
+}
+
+M.tabufline = {
+  plugin = true,
+
+  n = {
+    -- cycle through buffers
+    ["<A-k>"] = {
+      function()
+        require("nvchad_ui.tabufline").tabuflineNext()
+      end,
+      "Goto next buffer",
+    },
+
+    ["<A-j>"] = {
+      function()
+        require("nvchad_ui.tabufline").tabuflinePrev()
+      end,
+      "Goto prev buffer",
+    },
+
+    -- close buffer + hide terminal buffer
+    ["<A-x>"] = {
+      function()
+        require("nvchad_ui.tabufline").close_buffer()
+      end,
+      "Close buffer",
+    },
+  },
+}
+
 M.diffview = {
   plugin = true,
 
@@ -487,6 +572,7 @@ M.huggingface = {
   plugin = true,
 
   n = {
+    ["<A-w>"] = { "<cmd> HFccSuggestion <CR>", "Huggingface Suggestion" },
     ["<C-w>"] = { "<cmd> HFccSuggestion <CR>", "Huggingface Suggestion" },
   },
 }

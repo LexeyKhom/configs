@@ -9,17 +9,27 @@ return {
     defaults = {
       mappings = {
         n = {
-          ["q"] = actions.close,
-          ["<leader>x"] = actions.close,
           ["o"] = actions.select_default,
+          ["<A-l>"] = actions.select_default,
+
+          ["<leader>x"] = actions.close,
+          ["<A-q>"] = actions.close,
+          ["q"] = actions.close,
         },
 
         i = {
+          ["<A-q>"] = false,
           ["<C-q>"] = actions.close,
+          ["<A-j>"] = actions.move_selection_next,
           ["<C-j>"] = actions.move_selection_next,
+          ["<A-k>"] = actions.move_selection_previous,
           ["<C-k>"] = actions.move_selection_previous,
+          ["<A-h>"] = false,
           ["<C-h>"] = false,
+          ["<A-l>"] = actions.select_default,
           ["<C-l>"] = false,
+          ["<A-o>"] = actions.select_default,
+          ["<C-o>"] = actions.select_default,
         },
       },
     },
