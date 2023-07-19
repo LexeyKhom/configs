@@ -370,10 +370,6 @@ M.nvterm = {
       require("custom.utils").execute,
       "Execute this",
     },
-    ["<C-e>"] = {
-      require("custom.utils").execute,
-      "Execute this",
-    },
 
     ["<leader>gc"] = {
       function()
