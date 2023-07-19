@@ -190,7 +190,6 @@ M.vim = {
 M.bash = {
   tree = {
     "bash",
-    "fish",
   },
 
   lsp = {
@@ -200,12 +199,21 @@ M.bash = {
   null = {
     { "a.shellcheck", mason = "shellcheck" },
     { "d.shellcheck", mason = "shellcheck" },
-    "d.fish",
-    "f.fish_indent",
   },
 
   dap = {
     { "bash", mason = "bash-debug-adapter" },
+  },
+}
+
+M.fish = {
+  tree = {
+    "fish",
+  },
+
+  null = {
+    "d.fish",
+    "f.fish_indent",
   },
 }
 
