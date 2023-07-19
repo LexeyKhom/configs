@@ -1,6 +1,8 @@
 # Commands to run in interactive sessions can go here
 if status is-interactive
     set -gx fish_greeting ''
+
+    # HuggingFace
     set -gx HUGGING_FACE_HUB_TOKEN (cat ~/GDrive/.hfcc)
 
     # For DENO
