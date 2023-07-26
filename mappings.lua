@@ -134,6 +134,12 @@ M.general = {
     ["]"] = { "c[]<Esc>P<Right>", "Wrap in []" },
     ["_"] = { "c__<Esc>P<Right>", "Wrap in __" },
     ["*"] = { "c****<Esc><Left>P<Right><Right>", "Wrap in ****" },
+
+    -- Sed
+    ["<leader>sc"] = {
+      [[:s///gI<Left><Left><Left><Left>]],
+      "Sed in context",
+    },
   },
 }
 
@@ -355,9 +361,9 @@ M.spectre = {
   },
 
   v = {
-    ["<leader>s"] = {
+    ["<leader>sa"] = {
       '<esc><cmd>lua require("spectre").open_visual()<CR>',
-      "Search current word",
+      "Search all",
     },
   },
 }
