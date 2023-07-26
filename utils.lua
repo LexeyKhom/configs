@@ -32,11 +32,19 @@ M.contains = function(tb, x)
   return found
 end
 
-M.loadPlugins = function(path, list)
+M.loadPlugins = function()
+  local configPath = vim.fn.stdpath "config"
+  local folderPath = "/lua/custom/plugins"
+  local pluginPath = "custom.plugins"
+  local dir = vim.fn.readdir(configPath .. folderPath)
+
   local plugins = {}
-  for _, fileName in pairs(list) do
-    local plugin = require(path .. "." .. fileName)
-    table.insert(plugins, plugin)
+  for _, file in ipairs(dir) do
+    if file ~= "init.lua" then
+      local pluginName = pluginPath .. "." .. file:gsub("%.lua$", "")
+      local plugin = require(pluginName)
+      table.insert(plugins, plugin)
+    end
   end
   return plugins
 end
