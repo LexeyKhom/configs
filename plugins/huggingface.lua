@@ -27,6 +27,7 @@ return {
       suffix = "<fim_suffix>",
     },
 
+    debounce_ms = 1000,
     accept_keymap = "<A-w>",
     dismiss_keymap = "<C-x>",
   },
