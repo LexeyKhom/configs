@@ -2,6 +2,8 @@
 
 local opt = vim.opt
 
+opt.cmdheight = 0
+
 -- Relative Number
 opt.relativenumber = false
 
