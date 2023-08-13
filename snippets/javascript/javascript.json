@@ -401,7 +401,7 @@
   },
   "arrow function": {
     "prefix": "af",
-    "body": "(${1:arguments}) => ${2:statement}"
+    "body": "() => {\n\t${0}\n}"
   },
   "arrow function with destructuring": {
     "prefix": "fd",
