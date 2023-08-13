@@ -183,7 +183,7 @@ M.lspconfig = {
 
     ["<leader>lr"] = {
       function()
-        require("nvchad_ui.renamer").open()
+        require("nvchad.renamer").open()
       end,
       "LSP rename",
     },
@@ -543,14 +543,14 @@ M.tabufline = {
     -- cycle through buffers
     ["<A-k>"] = {
       function()
-        require("nvchad_ui.tabufline").tabuflineNext()
+        require("nvchad.tabufline").tabuflineNext()
       end,
       "Goto next buffer",
     },
 
     ["<A-j>"] = {
       function()
-        require("nvchad_ui.tabufline").tabuflinePrev()
+        require("nvchad.tabufline").tabuflinePrev()
       end,
       "Goto prev buffer",
     },
@@ -558,7 +558,7 @@ M.tabufline = {
     -- close buffer + hide terminal buffer
     ["<A-x>"] = {
       function()
-        require("nvchad_ui.tabufline").close_buffer()
+        require("nvchad.tabufline").close_buffer()
       end,
       "Close buffer",
     },
