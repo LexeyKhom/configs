@@ -10,10 +10,10 @@ return {
   },
   opts = {
     -- How many lines the window should span. Values <= 0 mean no limit.
-    max_lines = 2,
+    max_lines = 1,
 
     -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-    trim_scope = "inner",
+    trim_scope = "outer",
 
     -- Line used to calculate context. Choices: 'cursor', 'topline'
     mode = "topline",

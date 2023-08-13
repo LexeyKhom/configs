@@ -11,7 +11,7 @@ return {
           row = 0,
           col = 0,
           width = 1,
-          height = 0.9,
+          height = 0.95,
           border = "none",
         },
         horizontal = { location = "rightbelow", split_ratio = 0.5 },
