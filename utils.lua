@@ -93,6 +93,12 @@ M.execute = function()
 
   local execute = {}
 
+  execute.lua = function()
+    nvterm.toggle(term)
+    nvterm.send("tvim", term)
+    vim.cmd "startinsert"
+  end
+
   execute.javascript = function(name)
     nvterm.toggle(term)
     nvterm.send("node " .. name, term)
@@ -108,6 +114,12 @@ M.execute = function()
   execute.html = function(name)
     nvterm.toggle(term)
     nvterm.send("firefox '" .. name .. "'", term)
+    vim.cmd "startinsert"
+  end
+
+  execute.python = function(name)
+    nvterm.toggle(term)
+    nvterm.send("python " .. name, term)
     vim.cmd "startinsert"
   end
 
