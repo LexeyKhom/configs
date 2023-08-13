@@ -136,6 +136,12 @@ M.general = {
     ["*"] = { "c****<Esc><Left>P<Right><Right>", "Wrap in ****" },
 
     -- Sed
+    ["<leader>sw"] = {
+      -- [[:s///gI<Left><Left><Left><Left>]],
+      [[y:%s/\<<C-r>+\>/<C-r>+/gI<Left><Left><Left>]],
+      "Sed word in file",
+    },
+
     ["<leader>sc"] = {
       [[:s///gI<Left><Left><Left><Left>]],
       "Sed in context",
