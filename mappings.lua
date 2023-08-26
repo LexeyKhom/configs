@@ -122,19 +122,6 @@ M.general = {
     ["J"] = { ":m '>+1 <CR> gv=gv", "Move down", { silent = true } },
     ["K"] = { ":m '<-2 <CR> gv=gv", "Move up", { silent = true } },
 
-    -- Wrap in
-    ["'"] = { "c''<Esc>P<Right>", "Wrap in ''" },
-    ['"'] = { 'c""<Esc>P<Right>', 'Wrap in ""' },
-    ["`"] = { "c``<Esc>P<Right>", "Wrap in ``" },
-    ["("] = { "c()<Esc>P<Right>", "Wrap in ()" },
-    [")"] = { "c()<Esc>P<Right>", "Wrap in ()" },
-    ["{"] = { "c{}<Esc>P<Right>", "Wrap in {}" },
-    ["}"] = { "c{}<Esc>P<Right>", "Wrap in {}" },
-    ["["] = { "c[]<Esc>P<Right>", "Wrap in []" },
-    ["]"] = { "c[]<Esc>P<Right>", "Wrap in []" },
-    ["_"] = { "c__<Esc>P<Right>", "Wrap in __" },
-    ["*"] = { "c****<Esc><Left>P<Right><Right>", "Wrap in ****" },
-
     -- Sed
     ["<leader>sw"] = {
       -- [[:s///gI<Left><Left><Left><Left>]],
