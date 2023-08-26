@@ -138,7 +138,7 @@ M.general = {
     -- Sed
     ["<leader>sw"] = {
       -- [[:s///gI<Left><Left><Left><Left>]],
-      [[y:%s/\<<C-r>+\>/<C-r>+/gI<Left><Left><Left>]],
+      [[y:%s/<C-r>+/<C-r>+/gI<Left><Left><Left>]],
       "Sed word in file",
     },
 
