@@ -54,12 +54,17 @@ return {
           behavior = cmp.ConfirmBehavior.Insert,
           select = true,
         },
-
-        [KEYS.DOWN] = cmp.mapping.select_next_item(),
         [KEYS.UP] = cmp.mapping.select_prev_item(),
+        [KEYS.DOWN] = cmp.mapping.select_next_item(),
         [KEYS.SCROLL_DOWN] = cmp.mapping.scroll_docs(4),
         [KEYS.SCROLL_UP] = cmp.mapping.scroll_docs(-4),
 
+        ["<Enter>"] = cmp.mapping.confirm {
+          behavior = cmp.ConfirmBehavior.Insert,
+          select = true,
+        },
+        ["<Up>"] = cmp.mapping.select_prev_item(),
+        ["<Down>"] = cmp.mapping.select_next_item(),
         ["<A-w>"] = cmp.mapping.complete(),
         ["<A-x>"] = cmp.mapping.close(),
         ["<A-c>"] = cmp.mapping.abort(),

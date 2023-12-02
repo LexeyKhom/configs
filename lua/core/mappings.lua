@@ -29,10 +29,20 @@ local KEYS = {
   QUIT = "<A-q>",
 
   NAV_FILES = "<A-n>",
-  TERMINAL = "<A-t>",
+  TERMINAL = "<A-i>",
   TERMINAL_ALT = "<A-v>",
   EXECUTE = "<A-e>",
 }
+
+if vim.g.isTermux then
+  local assign = require("utils.table").assign
+  local TERMUX_KEYS = {
+    ENTER = "<Enter>",
+    BACKSPACE = "<BS>",
+    DELETE = "<Delete>",
+  }
+  assign(KEYS, TERMUX_KEYS)
+end
 
 require("utils.load").mappings {
   -- Normal
@@ -59,7 +69,6 @@ require("utils.load").mappings {
     ["<A-a>"] = { "<C-a>", "Increment" },
     ["<A-x>"] = { "<C-x>", "Decrement" },
     ["<A-r>"] = { "<C-r>", "Redo" },
-    ["<A-i>"] = { "<C-i>", "New empty line up" },
     ["<A-o>"] = { "<C-o>", "New empty line up" },
 
     -- Navigate
@@ -87,7 +96,7 @@ require("utils.load").mappings {
     -- Navigate
     [KEYS.ENTER] = { "<Enter>", "Enter" },
     [KEYS.BACKSPACE] = { "<BS>", "Backspace" },
-    [KEYS.DELETE] = { "<Delete>", "Enter" },
+    [KEYS.DELETE] = { "<Delete>", "Delete" },
 
     [KEYS.UP] = { "<Up>", "Move Up" },
     [KEYS.DOWN] = { "<Down>", "Move Down" },
