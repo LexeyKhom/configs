@@ -3,7 +3,7 @@ local g = vim.g
 g.mapleader = " "
 g.isTermux = os.getenv "isTermux"
 g.term = "float" -- Default term
-g.vscode_snippets_path = "~/.config/nvim/lua/custom/"
+g.vscode_snippets_path = vim.fn.stdpath "config"
 
 -- Disable some default providers
 local providers = { "node", "perl", "python3", "ruby" }
