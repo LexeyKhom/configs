@@ -4,7 +4,7 @@ if status is-interactive
     set -gxa PATH "$HOME/.local/bin/"
 
     # HuggingFace
-    set -gx HUGGING_FACE_HUB_TOKEN (cat ~/GDrive/.hfcc)
+    set -gx LLM_NVIM_API_TOKEN (cat ~/GDrive/.hfcc)
 
     # For DENO
     # Run '/home/lexey/.deno/bin/deno --help' to get started
