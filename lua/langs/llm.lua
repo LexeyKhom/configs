@@ -1,0 +1,5 @@
+return {
+  mason = {
+    "llm-ls",
+  },
+}
