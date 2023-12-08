@@ -3,6 +3,7 @@ return {
   event = { "BufRead", "BufNewFile" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
+    "smjonas/inc-rename.nvim",
   },
   init = function()
     -- Change default signs
