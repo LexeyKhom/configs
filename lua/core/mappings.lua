@@ -29,7 +29,7 @@ local KEYS = {
   QUIT = "<A-q>",
 
   NAV_FILES = "<A-n>",
-  TERMINAL = "<A-i>",
+  TERMINAL = "<A-t>",
   TERMINAL_ALT = "<A-v>",
   EXECUTE = "<A-e>",
 }
@@ -69,7 +69,8 @@ require("utils.load").mappings {
     ["<A-a>"] = { "<C-a>", "Increment" },
     ["<A-x>"] = { "<C-x>", "Decrement" },
     ["<A-r>"] = { "<C-r>", "Redo" },
-    ["<A-o>"] = { "<C-o>", "New empty line up" },
+    ["<A-o>"] = { "<C-o>", "Go to prev location" },
+    ["<A-i>"] = { "<C-i>", "Go to next location" },
 
     -- Navigate
     -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
