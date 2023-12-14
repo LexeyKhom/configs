@@ -1,6 +1,5 @@
 return {
   "numToStr/Comment.nvim",
-  lazy = true,
   keys = function()
     require("utils.load").mappings {
       n = {

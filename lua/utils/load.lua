@@ -40,6 +40,9 @@ end
 
 Load.plugins = function(pluginsPath)
   local LAZY_OPTS = {
+    defaults = {
+      lazy = true,
+    },
     ui = {
       icons = {
         loaded = " ",

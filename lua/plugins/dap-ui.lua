@@ -1,6 +1,5 @@
 return {
   "rcarriga/nvim-dap-ui",
-  lazy = true,
   opts = {
     expand_lines = true,
     floating = {
