@@ -1,11 +1,8 @@
 local Fs = {}
 
-local PATH = {}
-PATH.CONFIG = vim.fn.stdpath "config"
-PATH.LUA = PATH.CONFIG .. "/lua"
-
 Fs.readdir = function(path)
-  local fullPath = PATH.LUA .. "/" .. path
+  local CONFIG_PATH = vim.fn.stdpath "config" .. "/lua/"
+  local fullPath = CONFIG_PATH .. path
   local dir = vim.fn.readdir(fullPath)
   return dir
 end
