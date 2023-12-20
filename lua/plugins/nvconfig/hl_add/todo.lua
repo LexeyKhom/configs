@@ -1,0 +1,25 @@
+return {
+  TodoBgFix = { bg = "red", fg = "black2", bold = true },
+  TodoBgHack = { bg = "orange", fg = "black2", bold = true },
+  TodoBgWarn = { bg = "yellow", fg = "black2", bold = true },
+  TodoBgPerf = { bg = "green", fg = "black2", bold = true },
+  TodoBgTodo = { bg = "cyan", fg = "black2", bold = true },
+  TodoBgNote = { bg = "blue", fg = "black2", bold = true },
+  TodoBgTest = { bg = "purple", fg = "black2", bold = true },
+
+  TodoFgFix = { fg = "red" },
+  TodoFgHack = { fg = "orange" },
+  TodoFgWarn = { fg = "yellow" },
+  TodoFgPerf = { fg = "green" },
+  TodoFgTodo = { fg = "cyan" },
+  TodoFgNote = { fg = "blue" },
+  TodoFgTest = { fg = "purple" },
+
+  TodoSignFix = { link = "TodoFgFix" },
+  TodoSignHack = { link = "TodoFgHack" },
+  TodoSignWarn = { link = "TodoFgWarn" },
+  TodoSignPerf = { link = "TodoFgPerf" },
+  TodoSignTodo = { link = "TodoFgTodo" },
+  TodoSignNote = { link = "TodoFgNote" },
+  TodoSignTest = { link = "TodoFgTest" },
+}
