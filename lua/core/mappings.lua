@@ -27,6 +27,8 @@ local KEYS = {
   SCROLL_UP = "<A-u>",
 
   QUIT = "<A-q>",
+  CLOSE = "<A-x>",
+  CANCEL = "<A-c>",
 
   NAV_FILES = "<A-n>",
   TERMINAL = "<A-t>",
@@ -110,10 +112,12 @@ require("utils.load").mappings {
 
   -- Terminal
   t = {
-    ["<A-c>"] = { "<C-c>", "Cancel" },
+    [KEYS.CANCEL] = { "<C-c>", "Cancel" },
     [KEYS.QUIT .. ",<A-d>," .. KEYS.EXECUTE] = { "<C-d>", "Close term" },
-
-    ["<A-x>,<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" },
+    [KEYS.CLOSE .. ",<C-x>"] = {
+      vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true),
+      "Escape terminal mode",
+    },
   },
 
   -- Command-line

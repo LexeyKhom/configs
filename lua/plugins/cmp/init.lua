@@ -66,8 +66,8 @@ return {
         ["<Up>"] = cmp.mapping.select_prev_item(),
         ["<Down>"] = cmp.mapping.select_next_item(),
         ["<A-w>"] = cmp.mapping.complete(),
-        ["<A-x>"] = cmp.mapping.close(),
-        ["<A-c>"] = cmp.mapping.abort(),
+        [KEYS.CLOSE] = cmp.mapping.close(),
+        [KEYS.CANCEL] = cmp.mapping.abort(),
       },
       sources = {
         { name = "luasnip" },
