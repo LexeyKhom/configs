@@ -2,6 +2,7 @@ return {
   "akinsho/bufferline.nvim",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
+    "LexeyKhom/nvconfig",
   },
   version = "*",
   lazy = false,
@@ -29,7 +30,7 @@ return {
           "Prev Buffer",
         },
 
-        ["<A-x>"] = {
+        [KEYS.CLOSE] = {
           "<cmd> bdelete <CR>",
           "Close Buffer",
         },
@@ -67,40 +68,48 @@ return {
     }
   end,
   opts = function()
+    local theme = require "plugins.bufferline.theme"
     return {
+      highlights = theme,
       options = {
         themable = true, -- allows highlight groups to be overriden i.e. sets highlights as default
         separator_style = "thin", -- "slant" "slope", "thick", "thin"
         always_show_bufferline = true,
         left_trunc_marker = "",
         right_trunc_marker = "",
-        -- diagnostics = "nvim_lsp", -- "coc",
         offsets = {
           {
             filetype = "NvimTree",
             text = require("utils.fs").getCurDir,
             text_align = "center",
-            separator = false,
+            separator = true,
+            highlight = "BufferLineFill",
           },
           {
             filetype = "undotree",
             text = "UndoTree",
             text_align = "center",
             separator = true,
+            highlight = "BufferLineFill",
           },
           {
             filetype = "spectre_panel",
             text = "Spectre",
-            text_align = "left",
+            text_align = "center",
             separator = true,
+            highlight = "BufferLineFill",
           },
           {
             filetype = "DiffviewFiles",
+            text = require("utils.fs").getCurDir,
+            text_align = "center",
             separator = true,
+            highlight = "BufferLineFill",
           },
           {
             filetype = "toggleterm",
             separator = true,
+            highlight = "BufferLineFill",
           },
         },
       },
