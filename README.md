@@ -10,4 +10,17 @@
 
 ## How to install
 
-1. Clone this in ~/.config/nvim
+0. Install dependencies:
+
+   ```sh
+   sudo dnf install neovim
+   ```
+
+1. Install this config:
+
+   ```sh
+   git clone -b nvim git@github.com:LexeyKhom/configs.git ~/.config/nvim ||
+   git clone -b nvim https://github.com/LexeyKhom/configs ~/.config/nvim
+   ```
+
+2. Use `:MasonInstallAll` to install Mason packages.
