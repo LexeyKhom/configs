@@ -134,9 +134,7 @@ return {
       },
 
       extensions_list = {
-        -- TODO: Base46
-        -- "themes",
-        -- "terms",
+        "themes",
         "fzf",
         "tailiscope",
       },
