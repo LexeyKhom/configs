@@ -93,6 +93,7 @@ require("utils.load").mappings {
   -- Insert
   i = {
     ["kj"] = { "<Esc>", "Go to Normal mode" },
+    ["<A-p>"] = { "<C-r>+", "Paste" },
 
     -- Navigate
     [KEYS.ENTER] = { "<Enter>", "Enter" },
@@ -120,6 +121,7 @@ require("utils.load").mappings {
 
   -- Command-line
   c = {
+    ["<A-p>"] = { "<C-r>+", "Paste" },
     [KEYS.QUIT] = { "<C-c>", "Exit from Command mode" },
 
     -- Navigate within command mode
