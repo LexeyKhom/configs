@@ -21,30 +21,32 @@ local function recording()
   return "запись @" .. record
 end
 
-local getCurDir = require("utils.fs").getCurDir
-
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
+    "LexeyKhom/nvconfig",
   },
   lazy = false,
-  opts = {
-    options = {
-      theme = "auto",
-      component_separators = { left = "", right = "" },
-      section_separators = { left = "", right = "" },
-      globalstatus = true,
-    },
-    sections = {
-      lualine_a = { { "mode", color = { gui = "bold" } } },
-      lualine_b = { "filename" },
-      lualine_c = { "branch", "diff", "diagnostics" },
-      lualine_x = { { recording }, "selectioncount", "searchcount" },
-      lualine_y = { "filetype" },
-      lualine_z = { "progress" },
-    },
-  },
+  opts = function()
+    local theme = require "plugins.lualine.theme"
+    return {
+      options = {
+        theme = theme,
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
+        globalstatus = true,
+      },
+      sections = {
+        lualine_a = { { "mode", color = { gui = "bold" } } },
+        lualine_b = { "filename" },
+        lualine_c = { "branch", "diff", "diagnostics" },
+        lualine_x = { { recording }, "selectioncount", "searchcount" },
+        lualine_y = { "filetype" },
+        lualine_z = { "progress" },
+      },
+    }
+  end,
   config = function(_, opts)
     require("lualine").setup(opts)
   end,
