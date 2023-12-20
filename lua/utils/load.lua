@@ -21,6 +21,16 @@ Load.dir = function(path)
   return modules
 end
 
+Load.mergeDir = function(path)
+  local assign = require("utils.table").assign
+  local dir = Load.dir(path)
+  local result = {}
+  for _, tb in ipairs(dir) do
+    result = assign(result, tb)
+  end
+  return result
+end
+
 Load.mappings = function(mappings, defaultOpts)
   local assign = require("utils.table").assign
   local split = require("utils.string").split
