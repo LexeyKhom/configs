@@ -3,9 +3,11 @@ local Load = {}
 Load.dir = function(path)
   local readdir = require("utils.fs").readdir
   local split = require("utils.string").split
+  local join = require("utils.table").join
   local unpack = require("utils.table").unpack
   local modules = {}
   local files = readdir(path)
+  path = join(split(path, "/"), ".")
   for _, file in ipairs(files) do
     local fileName = unpack(split(file, "."))
     local fullFileName = path .. "." .. fileName
