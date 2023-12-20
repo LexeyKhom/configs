@@ -1,7 +1,17 @@
+-- FIX: После переустановки шрифтов/linux:
+-- [] Удалить кастомную иконку для toml файла
+-- [] Проверить остальные иконки (Вдруг добавили)
+
 return {
   "nvim-tree/nvim-web-devicons",
   opts = {
     override_by_filename = {
+      [".stylua.toml"] = {
+        icon = "",
+        color = "#51a0cf",
+        cterm_color = "74",
+        name = "Stylua",
+      },
       [".babelrc"] = {
         icon = "󰨥",
         color = "#cbcb41",
@@ -95,6 +105,12 @@ return {
     },
 
     override_by_extension = {
+      ["toml"] = {
+        icon = "",
+        color = "#bbbbbb",
+        cterm_color = "250",
+        name = "Toml",
+      },
       ["asm"] = {
         icon = "",
         color = "#4242c7",
