@@ -34,16 +34,16 @@ return {
       completion = {
         completeopt = "menu,menuone",
       },
-      -- TODO: Base46 Do winhighlight setting
       window = {
         completion = {
-          side_padding = 1,
-          -- winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
-          scrollbar = false,
+          border = border "CmpBorder",
+          side_padding = 0,
+          winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
+          scrollbar = true,
         },
         documentation = {
-          border = border "CmpDocumentation",
-          -- winhighlight = "Normal:CmpDocumentation",
+          border = border "CmpDocBorder",
+          winhighlight = "Normal:CmpDoc",
         },
       },
       formatting = {
