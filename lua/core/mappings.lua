@@ -88,6 +88,11 @@ require("utils.load").mappings {
       [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
       "Sed word in file",
     },
+
+    ["<leader>sf"] = {
+      [[:%s///gI<Left><Left><Left><Left>]],
+      "Sed in file",
+    },
   },
 
   -- Insert
@@ -153,9 +158,9 @@ require("utils.load").mappings {
     ["k,<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", { expr = true } },
 
     -- Sed
-    ["<leader>sw"] = {
-      [[y:%s/\<<C-r>+\>/<C-r>+/gI<Left><Left><Left>]],
-      "Sed",
+    ["<leader>sf"] = {
+      [[y:%s/<C-r>+/<C-r>+/gI<Left><Left><Left>]],
+      "Sed in file",
     },
 
     ["<leader>sc"] = {
