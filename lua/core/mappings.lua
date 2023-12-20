@@ -68,8 +68,6 @@ require("utils.load").mappings {
     [KEYS.ENTER] = { "<Enter>", "Enter" },
     [KEYS.BACKSPACE] = { "<BS>", "Backspace" },
 
-    ["<A-a>"] = { "<C-a>", "Increment" },
-    ["<A-x>"] = { "<C-x>", "Decrement" },
     ["<A-r>"] = { "<C-r>", "Redo" },
     ["<A-o>"] = { "<C-o>", "Go to prev location" },
     ["<A-i>"] = { "<C-i>", "Go to next location" },
