@@ -1,6 +1,7 @@
 local Term = require "plugins.terminal.term"
 return {
   "akinsho/toggleterm.nvim",
+  dependencies = { "LexeyKhom/nvconfig" },
   version = "*",
   cmd = Term.cmd,
   keys = function()
@@ -54,30 +55,33 @@ return {
       },
     }
   end,
-  opts = {
-    direction = "float",
-    start_in_insert = true,
-    shade_terminals = true,
-    size = function(term)
-      if term.direction == "horizontal" then
-        return 15
-      elseif term.direction == "vertical" then
-        return vim.o.columns * 0.5
-      end
-    end,
-    float_opts = {
-      border = "single", -- 'single' | 'double' | 'shadow' | "curved"
-    },
-    highlights = {
-      NormalFloat = {
-        guibg = "#161613",
+  opts = function()
+    local c = require("base46").get_theme_tb "base_30"
+    return {
+      direction = "float",
+      start_in_insert = true,
+      shade_terminals = true,
+      size = function(term)
+        if term.direction == "horizontal" then
+          return 15
+        elseif term.direction == "vertical" then
+          return vim.o.columns * 0.5
+        end
+      end,
+      float_opts = {
+        border = "single", -- 'single' | 'double' | 'shadow' | "curved"
       },
-      FloatBorder = {
-        guifg = "#161613",
-        guibg = "#161613",
+      highlights = {
+        NormalFloat = {
+          guibg = c.darker_black,
+        },
+        FloatBorder = {
+          guifg = c.darker_black,
+          guibg = c.darker_black,
+        },
       },
-    },
-  },
+    }
+  end,
   config = function(_, opts)
     require("toggleterm").setup(opts)
   end,
