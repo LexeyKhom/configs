@@ -11,7 +11,7 @@ return {
 
   lsp = {
     { "eslint", mason = "eslint-lsp" },
-    { "tsserver", mason = "typescript-language-server@4.0.0" }, -- FIX: Обновиться когда починят более поздние версии
+    { "tsserver", mason = "typescript-language-server" },
     -- { "volar", mason = "vue-language-server" },
     -- { "svelte", mason = "svelte-language-server" },
     -- { "angularls", mason = "angular-language-server" },

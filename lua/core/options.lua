@@ -20,6 +20,7 @@ opt.whichwrap:append "<>[]hl" -- go to previous/next line
 
 -- Scroll
 opt.scrolloff = 10
+opt.pumheight = 10 -- cmp hight
 
 -- Statusline
 opt.laststatus = 3 -- global statusline

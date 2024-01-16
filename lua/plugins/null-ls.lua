@@ -48,7 +48,7 @@ return {
             local cmd = vim.cmd
             cmd("args ./**/*." .. fileType)
             cmd "silent argdo lua vim.lsp.buf.format()"
-            cmd "silent argdo w"
+            cmd "wa"
           end,
           "Format all files",
         },
