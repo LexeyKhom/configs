@@ -24,7 +24,7 @@ return {
       views = {
         cmdline_popup = {
           position = { row = 5, col = "50%" },
-          size = { width = isTermux and 36 or 60, height = "auto" },
+          size = { width = isTermux and 36 or "auto", height = "auto" },
           border = { style = "none", padding = { 1, 2 } },
           win_options = { winhighlight = { Normal = "NoiceLightFloatNormal", FloatBorder = "NoiceLightFloatBorder" } },
         },
