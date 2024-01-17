@@ -79,6 +79,18 @@ return {
     local dap = require "dap"
     local masonPath = vim.fn.stdpath "data" .. "/mason/packages/"
 
+    -- Change default signs
+    local signs = {
+      DapBreakpoint = "",
+      DapBreakpointCondition = "󰟃",
+      DapBreakpointRejected = "",
+      DapLogPoint = "",
+      DapStopped = "",
+    }
+    for hl, icon in pairs(signs) do
+      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    end
+
     -- JavaScript
     dap.adapters["pwa-node"] = {
       type = "server",
