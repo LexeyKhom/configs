@@ -20,6 +20,7 @@ return {
 
   null = {
     { "a.eslint_d", mason = "eslint_d" },
+    -- { "d.eslint_d", mason = "eslint_d" }, -- Some times need
   },
 
   dap = {

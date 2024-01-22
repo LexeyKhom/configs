@@ -13,6 +13,5 @@ return {
 
   null = {
     { "f.stylelint", mason = "stylelint" },
-    { "f.rustywind", mason = "rustywind" },
   },
 }

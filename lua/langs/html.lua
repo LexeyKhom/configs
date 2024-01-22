@@ -5,16 +5,10 @@ return {
 
   lsp = {
     { "html", mason = "html-lsp" },
-    {
-      "emmet_ls",
-      mason = "emmet-ls",
-    },
+    { "emmet_ls", mason = "emmet-ls" },
   },
 
   null = {
-    {
-      "f.prettierd",
-      mason = "prettierd",
-    },
+    { "f.prettierd", mason = "prettierd" },
   },
 }

@@ -11,6 +11,5 @@ return {
 
   null = {
     { "d.markdownlint", mason = "markdownlint" },
-    { "f.markdownlint", mason = "markdownlint" },
   },
 }

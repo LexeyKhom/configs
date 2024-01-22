@@ -15,12 +15,13 @@ opt.splitright = true
 -- Editor
 opt.mouse = "a"
 opt.cursorline = true
+opt.colorcolumn = "80"
 opt.fillchars = { eob = " " }
 opt.whichwrap:append "<>[]hl" -- go to previous/next line
 
 -- Scroll
 opt.scrolloff = 10
-opt.pumheight = 10 -- cmp hight
+opt.pumheight = 8 -- cmp hight
 
 -- Statusline
 opt.laststatus = 3 -- global statusline

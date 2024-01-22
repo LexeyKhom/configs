@@ -12,6 +12,7 @@ return {
     local KEYS = require "core.mappings"
     local ICONS = require "plugins.cmp.icons"
     local opts = {
+      width = 40,
       keymaps = {
         close = { "<Esc>", "q", KEYS.QUIT },
         focus_location = { "<Tab>", "o" },
