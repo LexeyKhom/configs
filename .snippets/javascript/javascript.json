@@ -401,11 +401,11 @@
   },
   "arrow function": {
     "prefix": "af",
-    "body": "() => {\n\t${0}\n}"
+    "body": "(${1}) => {\n\t${0}\n}"
   },
   "arrow function with function": {
     "prefix": "aff",
-    "body": "() => ${0}"
+    "body": "(${1}) => ${0}"
   },
   "arrow function with destructuring": {
     "prefix": "fd",

@@ -1,7 +1,59 @@
 {
-  "const": {
+  "const statement": {
     "prefix": "c",
-    "body": ["const ${1}"]
+    "body": "const ${1:name}"
+  },
+  "const statement from destructuring": {
+    "prefix": "cd",
+    "body": "const { ${2:prop} } = ${1:value}"
+  },
+  "const statement from array destructuring": {
+    "prefix": "cad",
+    "body": "const [ ${2:prop} ] = ${1:value}"
+  },
+  "const assignment awaited": {
+    "prefix": "ca",
+    "body": "const ${1:name} = await ${2:value}"
+  },
+  "const destructuring assignment awaited": {
+    "prefix": "cda",
+    "body": "const { ${1:name} } = await ${2:value}"
+  },
+  "const arrow function assignment": {
+    "prefix": "cf",
+    "body": "const ${1:name} = () => {\n\treturn ${0}\n}"
+  },
+  "let assignment awaited": {
+    "prefix": "la",
+    "body": "let ${1:name} = await ${2:value}"
+  },
+  "const assignment yielded": {
+    "prefix": "cy",
+    "body": "const ${1:name} = yield ${2:value}"
+  },
+  "let assignment yielded": {
+    "prefix": "ly",
+    "body": "let ${1:name} = yield ${2:value}"
+  },
+  "const object": {
+    "prefix": "co",
+    "body": "const ${1:name} = {\n\t${0}\n}"
+  },
+  "const array": {
+    "prefix": "car",
+    "body": "const ${1:name} = [\n\t${0}\n]"
+  },
+  "arrow function": {
+    "prefix": "af",
+    "body": "(${0}) => {\n\t${1}\n}"
+  },
+  "arrow function with function": {
+    "prefix": "aff",
+    "body": "(${0}) => ${1}"
+  },
+  "console.log": {
+    "prefix": "cl",
+    "body": "console.log(${0})"
   },
   "destructuring of props": {
     "prefix": "dp",
@@ -33,7 +85,7 @@
   },
   "reactFunctionComponent": {
     "prefix": "rfc",
-    "body": "import React from 'react'\n\nexport const ${TM_FILENAME_BASE} = (props : {}) => {\n\treturn (\n\t\t<div>\n\t\t\t$0\n\t\t</div>\n\t)\n}",
+    "body": "import React, { FC } from 'react'\n\nexport const ${TM_FILENAME_BASE}: FC = () => {\n\treturn (\n\t\t<div>\n\t\t\t$0\n\t\t</div>\n\t)\n}",
     "description": "Creates a React functional component without PropTypes"
   },
   "reactFunctionComponentWithEmotion": {
