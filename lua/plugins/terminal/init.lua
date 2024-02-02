@@ -56,6 +56,7 @@ return {
     }
   end,
   opts = function()
+    local SMALL_SCREEN_WIDTH = 100
     local c = require("base46").get_theme_tb "base_30"
     return {
       direction = "float",
@@ -70,6 +71,21 @@ return {
       end,
       float_opts = {
         border = "single", -- 'single' | 'double' | 'shadow' | "curved"
+        width = function()
+          local width = vim.o.columns
+          if width > SMALL_SCREEN_WIDTH then
+            width = math.floor(width * 0.85)
+          end
+          return width
+        end,
+        height = function()
+          local width = vim.o.columns
+          local height = vim.o.window - 2
+          if width > SMALL_SCREEN_WIDTH then
+            height = math.floor(height * 0.85)
+          end
+          return height
+        end,
       },
       highlights = {
         NormalFloat = {
