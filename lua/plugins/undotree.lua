@@ -4,7 +4,10 @@ return {
   keys = function()
     require("utils.load").mappings {
       n = {
-        ["<leader>tu"] = { "<cmd> UndotreeToggle <CR> <cmd> UndotreeFocus <CR>", "Toggle UndoTree" },
+        ["<leader>tu"] = {
+          "<cmd> UndotreeToggle <CR> <cmd> UndotreeFocus <CR>",
+          "Toggle UndoTree",
+        },
       },
     }
   end,

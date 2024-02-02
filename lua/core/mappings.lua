@@ -75,8 +75,16 @@ require("utils.load").mappings {
     -- Navigate
     -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
     -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-    ["j,<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", { expr = true } },
-    ["k,<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", { expr = true } },
+    ["j,<Down>"] = {
+      'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
+      "Move down",
+      { expr = true },
+    },
+    ["k,<Up>"] = {
+      'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
+      "Move up",
+      { expr = true },
+    },
     -- Switch between windows
     ["<C-h>"] = { "<C-w>h", "Window left" },
     ["<C-l>"] = { "<C-w>l", "Window right" },
@@ -153,7 +161,11 @@ require("utils.load").mappings {
   v = {
     -- Don't copy the replaced text after pasting in visual mode
     -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
-    ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", { silent = true } },
+    ["p"] = {
+      'p:let @+=@0<CR>:let @"=@0<CR>',
+      "Dont copy replaced text",
+      { silent = true },
+    },
 
     -- Navigation
     ["J"] = { ":m '>+1 <CR> gv=gv", "Move selection down", { silent = true } },
@@ -162,8 +174,16 @@ require("utils.load").mappings {
     [">"] = { ">gv", "Indent line" },
     -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
     -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-    ["j,<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", { expr = true } },
-    ["k,<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", { expr = true } },
+    ["j,<Down>"] = {
+      'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
+      "Move down",
+      { expr = true },
+    },
+    ["k,<Up>"] = {
+      'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
+      "Move up",
+      { expr = true },
+    },
 
     -- Sed
     ["<leader>sf"] = {

@@ -38,12 +38,12 @@ local formatter = function(entry, item)
 
     local color_name, color_number
     if
-      words[2] == "x"
-      or words[2] == "y"
-      or words[2] == "t"
-      or words[2] == "b"
-      or words[2] == "l"
-      or words[2] == "r"
+        words[2] == "x"
+        or words[2] == "y"
+        or words[2] == "t"
+        or words[2] == "b"
+        or words[2] == "l"
+        or words[2] == "r"
     then
       color_name = words[3]
       color_number = words[4]
@@ -73,7 +73,8 @@ local formatter = function(entry, item)
     end
 
     local color_index = tonumber(color_number)
-    local tailwindcss_colors = require("tailwindcss-colorizer-cmp.colors").TailwindcssColors
+    local tailwindcss_colors =
+        require("tailwindcss-colorizer-cmp.colors").TailwindcssColors
 
     if not tailwindcss_colors[color_name] then
       return item

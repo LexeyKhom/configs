@@ -9,7 +9,7 @@ return {
 
   null = {
     { "a.shellcheck", mason = "shellcheck" },
-    { "f.shfmt", mason = "shfmt" },
+    { "f.shfmt",      mason = "shfmt" },
   },
 
   dap = {

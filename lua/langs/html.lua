@@ -4,7 +4,7 @@ return {
   },
 
   lsp = {
-    { "html", mason = "html-lsp" },
+    { "html",     mason = "html-lsp" },
     { "emmet_ls", mason = "emmet-ls" },
   },
 

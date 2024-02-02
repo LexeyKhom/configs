@@ -24,17 +24,42 @@ return {
     return {
       keymaps = {
         view = {
-          { "n", KEYS.NAV_FILES, actions.toggle_files, { desc = "Toggle the file panel." } },
+          {
+            "n",
+            KEYS.NAV_FILES,
+            actions.toggle_files,
+            { desc = "Toggle the file panel." },
+          },
           { "n", KEYS.UP, actions.select_prev_entry, { desc = "Prev entry" } },
-          { "n", KEYS.DOWN, actions.select_next_entry, { desc = "Next entry" } },
+          {
+            "n",
+            KEYS.DOWN,
+            actions.select_next_entry,
+            { desc = "Next entry" },
+          },
         },
         file_panel = {
-          { "n", KEYS.NAV_FILES, actions.toggle_files, { desc = "Toggle the file panel" } },
+          {
+            "n",
+            KEYS.NAV_FILES,
+            actions.toggle_files,
+            { desc = "Toggle the file panel" },
+          },
           { "n", KEYS.UP, actions.select_prev_entry, { desc = "Prev entry" } },
-          { "n", KEYS.DOWN, actions.select_next_entry, { desc = "Next entry" } },
+          {
+            "n",
+            KEYS.DOWN,
+            actions.select_next_entry,
+            { desc = "Next entry" },
+          },
         },
         file_history_panel = {
-          { "n", KEYS.NAV_FILES, actions.toggle_files, { desc = "Toggle the file panel" } },
+          {
+            "n",
+            KEYS.NAV_FILES,
+            actions.toggle_files,
+            { desc = "Toggle the file panel" },
+          },
         },
       },
     }

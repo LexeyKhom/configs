@@ -27,7 +27,8 @@ return {
     },
 
     lsp = {
-      bin_path = vim.api.nvim_call_function("stdpath", { "data" }) .. "/mason/bin/llm-ls",
+      bin_path = vim.api.nvim_call_function("stdpath", { "data" })
+          .. "/mason/bin/llm-ls",
     },
   },
 }

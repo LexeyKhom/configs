@@ -34,7 +34,10 @@ local execute = function(error, callback)
     local join = require("utils.table").join
     local exeFileName = string.sub(name, 1, -5)
     local compile = "nasm -f elf " .. name
-    local compile2 = "ld -m elf_i386 " .. exeFileName .. ".o -o " .. exeFileName
+    local compile2 = "ld -m elf_i386 "
+        .. exeFileName
+        .. ".o -o "
+        .. exeFileName
     local separator = "clear"
     local run = "./" .. exeFileName
     callback(join({ compile, compile2, separator, run }, "&&"))
@@ -50,7 +53,9 @@ local execute = function(error, callback)
 
   execute.err = function(type)
     return function(name)
-      error("No execute defined. Type: '" .. type .. "', File: '" .. name .. "'")
+      error(
+        "No execute defined. Type: '" .. type .. "', File: '" .. name .. "'"
+      )
     end
   end
 

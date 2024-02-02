@@ -5,7 +5,13 @@ return {
     "windwp/nvim-ts-autotag",
   },
   event = { "BufRead", "BufNewFile" },
-  cmd = { "TSUpdate", "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+  cmd = {
+    "TSUpdate",
+    "TSInstall",
+    "TSBufEnable",
+    "TSBufDisable",
+    "TSModuleInfo",
+  },
   build = ":TSUpdate",
   opts = function()
     return {

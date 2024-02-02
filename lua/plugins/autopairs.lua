@@ -15,7 +15,13 @@ return {
     local on_attach = require("nvim-autopairs").on_attach
     require("nvim-autopairs").on_attach = function(bufnr)
       bufnr = bufnr or vim.api.nvim_get_current_buf()
-      vim.api.nvim_buf_set_keymap(bufnr, "i", MAP_BS, "v:lua.MPairs.autopairs_bs()", { expr = true, noremap = true })
+      vim.api.nvim_buf_set_keymap(
+        bufnr,
+        "i",
+        MAP_BS,
+        "v:lua.MPairs.autopairs_bs()",
+        { expr = true, noremap = true }
+      )
       on_attach(bufnr)
     end
 

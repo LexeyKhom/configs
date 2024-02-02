@@ -72,7 +72,7 @@ return {
     return {
       highlights = theme,
       options = {
-        themable = true, -- allows highlight groups to be overriden i.e. sets highlights as default
+        themable = true,          -- allows highlight groups to be overriden i.e. sets highlights as default
         separator_style = "thin", -- "slant" "slope", "thick", "thin"
         always_show_bufferline = true,
         left_trunc_marker = "",

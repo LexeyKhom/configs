@@ -4,7 +4,10 @@ return {
   keys = function()
     require("utils.load").mappings {
       n = {
-        ["<leader>ts"] = { "<cmd> SymbolsOutline <CR>", "Toggle SymbolsOutline" },
+        ["<leader>ts"] = {
+          "<cmd> SymbolsOutline <CR>",
+          "Toggle SymbolsOutline",
+        },
       },
     }
   end,

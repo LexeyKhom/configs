@@ -96,14 +96,20 @@ return {
 
             ["<leader>ga"] = {
               function()
-                require("gitsigns").stage_hunk { vim.fn.line ".", vim.fn.line "v" }
+                require("gitsigns").stage_hunk {
+                  vim.fn.line ".",
+                  vim.fn.line "v",
+                }
               end,
               "Git add select",
             },
 
             ["<leader>gr"] = {
               function()
-                require("gitsigns").reset_hunk { vim.fn.line ".", vim.fn.line "v" }
+                require("gitsigns").reset_hunk {
+                  vim.fn.line ".",
+                  vim.fn.line "v",
+                }
               end,
               "Git reset select",
             },

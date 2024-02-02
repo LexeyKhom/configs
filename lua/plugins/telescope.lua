@@ -27,18 +27,27 @@ return {
       n = {
         -- Find
         ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
-        ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
+        ["<leader>fa"] = {
+          "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>",
+          "Find all",
+        },
         ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Find word" },
         ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
         ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Find help" },
         ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
         -- ["<leader>ft"] = { "<cmd> Telescope terms <CR>", "Find term" },
-        ["<leader>fc"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
+        ["<leader>fc"] = {
+          "<cmd> Telescope current_buffer_fuzzy_find <CR>",
+          "Find in current buffer",
+        },
         ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "Find marks" },
         ["<leader>fl"] = { "<cmd> Telescope resume <CR>", "Find last" },
 
         -- Plugins
-        ["<leader>ft"] = { "<cmd> Telescope tailiscope all <CR>", "Find tailwind" },
+        ["<leader>ft"] = {
+          "<cmd> Telescope tailiscope all <CR>",
+          "Find tailwind",
+        },
 
         -- Git
         ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "Git status" },
@@ -55,7 +64,9 @@ return {
         ["<leader>fc"] = {
           function()
             local text = getVisualSelection()
-            require("telescope.builtin").current_buffer_fuzzy_find { default_text = text }
+            require("telescope.builtin").current_buffer_fuzzy_find {
+              default_text = text,
+            }
           end,
           "Find in current buffer",
         },
@@ -123,7 +134,16 @@ return {
         path_display = { "truncate" },
         winblend = 0,
         border = {},
-        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        borderchars = {
+          "─",
+          "│",
+          "─",
+          "│",
+          "╭",
+          "╮",
+          "╯",
+          "╰",
+        },
         color_devicons = true,
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
         file_previewer = require("telescope.previewers").vim_buffer_cat.new,

@@ -46,7 +46,7 @@ return {
       },
       [".stylelintrc"] = {
         icon = "",
-        color = "#ffffff", -- color = "#333333",
+        color = "#ffffff",   -- color = "#333333",
         cterm_color = "231", -- cterm_color = "236",
         name = "Stylelintrc",
       },

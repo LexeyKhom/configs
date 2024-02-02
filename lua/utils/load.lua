@@ -88,7 +88,9 @@ Load.langs = function(pluginName, filter)
       local pluginConfigs = lang[pluginName]
       for _, config in pairs(pluginConfigs) do
         local isTable = type(config) == "table"
-        local isFiltered = isTable and config.filter and contains(config.filter, filter)
+        local isFiltered = isTable
+            and config.filter
+            and contains(config.filter, filter)
         local result = isTable and config[1] or config
         local setting = isTable and config.setting or nil
         if not isFiltered and not contains(results, result) then

@@ -16,7 +16,11 @@ return {
 
         ["<F2>"] = {
           function()
-            require("dap").toggle_breakpoint(nil, nil, vim.fn.input "Log point message: ")
+            require("dap").toggle_breakpoint(
+              nil,
+              nil,
+              vim.fn.input "Log point message: "
+            )
           end,
           "DAP toggle logpoint",
         },

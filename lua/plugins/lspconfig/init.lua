@@ -7,7 +7,8 @@ return {
   },
   init = function()
     -- Change default signs
-    local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+    local signs =
+    { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -21,7 +22,8 @@ return {
     end
     -- opts.capabilities = require("cmp_nvim_lsp").default_capabilities()
     opts.capabilities = vim.lsp.protocol.make_client_capabilities()
-    opts.capabilities.textDocument.completion = require("cmp_nvim_lsp").default_capabilities().textDocument.completion
+    opts.capabilities.textDocument.completion =
+        require("cmp_nvim_lsp").default_capabilities().textDocument.completion
     return opts
   end,
   config = function(_, opts)

@@ -9,7 +9,7 @@ return {
   },
 
   null = {
-    { "d.gdlint", mason = "gdtoolkit" },
+    { "d.gdlint",   mason = "gdtoolkit" },
     { "f.gdformat", mason = "gdtoolkit" },
   },
 }

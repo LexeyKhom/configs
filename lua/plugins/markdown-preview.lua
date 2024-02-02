@@ -6,7 +6,10 @@ return {
   keys = function()
     require("utils.load").mappings {
       n = {
-        ["<leader>tm"] = { "<cmd> MarkdownPreviewToggle <CR>", "Toggle MarkdownPreview" },
+        ["<leader>tm"] = {
+          "<cmd> MarkdownPreviewToggle <CR>",
+          "Toggle MarkdownPreview",
+        },
       },
     }
   end,
