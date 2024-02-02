@@ -4,7 +4,7 @@ return {
   keys = function()
     require("utils.load").mappings {
       n = {
-        ["<A-w>"] = { "<cmd> LLMSuggestion <CR>", "LLM Suggestion" },
+        ["<A-g>"] = { "<cmd> LLMSuggestion <CR>", "LLM Suggestion" },
       },
     }
   end,

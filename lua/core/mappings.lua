@@ -110,6 +110,9 @@ require("utils.load").mappings {
     [KEYS.LEFT] = { "<Left>", "Move Left" },
     [KEYS.RIGHT] = { "<Right>", "Move Right" },
 
+    ["<A-w>"] = { "<S-Right>", "Words forward" },
+    ["<A-e>"] = { "<Esc>ea", "Words forward" },
+    ["<A-b>"] = { "<S-Left>", "Words backward" },
     ["<A-0>"] = { "<Esc>^i", "Beginning of line" },
     ["<A-4>"] = { "<Esc>$a", "End of line" },
   },
@@ -132,11 +135,16 @@ require("utils.load").mappings {
     -- Navigate within command mode
     [KEYS.ENTER] = { "<Enter>", "Enter" },
     [KEYS.BACKSPACE] = { "<BS>", "Backspace" },
+    [KEYS.DELETE] = { "<Delete>", "Delete" },
+
     [KEYS.UP] = { "<Up>", "Move up in history" },
     [KEYS.DOWN] = { "<Down>", "Move down in history" },
     [KEYS.LEFT] = { "<Left>", "Move left" },
     [KEYS.RIGHT] = { "<Right>", "Move right" },
 
+    ["<A-w>"] = { "<S-Right><Right>", "Words forward" },
+    ["<A-e>"] = { "<S-Right>", "Words forward" },
+    ["<A-b>"] = { "<S-Left>", "Words backward" },
     ["<A-0>"] = { "<Home>", "Beginning of line" },
     ["<A-4>"] = { "<End>", "End of line" },
   },

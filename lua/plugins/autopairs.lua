@@ -4,7 +4,7 @@ return {
   opts = function()
     local KEYS = require "core.mappings"
     return {
-      fast_wrap = {},
+      fast_wrap = { map = "<A-g>" },
       disable_filetype = { "TelescopePrompt", "spectre_panel", "vim" },
       custom_map_bs = KEYS.BACKSPACE,
     }

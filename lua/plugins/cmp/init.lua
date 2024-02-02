@@ -76,7 +76,7 @@ return {
         [KEYS.SCROLL_DOWN] = cmp.mapping.scroll_docs(4),
         [KEYS.SCROLL_UP] = cmp.mapping.scroll_docs(-4),
 
-        ["<A-w>"] = cmp.mapping.complete(),
+        ["<A-r>"] = cmp.mapping.complete(),
         [KEYS.CLOSE] = cmp.mapping.close(),
         [KEYS.QUIT] = cmp.mapping.close(),
         [KEYS.CANCEL] = cmp.mapping.abort(),
