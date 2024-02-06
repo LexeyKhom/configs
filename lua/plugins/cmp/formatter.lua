@@ -1,16 +1,8 @@
-local CONFIG = {
-  color_square_width = 1,
-}
-
-local SQUARE = " 󰝤 " -- █
-
+local CONFIG = { color_square_width = 1 }
+local SQUARE = " 󰝤 " -- alternative: █
 local DUPLICATES_DEFAULT = 0
-local DUPLICATES = {
-  buffer = 1,
-  path = 1,
-  nvim_lsp = 0,
-  luasnip = 1,
-}
+local DUPLICATES = { buffer = 1, path = 1, nvim_lsp = 0, luasnip = 1 }
+local MAX_WIDTH = 20
 
 local setColor = function(item, color)
   local hl_group = "lsp_documentColor_mf_" .. color
@@ -23,6 +15,7 @@ local setColor = function(item, color)
 end
 
 local formatter = function(entry, item)
+  item.abbr = string.sub(item.abbr, 1, MAX_WIDTH)
   item.dup = DUPLICATES[entry.source.name] or DUPLICATES_DEFAULT
 
   local ICONS = require "plugins.cmp.icons"
