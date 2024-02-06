@@ -157,8 +157,16 @@ require("utils.load").mappings {
     ["<A-4>"] = { "<End>", "End of line" },
   },
 
-  -- Visual and Select
-  v = {
+  s = {
+    ["<A-p>"] = {
+      "p<BS><C-r>+",
+      "Dont copy replaced text",
+      { silent = true },
+    },
+  },
+
+  -- Visual
+  x = {
     -- Don't copy the replaced text after pasting in visual mode
     -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
     ["p"] = {
