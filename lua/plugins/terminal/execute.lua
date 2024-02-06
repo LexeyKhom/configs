@@ -1,4 +1,4 @@
-local execute = function(error, callback)
+local execute = function(onError, onSuccess)
   -- (https://vimdoc.sourceforge.net/htmldoc/cmdline.html#filename-modifiers)
   local fileName = vim.fn.expand "%:p:~:."
   local fileType = vim.bo.filetype
@@ -6,19 +6,28 @@ local execute = function(error, callback)
   local execute = {}
 
   execute.javascript = function(name)
-    callback("node " .. name)
+    onSuccess("node " .. name)
   end
 
   execute.typescript = function(name)
-    callback("deno run " .. name)
+    onSuccess("deno run " .. name)
   end
 
   execute.html = function(name)
-    callback("firefox '" .. name .. "'")
+    onSuccess("firefox '" .. name .. "'")
   end
 
   execute.python = function(name)
-    callback("python " .. name)
+    onSuccess("python " .. name)
+  end
+
+  execute.c = function(name)
+    local join = require("utils.table").join
+    local exeFileName = string.sub(name, 1, -3)
+    local compile = "gcc -Wall -g -lm " .. name .. " -o " .. exeFileName
+    local separator = "echo -----"
+    local run = "./" .. exeFileName
+    onSuccess(join({ compile, separator, run }, " && "))
   end
 
   execute.pascal = function(name)
@@ -27,7 +36,7 @@ local execute = function(error, callback)
     local separator = "clear"
     local exeFileName = string.sub(name, 1, -5)
     local run = "./" .. exeFileName
-    callback(join({ compile, separator, run }, "&&"))
+    onSuccess(join({ compile, separator, run }, "&&"))
   end
 
   execute.asm = function(name)
@@ -40,20 +49,20 @@ local execute = function(error, callback)
         .. exeFileName
     local separator = "clear"
     local run = "./" .. exeFileName
-    callback(join({ compile, compile2, separator, run }, "&&"))
+    onSuccess(join({ compile, compile2, separator, run }, "&&"))
   end
 
   execute.sh = function(name)
-    callback("./" .. name)
+    onSuccess("./" .. name)
   end
 
   execute.terminal = function(_)
-    callback "clear"
+    onSuccess "clear"
   end
 
   execute.err = function(type)
     return function(name)
-      error(
+      onError(
         "No execute defined. Type: '" .. type .. "', File: '" .. name .. "'"
       )
     end

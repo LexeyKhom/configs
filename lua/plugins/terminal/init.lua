@@ -28,10 +28,10 @@ return {
             local onError = function(errorMessage)
               print(errorMessage)
             end
-            local onCallback = function(cmd)
+            local onSuccess = function(cmd)
               Term.exec(cmd)
             end
-            execute(onError, onCallback)
+            execute(onError, onSuccess)
           end,
           "Execute this",
         },
