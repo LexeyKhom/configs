@@ -39,7 +39,7 @@ return {
       },
       sections = {
         lualine_a = { { "mode", color = { gui = "bold" } } },
-        lualine_b = { "filename" },
+        lualine_b = { "tabnine" },
         lualine_c = { "branch", "diff", "diagnostics" },
         lualine_x = { { recording }, "selectioncount", "searchcount" },
         lualine_y = { "filetype" },

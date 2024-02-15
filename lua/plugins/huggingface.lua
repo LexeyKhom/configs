@@ -1,5 +1,7 @@
+-- TODO: no need?
 return {
   "huggingface/llm.nvim",
+  enabled = false,
   cmd = { "LLMSuggestion" },
   keys = function()
     require("utils.load").mappings {
