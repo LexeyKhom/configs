@@ -89,10 +89,9 @@ return {
           },
 
           i = {
-            [KEYS.QUIT] = false,
+            [KEYS.QUIT] = actions.close,
             ["<A-o>"] = actions.select_default,
             [KEYS.ENTER] = actions.select_default,
-            [KEYS.BACKSPACE] = false,
             [KEYS.UP] = actions.move_selection_previous,
             [KEYS.DOWN] = actions.move_selection_next,
           },
