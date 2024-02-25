@@ -110,7 +110,7 @@ require("utils.load").mappings {
 
     -- Navigate
     [KEYS.ENTER] = { "<Enter>", "Enter" },
-    [KEYS.BACKSPACE] = { "<BS>", "Backspace" },
+    [KEYS.BACKSPACE] = { "<BS>", "Backspace", { remap = true } },
     [KEYS.DELETE] = { "<Delete>", "Delete" },
 
     [KEYS.UP] = { "<Up>", "Move Up" },
