@@ -9,9 +9,6 @@ return {
   },
 
   null = {
-    { "d.pydocstyle", mason = "pydocstyle" },
     { "d.mypy",       mason = "mypy" },
-    { "d.ruff",       mason = "ruff" },
-    { "f.ruff",       mason = "ruff" },
   },
 }

@@ -9,7 +9,6 @@ return {
   },
 
   null = {
-    { "d.cpplint",      mason = "cpplint" },
     { "f.clang_format", mason = "clang-format" },
   },
 }

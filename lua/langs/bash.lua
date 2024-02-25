@@ -8,7 +8,6 @@ return {
   },
 
   null = {
-    { "a.shellcheck", mason = "shellcheck" },
     { "f.shfmt",      mason = "shfmt" },
   },
 

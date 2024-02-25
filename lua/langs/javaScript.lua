@@ -18,11 +18,6 @@ return {
     -- { "astro", mason = "astro-language-server" },
   },
 
-  null = {
-    { "a.eslint_d", mason = "eslint_d" },
-    -- { "d.eslint_d", mason = "eslint_d" }, -- Some times need
-  },
-
   dap = {
     { "js", mason = "js-debug-adapter" },
     -- { "chrome", mason = "chrome-debug-adapter" },

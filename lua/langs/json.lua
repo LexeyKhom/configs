@@ -7,8 +7,4 @@ return {
   lsp = {
     { "jsonls", mason = "json-lsp" },
   },
-
-  null = {
-    { "d.jsonlint", mason = "jsonlint" },
-  },
 }
