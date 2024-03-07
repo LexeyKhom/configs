@@ -1,5 +1,6 @@
 return {
   "codota/tabnine-nvim",
+  enabled = not vim.g.isTermux,
   dependencies = {
     "LexeyKhom/nvconfig",
   },

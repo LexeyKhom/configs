@@ -2,7 +2,7 @@ local CONFIG = { color_square_width = 1 }
 local SQUARE = " 󰝤 " -- alternative: █
 local DUPLICATES_DEFAULT = 0
 local DUPLICATES = { buffer = 1, path = 1, nvim_lsp = 0, luasnip = 1 }
-local MAX_WIDTH = 20
+local MAX_WIDTH = vim.g.isTermux and 16 or 24
 
 local setColor = function(item, color)
   local hl_group = "lsp_documentColor_mf_" .. color
