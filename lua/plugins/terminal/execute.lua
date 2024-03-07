@@ -21,6 +21,10 @@ local execute = function(onError, onSuccess)
     onSuccess("python " .. name)
   end
 
+  execute.php = function(name)
+    onSuccess("php " .. name)
+  end
+
   execute.c = function(name)
     local join = require("utils.table").join
     local exeFileName = string.sub(name, 1, -3)
