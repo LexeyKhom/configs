@@ -1,5 +1,6 @@
 return {
   "rcarriga/nvim-dap-ui",
+  dependencies = { "nvim-neotest/nvim-nio" },
   opts = {
     expand_lines = true,
     floating = {

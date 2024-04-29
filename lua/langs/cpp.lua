@@ -11,4 +11,8 @@ return {
   null = {
     { "f.clang_format", mason = "clang-format" },
   },
+
+  dap = {
+    "gdb",
+  },
 }
