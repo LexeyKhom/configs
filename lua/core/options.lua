@@ -39,6 +39,7 @@ opt.signcolumn = "yes"
 opt.shiftwidth = 2
 opt.tabstop = 2
 opt.softtabstop = 2
+opt.smarttab = true
 opt.smartindent = true
 opt.expandtab = true
 

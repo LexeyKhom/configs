@@ -86,12 +86,6 @@ return {
         cterm_color = "74",
         name = "GDScript",
       },
-      ["godot"] = {
-        icon = "",
-        color = "#6d8086",
-        cterm_color = "66",
-        name = "GodotProject",
-      },
     },
 
     override_by_extension = {
@@ -130,6 +124,12 @@ return {
         color = "#e4b854",
         cterm_color = "179",
         name = "zip",
+      },
+      ["gdshader"] = {
+        icon = "",
+        color = "#e535ab",
+        cterm_color = "199",
+        name = "GodotShader",
       },
     },
   },

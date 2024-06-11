@@ -44,6 +44,7 @@ return {
 
     return {
       completion = {
+        keyword_length = 1,
         completeopt = "menu,menuone",
       },
       window = {
@@ -82,8 +83,8 @@ return {
         [KEYS.CANCEL] = cmp.mapping.abort(),
       },
       sources = {
+        { name = "nvim_lsp", keyword_length = 1 },
         { name = "luasnip" },
-        { name = "nvim_lsp" },
         { name = "nvim_lua" },
         { name = "buffer" },
         { name = "path" },

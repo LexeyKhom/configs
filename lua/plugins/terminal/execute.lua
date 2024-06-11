@@ -17,6 +17,10 @@ local execute = function(onError, onSuccess)
     onSuccess("firefox '" .. name .. "'")
   end
 
+  execute.gdscript = function()
+    onSuccess "godot"
+  end
+
   execute.python = function(name)
     onSuccess("python " .. name)
   end
