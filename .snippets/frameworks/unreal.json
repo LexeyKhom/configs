@@ -46,7 +46,6 @@
       "#include \"CoreMinimal.h\"",
       "",
       "#include \"$2${TM_FILENAME_BASE:StructName}.generated.h\"",
-
       "USTRUCT(BlueprintType)",
       "struct F$1${TM_FILENAME_BASE:StructName}",
       "{",

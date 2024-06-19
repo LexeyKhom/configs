@@ -84,7 +84,6 @@
     ],
     "description": "Django-rest Views ``UpdateApiView`` Class"
   },
-
   "DRF perform_create": {
     "prefix": "performcreate",
     "body": [
@@ -109,7 +108,6 @@
     ],
     "description": "Django-rest Views ``perform_create`` method"
   },
-
   "DRF ModelViewSet": {
     "prefix": "modelviewset",
     "body": [

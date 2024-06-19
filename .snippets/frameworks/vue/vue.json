@@ -35,7 +35,6 @@
     "body": ["<style scoped>", "\t$0", "</style>"],
     "description": "style scoped vue attribute"
   },
-
   "Vue Single File Component": {
     "prefix": "vbase",
     "body": [

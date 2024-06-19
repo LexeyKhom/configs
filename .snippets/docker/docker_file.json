@@ -11,17 +11,14 @@
     "prefix": "R",
     "body": ["RUN ${1:command}"]
   },
-
   "CMD": {
     "prefix": "C",
     "body": ["CMD ${1:command}"]
   },
-
   "COPY": {
     "prefix": "cp",
     "body": ["COPY ${1:src} ${2:dest}"]
   },
-
   "EXPOSE": {
     "prefix": "exp",
     "body": ["EXPOSE ${1:port}"]

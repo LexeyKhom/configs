@@ -29,13 +29,11 @@
     "body": ["****** $0"],
     "description": "level 6 heading"
   },
-
   "hr": {
     "prefix": "hr",
     "body": ["___", "$0"],
     "description": "horizontal rule"
   },
-
   "bold": {
     "prefix": "bold",
     "body": ["*$0*"],
@@ -66,7 +64,6 @@
     "body": ["%$0%"],
     "description": "inline comment"
   },
-
   "inlinecode": {
     "prefix": "inlinecode",
     "body": ["`$0`"],
@@ -77,13 +74,11 @@
     "body": ["@code ${1:lang}", "$0", "@end"],
     "description": "code block"
   },
-
   "data": {
     "prefix": "data",
     "body": ["@data", "$0", "@end"],
     "description": "data tags"
   },
-
   "link": {
     "prefix": "link",
     "body": ["{${1:object}}[${2:description}]"],
@@ -94,7 +89,6 @@
     "body": ["[${1:description}]{${2:object}}"],
     "description": "anchors"
   },
-
   "subscript": {
     "prefix": "subscript",
     "body": [",$0,"],
@@ -120,13 +114,11 @@
     "body": ["@math", "$0", "@end"],
     "description": "math block"
   },
-
   "table": {
     "prefix": "table",
     "body": ["@table", "$0", "@end"],
     "description": "table"
   },
-
   "unordered_list": {
     "prefix": "ulist1",
     "body": ["- ${1:item}"],
@@ -157,7 +149,6 @@
     "body": ["------ ${1:item}"],
     "description": "level 6 unordered list"
   },
-
   "ordered_list": {
     "prefix": "olist1",
     "body": ["~ ${1:item}"],
@@ -188,7 +179,6 @@
     "body": ["~~~~~~ ${1:item}"],
     "description": "level 6 ordered list"
   },
-
   "quote_1": {
     "prefix": "quote1",
     "body": ["> $0"],
@@ -219,7 +209,6 @@
     "body": [">>>>>> $0"],
     "description": "level 6 quote"
   },
-
   "task": {
     "prefix": "task",
     "body": ["- ( ) ${1:task}"],
@@ -260,7 +249,6 @@
     "body": ["- (_) ${1:task}"],
     "description": "task (cancelled)"
   },
-
   "single_footnote": {
     "prefix": "footnote",
     "body": ["^ ${1:title}", "${2:content}"],
@@ -271,7 +259,6 @@
     "body": ["^^ ${1:title}", "${2:content}", "^^"],
     "description": "footnote (ranged version)"
   },
-
   "var": {
     "prefix": "var",
     "body": ["&${1:variable}&"],
