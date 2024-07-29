@@ -21,30 +21,30 @@
   },
   "_process method of Node": {
     "prefix": "process",
-    "body": ["func _process(delta) -> void:", "\t${1:pass}"]
-  },
-  "_input method of Node": {
-    "prefix": "input",
-    "body": ["func _input(event) -> void:", "\t${1:pass}"]
-  },
-  "_input_event method of Node": {
-    "prefix": "inpute",
-    "body": ["func _input_event(event) -> void:", "\t${1:pass}"]
+    "body": ["func _process(delta: float) -> void:", "\t${1:pass}"]
   },
   "_draw method of Node": {
     "prefix": "draw",
     "body": ["func _draw() -> void:", "\t${1:pass}"]
   },
+  "_input method of Node": {
+    "prefix": "input",
+    "body": ["func _input(event: InputEvent) -> void:", "\t${1:pass}"]
+  },
+  "_input_event method of Node": {
+    "prefix": "inpute",
+    "body": ["func _input_event(event: InputEvent) -> void:", "\t${1:pass}"]
+  },
   "_gui_input method of Node": {
     "prefix": "guii",
-    "body": ["func _gui_input(event) -> void:", "\t${1:pass}"]
+    "body": ["func _gui_input(event: InputEvent) -> void:", "\t${1:pass}"]
   },
   "for loop": {
     "prefix": "for",
     "body": ["for $1 in $2:", "\t${3:pass}"]
   },
   "for range loop": {
-    "prefix": "for",
+    "prefix": "inrange",
     "body": ["for $1 in range(${2:start}{$3:,end}):", "\t${4:pass}"]
   },
   "if elif else": {
