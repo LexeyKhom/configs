@@ -11,7 +11,7 @@ return {
 
   lsp = {
     { "eslint", mason = "eslint-lsp" },
-    { "tsserver", mason = "typescript-language-server" },
+    { "ts_ls",  mason = "typescript-language-server" },
     -- { "volar", mason = "vue-language-server" },
     -- { "svelte", mason = "svelte-language-server" },
     -- { "angularls", mason = "angular-language-server" },
