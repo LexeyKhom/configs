@@ -2,6 +2,7 @@
 return {
   "huggingface/llm.nvim",
   enabled = false,
+  event = "VeryLazy",
   cmd = { "LLMSuggestion" },
   keys = function()
     require("utils.load").mappings {
@@ -11,8 +12,9 @@ return {
     }
   end,
   opts = {
-    accept_keymap = "<A-y>",
-    dismiss_keymap = "<A-Y>",
+    accept_keymap = "<A-g>",
+    dismiss_keymap = "<A-G>",
+    debounce_ms = 2000,
 
     -- can be a model ID or an http(s) endpoint
     model = "bigcode/starcoder",
