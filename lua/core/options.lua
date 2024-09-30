@@ -35,6 +35,10 @@ opt.numberwidth = 2
 opt.relativenumber = false
 opt.signcolumn = "yes"
 
+-- Folding
+opt.foldenable = false
+opt.foldmethod = "indent"
+
 -- Indenting
 opt.shiftwidth = 2
 opt.tabstop = 2
