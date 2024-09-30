@@ -71,9 +71,17 @@
     "prefix": "af",
     "body": "(${1}) => {\n\t${0}\n}"
   },
+  "async arrow function": {
+    "prefix": "aaf",
+    "body": "async (${1}) => {\n\t${0}\n}"
+  },
   "arrow function with function": {
     "prefix": "aff",
     "body": "(${1}) => ${0}"
+  },
+  "async arrow function with function": {
+    "prefix": "aaff",
+    "body": "async (${1}) => ${0}"
   },
   "console.log": {
     "prefix": "cl",
