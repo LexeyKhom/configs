@@ -79,8 +79,9 @@ Load.plugins = function(pluginsPath)
 end
 
 Load.langs = function(pluginName, filter)
+  local LANGS_DIR = "langs"
   local contains = require("utils.table").contains
-  local langs = Load.dir "langs"
+  local langs = Load.dir(LANGS_DIR)
   local results = {}
   local settings = {}
   for _, lang in pairs(langs) do
@@ -89,8 +90,8 @@ Load.langs = function(pluginName, filter)
       for _, config in pairs(pluginConfigs) do
         local isTable = type(config) == "table"
         local isFiltered = isTable
-            and config.filter
-            and contains(config.filter, filter)
+          and config.filter
+          and contains(config.filter, filter)
         local result = isTable and config[1] or config
         local setting = isTable and config.setting or nil
         if not isFiltered and not contains(results, result) then
