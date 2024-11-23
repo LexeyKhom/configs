@@ -5,7 +5,7 @@ return {
 
   lsp = {
     { "pyright",  mason = "pyright" },
-    { "ruff_lsp", mason = "ruff-lsp" },
+    { "ruff", mason = "ruff-lsp" },
   },
 
   null = {
