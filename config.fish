@@ -11,3 +11,7 @@ if status is-interactive
     set -gx DENO_INSTALL "$HOME/.deno"
     set -gxa PATH "$DENO_INSTALL/bin"
 end
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
