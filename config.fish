@@ -12,6 +12,8 @@ if status is-interactive
     set -gxa PATH "$DENO_INSTALL/bin"
 end
 
+fish_add_path -a /home/lexey/.foundry/bin
+
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
