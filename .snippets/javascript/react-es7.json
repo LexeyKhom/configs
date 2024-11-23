@@ -481,7 +481,7 @@
       "",
       "export default function ${1:${TM_FILENAME_BASE}}() {",
       "  return (",
-      "    <div>${1:first}</div>",
+      "    <div>${0:first}</div>",
       "  )",
       "}",
       ""
