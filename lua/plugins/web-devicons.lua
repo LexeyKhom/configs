@@ -2,11 +2,17 @@ return {
   "nvim-tree/nvim-web-devicons",
   opts = {
     override_by_filename = {
-      [".babelrc"] = {
-        icon = "󰨥",
-        color = "#cbcb41",
-        cterm_color = "185",
-        name = "Babelrc",
+      [".env.development"] = {
+        icon = "",
+        color = "#faf743",
+        cterm_color = "227",
+        name = "Env",
+      },
+      [".env.production"] = {
+        icon = "",
+        color = "#faf743",
+        cterm_color = "227",
+        name = "Env",
       },
       ["webpack.config.js"] = {
         icon = "󰜫",
@@ -32,53 +38,17 @@ return {
         cterm_color = "56",
         name = "Eslintrc",
       },
-      [".eslintignore"] = {
-        icon = "",
-        color = "#4b32c3",
-        cterm_color = "56",
-        name = "Eslintignore",
-      },
-      ["tsconfig.json"] = {
-        icon = "",
-        color = "#519aba",
-        cterm_color = "74",
-        name = "TsConfig",
-      },
       [".stylelintrc"] = {
         icon = "",
-        color = "#ffffff",   -- color = "#333333",
+        color = "#ffffff", -- color = "#333333",
         cterm_color = "231", -- cterm_color = "236",
         name = "Stylelintrc",
       },
-      [".prettierrc.json"] = {
-        icon = "󰏣",
-        color = "#E8274B",
-        cterm_color = "197",
-        name = "Prettierrc",
-      },
-      [".prettierrc"] = {
-        icon = "󰏣",
-        color = "#E8274B",
-        cterm_color = "197",
-        name = "Prettierrc",
-      },
-      [".prettierignore"] = {
-        icon = "󰏣",
-        color = "#E8274B",
-        cterm_color = "197",
-        name = "Prettierignore",
-      },
-      ["tailwind.config.js"] = {
-        icon = "󱏿",
-        color = "#519aba",
-        cterm_color = "74",
-        name = "TailwindConfig",
-      },
-      ["robots.txt"] = {
-        icon = "󰚩",
-        color = "#bbbbbb",
-        cterm_color = "250",
-        name = "robots",
+      [".stylelintignore"] = {
+        icon = "",
+        color = "#ffffff", -- color = "#333333",
+        cterm_color = "231", -- cterm_color = "236",
+        name = "Stylelintrc",
       },
       ["gd"] = {
         icon = "",
@@ -112,18 +82,6 @@ return {
         color = "#b30b00",
         cterm_color = "124",
         name = "rpm",
-      },
-      ["xz"] = {
-        icon = "",
-        color = "#e4b854",
-        cterm_color = "179",
-        name = "xz",
-      },
-      ["zip"] = {
-        icon = "",
-        color = "#e4b854",
-        cterm_color = "179",
-        name = "zip",
       },
       ["gdshader"] = {
         icon = "",
