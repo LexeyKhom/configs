@@ -2,18 +2,19 @@
 if status is-interactive
     set -gx fish_greeting ''
     set -gxa PATH "$HOME/.local/bin/"
-
-    # HuggingFace
-    set -gx LLM_NVIM_HF_API_TOKEN (cat ~/GDrive/.hfcc)
-
-    # For DENO
-    # Run '/home/lexey/.deno/bin/deno --help' to get started
-    set -gx DENO_INSTALL "$HOME/.deno"
-    set -gxa PATH "$DENO_INSTALL/bin"
 end
 
-fish_add_path -a /home/lexey/.foundry/bin
+# HuggingFace
+set -gx LLM_NVIM_HF_API_TOKEN (cat ~/GDrive/.hfcc)
 
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
+# Deno
+set -gx DENO_INSTALL "$HOME/.deno"
+set -gxa PATH "$DENO_INSTALL/bin"
+
+# Bun
+set -gx BUN_INSTALL "$HOME/.bun"
+set -gxa PATH "$BUN_INSTALL/bin"
+
+# Ethereum/Solidity
+set -gx FOUNDRY_INSTALL "$HOME/.foundry"
+set -gxa PATH "$FOUNDRY_INSTALL/bin"
