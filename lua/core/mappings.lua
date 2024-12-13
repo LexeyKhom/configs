@@ -36,7 +36,7 @@ local KEYS = {
   EXECUTE = "<A-e>",
 }
 
-if vim.g.isTermux then
+if vim.g.is_termux then
   local assign = require("utils.table").assign
   local TERMUX_KEYS = {
     ENTER = "<Enter>",

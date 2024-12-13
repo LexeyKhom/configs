@@ -6,7 +6,7 @@ return {
   },
   event = "VeryLazy",
   opts = function()
-    local isTermux = vim.g.isTermux
+    local is_termux = vim.g.is_termux
     return {
       lsp = {
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -24,7 +24,7 @@ return {
       views = {
         cmdline_popup = {
           position = { row = 5, col = "50%" },
-          size = { width = isTermux and 36 or "auto", height = "auto" },
+          size = { width = is_termux and 36 or "auto", height = "auto" },
           border = { style = "none", padding = { 1, 2 } },
           win_options = {
             winhighlight = {
@@ -35,7 +35,7 @@ return {
         },
         popupmenu = {
           position = { row = 8, col = "50%" },
-          size = { width = isTermux and 36 or 60, height = 10 },
+          size = { width = is_termux and 36 or 60, height = 10 },
           border = { style = "none", padding = { 1, 2 } },
           win_options = {
             winhighlight = {
