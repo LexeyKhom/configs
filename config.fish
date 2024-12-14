@@ -2,10 +2,11 @@
 if status is-interactive
     set -gx fish_greeting ''
     set -gxa PATH "$HOME/.local/bin/"
-end
 
-# HuggingFace
-set -gx LLM_NVIM_HF_API_TOKEN (cat ~/GDrive/.hfcc)
+    # Load .env
+    set -gx ENV_PATH "$HOME/GDrive/.env"
+    load_dotenv $ENV_PATH
+end
 
 # Deno
 set -gx DENO_INSTALL "$HOME/.deno"
