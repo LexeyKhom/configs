@@ -90,8 +90,8 @@ Load.langs = function(pluginName, filter)
       for _, config in pairs(pluginConfigs) do
         local isTable = type(config) == "table"
         local isFiltered = isTable
-          and config.filter
-          and contains(config.filter, filter)
+            and config.filter
+            and contains(config.filter, filter)
         local result = isTable and config[1] or config
         local setting = isTable and config.setting or nil
         if not isFiltered and not contains(results, result) then
@@ -113,6 +113,15 @@ Load.langs = function(pluginName, filter)
     end
   end
   return results, settings
+end
+
+Load.db_configs = function()
+  local DB_CONFIG_PATH = os.getenv "DB_CONFIG_PATH"
+  local configs = {}
+  if DB_CONFIG_PATH then
+    configs = dofile(DB_CONFIG_PATH)
+  end
+  return configs
 end
 
 return Load
