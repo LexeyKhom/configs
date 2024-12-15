@@ -8,7 +8,7 @@ return {
   },
 
   null = {
-    { "f.shfmt",      mason = "shfmt" },
+    { "f.shfmt", mason = "shfmt" },
   },
 
   dap = {
