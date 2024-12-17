@@ -4,6 +4,6 @@ return {
   },
 
   lsp = {
-    { "dockerls", mason = "dockerfile-language-server" },
+    { "docker_compose_language_service", mason = "docker-compose-language-service" },
   },
 }

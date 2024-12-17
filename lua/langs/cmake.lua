@@ -4,7 +4,7 @@ return {
   },
 
   lsp = {
-    { "cmake", mason = "cmake-language-server" },
+    { "neocmake", mason = "neocmakelsp" },
   },
 
   null = {

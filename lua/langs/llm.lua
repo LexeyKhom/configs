@@ -1,5 +1,0 @@
-return {
-  mason = {
-    "llm-ls",
-  },
-}
