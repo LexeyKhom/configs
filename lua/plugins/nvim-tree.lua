@@ -2,6 +2,7 @@ return {
   "nvim-tree/nvim-tree.lua",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
+    "stevearc/dressing.nvim",
   },
   cmd = { "NvimTreeToggle", "NvimTreeFocus" },
   keys = function()
