@@ -10,10 +10,10 @@ return {
     file_types = { "markdown", "Avante" },
     sign = { enabled = false },
     heading = {
-      -- width = "block",
+      width = "full", -- full | block
       border = true,
       border_virtual = true,
-      left_pad = 1, -- ??
+      left_pad = 1,
       right_pad = 2,
       icons = { "󰬺 ", "󰬻 ", "󰬼 ", "󰬽 ", "󰬾 ", "󰬿 " },
     },
