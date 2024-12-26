@@ -72,17 +72,19 @@ return {
       float_opts = {
         border = "single", -- 'single' | 'double' | 'shadow' | "curved"
         width = function()
-          local width = vim.o.columns
-          if width > SMALL_SCREEN_WIDTH then
-            width = math.floor(width * 0.85)
+          local screen_width = vim.o.columns
+          local width = math.floor(screen_width)
+          if screen_width > SMALL_SCREEN_WIDTH then
+            width = math.floor(screen_width * 0.86)
           end
           return width
         end,
         height = function()
-          local width = vim.o.columns
-          local height = vim.o.window - 2
-          if width > SMALL_SCREEN_WIDTH then
-            height = math.floor(height * 0.85)
+          local screen_width = vim.o.columns
+          local screen_height = vim.o.window
+          local height = screen_height - 2
+          if screen_width > SMALL_SCREEN_WIDTH then
+            height = math.floor(screen_height * 0.86)
           end
           return height
         end,
