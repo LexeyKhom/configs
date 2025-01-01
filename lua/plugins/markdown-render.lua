@@ -4,6 +4,7 @@ return {
     "LexeyKhom/nvconfig",
     "nvim-treesitter/nvim-treesitter",
     "nvim-tree/nvim-web-devicons",
+    "HakonHarnes/img-clip.nvim",
   },
   ft = { "markdown", "Avante" },
   opts = {
