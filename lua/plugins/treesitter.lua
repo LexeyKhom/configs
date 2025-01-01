@@ -2,7 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
     "RRethy/nvim-treesitter-endwise",
-    "windwp/nvim-ts-autotag",
+    { "windwp/nvim-ts-autotag", opts = {} },
   },
   event = { "BufRead", "BufNewFile" },
   cmd = {
