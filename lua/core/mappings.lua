@@ -32,7 +32,8 @@ local KEYS = {
 
   NAV_FILES = "<A-n>",
   TERMINAL = "<A-t>",
-  TERMINAL_ALT = "<A-v>",
+  TERMINAL_VERTICAL = "<A-v>",
+  TERMINAL_HORIZONTAL = "<A-h>",
   EXECUTE = "<A-e>",
 }
 

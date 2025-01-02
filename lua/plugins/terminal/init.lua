@@ -15,11 +15,18 @@ return {
           "Terminal float",
         },
 
-        [KEYS.TERMINAL_ALT] = {
+        [KEYS.TERMINAL_VERTICAL] = {
           function()
             Term.toggle "vertical"
           end,
           "Terminal vertical",
+        },
+
+        [KEYS.TERMINAL_HORIZONTAL] = {
+          function()
+            Term.toggle "horizontal"
+          end,
+          "Terminal horizontal",
         },
 
         [KEYS.EXECUTE] = {
@@ -46,11 +53,11 @@ return {
       },
 
       t = {
-        [KEYS.TERMINAL .. "," .. KEYS.TERMINAL_ALT] = {
+        [KEYS.TERMINAL .. "," .. KEYS.TERMINAL_VERTICAL .. "," .. KEYS.TERMINAL_HORIZONTAL] = {
           function()
             vim.cmd "ToggleTerm"
           end,
-          "Terminal float",
+          "Terminal close",
         },
       },
     }
@@ -64,7 +71,7 @@ return {
       shade_terminals = true,
       size = function(term)
         if term.direction == "horizontal" then
-          return 15
+          return 12
         elseif term.direction == "vertical" then
           return vim.o.columns * 0.5
         end
