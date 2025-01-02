@@ -1,12 +1,15 @@
 return {
   "L3MON4D3/LuaSnip",
   opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+  dependencies = { "rafamadriz/friendly-snippets" },
   config = function(_, opts)
     require("luasnip").config.set_config(opts)
     -- vscode format
     require("luasnip.loaders.from_vscode").lazy_load {
       paths = vim.g.vscode_snippets_path or "",
     }
+
+    -- Unlink the current LuaSnip snippet on InsertLeave if no jump is active.
     vim.api.nvim_create_autocmd("InsertLeave", {
       callback = function()
         if
