@@ -4,8 +4,9 @@ return {
   },
 
   lsp = {
-    { "html",     mason = "html-lsp" },
-    { "emmet_ls", mason = "emmet-ls" },
+    { "html",        mason = "html-lsp" },
+    { "emmet_ls",    mason = "emmet-ls" },
+    { "tailwindcss", mason = "tailwindcss-language-server" },
   },
 
   null = {
