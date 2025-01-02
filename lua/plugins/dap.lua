@@ -1,6 +1,7 @@
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
+    "nvim-treesitter/nvim-treesitter",
     "rcarriga/nvim-dap-ui",
     { "theHamsta/nvim-dap-virtual-text", opts = {} },
   },
@@ -139,7 +140,12 @@ return {
     dap.adapters.gdb = {
       type = "executable",
       command = "gdb",
-      args = { "-i", "dap" },
+      args = {
+        "-silent",
+        "--interpreter=dap",
+        "--eval-command",
+        "set print pretty on",
+      },
     }
 
     dap.configurations.c = {
@@ -147,17 +153,13 @@ return {
         name = "Launch",
         type = "gdb",
         request = "launch",
-        program = function()
-          return vim.fn.input(
-            "Path to executable: ",
-            vim.fn.getcwd() .. "/",
-            "file"
-          )
-        end,
+        program = vim.fn.expand "%:r",
         cwd = "${workspaceFolder}",
-        stopAtBeginningOfMainSubprogram = false,
+        stopAtBeginningOfMainSubprogram = true,
       },
     }
+
+    dap.configurations.asm = dap.configurations.c
 
     dap.adapters.delve = {
       type = "server",
@@ -165,8 +167,6 @@ return {
       executable = {
         command = "dlv",
         args = { "dap", "-l", "127.0.0.1:${port}" },
-        -- add this if on windows, otherwise server won't open successfully
-        -- detached = false
       },
     }
 
