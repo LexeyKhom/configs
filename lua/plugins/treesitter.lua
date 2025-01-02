@@ -24,9 +24,6 @@ return {
       },
 
       -- Plugins settings
-      autotag = {
-        enable = true,
-      },
       endwise = {
         enable = true,
       },
