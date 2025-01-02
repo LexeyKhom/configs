@@ -35,32 +35,32 @@ local execute = function(onError, onSuccess)
 
   execute.c = function(name)
     local join = require("utils.table").join
-    local exeFileName = string.sub(name, 1, -3)
-    local compile = "gcc -Wall -g -lm " .. name .. " -o " .. exeFileName
+    local basename = vim.fn.expand "%:r"
+    local compile = "gcc -Wall -g -lm ${name} -o ${basename}"
+        % { name = name, basename = basename }
     local separator = "echo -----"
-    local run = "./" .. exeFileName
+    local run = "./" .. basename
     onSuccess(join({ compile, separator, run }, " && "))
   end
 
   execute.pascal = function(name)
     local join = require("utils.table").join
+    local basename = vim.fn.expand "%:r"
     local compile = "fpc " .. name
     local separator = "clear"
-    local exeFileName = string.sub(name, 1, -5)
-    local run = "./" .. exeFileName
+    local run = "./" .. basename
     onSuccess(join({ compile, separator, run }, "&&"))
   end
 
   execute.asm = function(name)
     local join = require("utils.table").join
-    local exeFileName = string.sub(name, 1, -5)
-    local compile = "nasm -f elf " .. name
-    local compile2 = "ld -m elf_i386 "
-        .. exeFileName
-        .. ".o -o "
-        .. exeFileName
+    local basename = vim.fn.expand "%:r"
+    local compile = "nasm -f elf -g -o ${basename}.o ${name}"
+        % { name = name, basename = basename }
+    local compile2 = "ld -m elf_i386 ${basename}.o -o ${basename}"
+        % { name = name, basename = basename }
     local separator = "clear"
-    local run = "./" .. exeFileName
+    local run = "./" .. basename
     onSuccess(join({ compile, compile2, separator, run }, "&&"))
   end
 
