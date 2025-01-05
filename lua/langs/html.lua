@@ -11,5 +11,6 @@ return {
 
   null = {
     { "f.prettierd", mason = "prettierd" },
+    { "f.rustywind", mason = "rustywind" },
   },
 }
