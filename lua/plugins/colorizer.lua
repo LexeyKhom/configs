@@ -3,7 +3,6 @@ return {
   event = { "BufReadPre" },
   opts = function()
     return {
-      filetypes = { "*" },
       user_default_options = {
         names = true, -- "Name" codes like Blue or blue
         -- Expects a table of color name to rgb value pairs.  # is optional
@@ -26,20 +25,7 @@ return {
         tailwind = true, -- Enable tailwind colors
         -- parsers can contain values used in |user_default_options|
         sass = { enable = true, parsers = { "css" } }, -- Enable sass colors
-        -- Virtualtext character to use
-        virtualtext = "■",
-        -- Display virtualtext inline with color
-        virtualtext_inline = false,
-        -- Virtualtext highlight mode: 'background'|'foreground'
-        virtualtext_mode = "foreground",
-        -- update color values even if buffer is not focused
-        -- example use: cmp_menu, cmp_docs
-        always_update = false,
       },
-      -- all the sub-options of filetypes apply to buftypes
-      buftypes = {},
-      -- Boolean | List of usercommands to enable
-      user_commands = true, -- Enable all or some usercommands
     }
   end,
   config = function(_, opts)
