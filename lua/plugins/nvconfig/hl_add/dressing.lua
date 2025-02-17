@@ -4,8 +4,8 @@ return {
   DressingInsertFloatSign = { bg = "black2", fg = "green" },
   DressingInsertFloatBorder = { bg = "black2", fg = "black2" },
 
-  DressingSelectFloatTitle = { bg = "darker_black", fg = "grey" },
-  DressingSelectFloatNormal = { bg = "darker_black", fg = "white" },
-  DressingSelectFloatSign = { bg = "darker_black", fg = "red" },
-  DressingSelectFloatBorder = { bg = "darker_black", fg = "darker_black" },
+  DressingSelectFloatTitle = { bg = "black2", fg = "grey" },
+  DressingSelectFloatNormal = { bg = "black2", fg = "white" },
+  DressingSelectFloatSign = { bg = "black2", fg = "red" },
+  DressingSelectFloatBorder = { bg = "black2", fg = "black2" },
 }
