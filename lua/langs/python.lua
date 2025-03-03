@@ -4,11 +4,11 @@ return {
   },
 
   lsp = {
-    { "pyright",  mason = "pyright" },
-    { "ruff", mason = "ruff-lsp" },
+    { "ruff", mason = "ruff" },
   },
 
   null = {
-    { "d.mypy",       mason = "mypy" },
+    { "d.mypy", mason = "mypy" },
+    { "f.usort", mason = "usort" },
   },
 }
