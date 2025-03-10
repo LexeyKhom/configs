@@ -7,7 +7,7 @@ return {
   },
   event = "VeryLazy",
   opts = function()
-    local is_termux = vim.g.is_termux
+    local CMDLINE_WIDTH = vim.g.is_horizontal and 64 or 36
     return {
       lsp = {
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -19,13 +19,13 @@ return {
       },
       presets = {
         long_message_to_split = true, -- long messages will be sent to a split
-        lsp_doc_border = true,        -- add a border to hover docs and signature help
-        inc_rename = true,            -- enables an input dialog for inc-rename.nvim
+        lsp_doc_border = true, -- add a border to hover docs and signature help
+        inc_rename = true, -- enables an input dialog for inc-rename.nvim
       },
       views = {
         cmdline_popup = {
           position = { row = 5, col = "50%" },
-          size = { width = is_termux and 36 or "auto", height = "auto" },
+          size = { width = CMDLINE_WIDTH, height = "auto" },
           border = { style = "none", padding = { 1, 2 } },
           win_options = {
             winhighlight = {
@@ -36,7 +36,7 @@ return {
         },
         popupmenu = {
           position = { row = 8, col = "50%" },
-          size = { width = is_termux and 36 or 60, height = 10 },
+          size = { width = CMDLINE_WIDTH, height = 10 },
           border = { style = "none", padding = { 1, 2 } },
           win_options = {
             winhighlight = {

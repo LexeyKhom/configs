@@ -2,7 +2,7 @@ local CONFIG = { color_square_width = 1 }
 local SQUARE = " 󰝤 " -- alternative: █
 local DUPLICATES_DEFAULT = 0
 local DUPLICATES = { buffer = 1, path = 1, nvim_lsp = 0, luasnip = 1 }
-local MAX_WIDTH = vim.g.is_termux and 16 or 24
+local MAX_WIDTH = vim.g.is_horizontal and 24 or 16
 
 local setColor = function(item, color)
   local hl_group = "lsp_documentColor_mf_" .. color
@@ -31,12 +31,12 @@ local formatter = function(entry, item)
 
     local color_name, color_number
     if
-        words[2] == "x"
-        or words[2] == "y"
-        or words[2] == "t"
-        or words[2] == "b"
-        or words[2] == "l"
-        or words[2] == "r"
+      words[2] == "x"
+      or words[2] == "y"
+      or words[2] == "t"
+      or words[2] == "b"
+      or words[2] == "l"
+      or words[2] == "r"
     then
       color_name = words[3]
       color_number = words[4]
@@ -67,7 +67,7 @@ local formatter = function(entry, item)
 
     local color_index = tonumber(color_number)
     local tailwindcss_colors =
-        require("tailwindcss-colorizer-cmp.colors").TailwindcssColors
+      require("tailwindcss-colorizer-cmp.colors").TailwindcssColors
 
     if not tailwindcss_colors[color_name] then
       return item

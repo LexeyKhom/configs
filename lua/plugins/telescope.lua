@@ -35,7 +35,6 @@ return {
         ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
         ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Find help" },
         ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
-        -- ["<leader>ft"] = { "<cmd> Telescope terms <CR>", "Find term" },
         ["<leader>fc"] = {
           "<cmd> Telescope current_buffer_fuzzy_find <CR>",
           "Find in current buffer",
@@ -80,18 +79,21 @@ return {
       defaults = {
         mappings = {
           n = {
-            ["o"] = actions.select_default,
             [KEYS.ENTER] = actions.select_default,
+            ["<Enter>"] = actions.select_default,
+            ["o"] = actions.select_default,
 
-            ["<leader>x"] = actions.close,
             [KEYS.QUIT] = actions.close,
+            ["<leader>x"] = actions.close,
             ["q"] = actions.close,
           },
 
           i = {
-            [KEYS.QUIT] = actions.close,
-            ["<A-o>"] = actions.select_default,
             [KEYS.ENTER] = actions.select_default,
+            ["<Enter>"] = actions.select_default,
+            ["<A-o>"] = actions.select_default,
+
+            [KEYS.QUIT] = actions.close,
             [KEYS.UP] = actions.move_selection_previous,
             [KEYS.DOWN] = actions.move_selection_next,
           },
@@ -162,7 +164,7 @@ return {
     local telescope = require "telescope"
     telescope.setup(opts)
 
-    -- load extensions
+    -- Load extensions
     for _, extension in ipairs(opts.extensions_list) do
       telescope.load_extension(extension)
     end

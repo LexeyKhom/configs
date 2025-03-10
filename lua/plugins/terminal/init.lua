@@ -88,8 +88,8 @@ return {
         end,
         height = function()
           local screen_width = vim.o.columns
-          local screen_height = vim.o.window
-          local height = screen_height - 2
+          local screen_height = vim.o.lines
+          local height = screen_height - 3
           if screen_width > SMALL_SCREEN_WIDTH then
             height = math.floor(screen_height * 0.86)
           end

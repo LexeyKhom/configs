@@ -37,16 +37,6 @@ local KEYS = {
   EXECUTE = "<A-e>",
 }
 
-if vim.g.is_termux then
-  local assign = require("utils.table").assign
-  local TERMUX_KEYS = {
-    ENTER = "<Enter>",
-    BACKSPACE = "<BS>",
-    DELETE = "<Delete>",
-  }
-  assign(KEYS, TERMUX_KEYS)
-end
-
 require("utils.load").mappings {
   -- Normal
   n = {
@@ -65,9 +55,9 @@ require("utils.load").mappings {
     ["n"] = { "nzzzv", "Next search" },
     ["N"] = { "Nzzzv", "Previous search" },
 
-    -- Polifils with Alt
-    [KEYS.ENTER] = { "<Enter>", "Enter" },
-    [KEYS.BACKSPACE] = { "<BS>", "Backspace" },
+    -- Polifils
+    [KEYS.ENTER] = { "<Enter>", "Enter", { remap = true } },
+    [KEYS.BACKSPACE] = { "<BS>", "Backspace", { remap = true } },
 
     ["<A-r>"] = { "<C-r>", "Redo" },
     ["<A-o>"] = { "<C-o>", "Go to prev location" },
@@ -110,9 +100,9 @@ require("utils.load").mappings {
     ["<A-p>"] = { "<C-r>+", "Paste" },
 
     -- Navigate
-    [KEYS.ENTER] = { "<Enter>", "Enter" },
+    [KEYS.ENTER] = { "<Enter>", "Enter", { remap = true } },
     [KEYS.BACKSPACE] = { "<BS>", "Backspace", { remap = true } },
-    [KEYS.DELETE] = { "<Delete>", "Delete" },
+    [KEYS.DELETE] = { "<Delete>", "Delete", { remap = true } },
 
     [KEYS.UP] = { "<Up>", "Move Up" },
     [KEYS.DOWN] = { "<Down>", "Move Down" },
@@ -142,9 +132,9 @@ require("utils.load").mappings {
     [KEYS.QUIT] = { "<C-c>", "Exit from Command mode" },
 
     -- Navigate within command mode
-    [KEYS.ENTER] = { "<Enter>", "Enter" },
-    [KEYS.BACKSPACE] = { "<BS>", "Backspace" },
-    [KEYS.DELETE] = { "<Delete>", "Delete" },
+    [KEYS.ENTER] = { "<Enter>", "Enter", { remap = true } },
+    [KEYS.BACKSPACE] = { "<BS>", "Backspace", { remap = true } },
+    [KEYS.DELETE] = { "<Delete>", "Delete", { remap = true } },
 
     [KEYS.UP] = { "<Up>", "Move up in history" },
     [KEYS.DOWN] = { "<Down>", "Move down in history" },
