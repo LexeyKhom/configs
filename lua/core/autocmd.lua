@@ -13,3 +13,9 @@ autocmd("VimResized", {
   pattern = "*",
   command = "tabdo wincmd =",
 })
+
+autocmd("VimResized", {
+  callback = function()
+    vim.g.is_horizontal = vim.o.columns > 2 * vim.o.lines
+  end,
+})

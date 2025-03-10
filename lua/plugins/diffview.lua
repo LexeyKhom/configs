@@ -21,7 +21,18 @@ return {
   opts = function()
     local KEYS = require "core.mappings"
     local actions = require "diffview.actions"
+    local DIFF2_LAYOUT = vim.g.is_horizontal and "diff2_horizontal"
+      or "diff2_vertical"
+    local DIFF3_LAYOUT = vim.g.is_horizontal and "diff3_horizontal"
+      or "diff3_vertical"
+
     return {
+      view = {
+        -- Available layouts: 'diff1_plain' | 'diff2_horizontal' | 'diff2_vertical' | 'diff3_horizontal' |'diff3_vertical' |'diff3_mixed' |'diff4_mixed'
+        default = { layout = DIFF2_LAYOUT },
+        merge_tool = { layout = DIFF3_LAYOUT },
+        file_history = { layout = DIFF2_LAYOUT },
+      },
       keymaps = {
         view = {
           {
