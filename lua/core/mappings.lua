@@ -186,7 +186,7 @@ require("utils.load").mappings {
 
     -- Sed
     ["<leader>sf"] = {
-      [[y:%s/<C-r>+/<C-r>+/gI<Left><Left><Left>]],
+      [["ty:%s/<C-r>t/<C-r>t/gI<Left><Left><Left>]],
       "Sed in file",
     },
 
