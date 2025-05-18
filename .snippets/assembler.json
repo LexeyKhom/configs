@@ -1,0 +1,1708 @@
+{
+  "Starter Template": {
+    "prefix": "!",
+    "body": [
+      "%include \"stdlib.inc\"",
+      "%include \"stdio.inc\"",
+      "global _start",
+      "",
+      "section .text",
+      "_start:",
+      "",
+      "$0",
+      "",
+      "_end:",
+      "\tFINISH"
+    ],
+    "description": "Стартовый шаблон"
+  },
+  "PRINT": {
+    "prefix": "PRINT",
+    "body": ["PRINT \"${1:text}\"", "$0"],
+    "description": "Выводит строку (массив символов) в стандартный вывод."
+  },
+  "PUTCHAR": {
+    "prefix": "PUTCHAR",
+    "body": ["PUTCHAR ${1:al}"],
+    "description": "Выводит символ в стандартный вывод как символ ASCII. Можно использовать только 1-байтовые числа."
+  },
+  "GETCHAR": {
+    "prefix": "GETCHAR",
+    "body": ["GETCHAR"],
+    "description": "Получает символ из стандартного ввода и записывает его ASCII код в регистр `EAX`"
+  },
+  "FINISH": {
+    "prefix": "FINISH",
+    "body": ["FINISH $1"],
+    "description": "Завершает программу с кодом $1"
+  },
+  "%Include": {
+    "prefix": "%include",
+    "body": ["%include \"${0:filename}\""],
+    "description": "Предписывает ассемблеру вставить на место директивы все содержимое некоторого файла."
+  },
+  "%Include stdlib": {
+    "prefix": "%stdlib",
+    "body": ["%include \"stdlib.inc\""]
+  },
+  "%Include stdio": {
+    "prefix": "%stdio",
+    "body": ["%include \"stdio.inc\""]
+  },
+  "%Include math": {
+    "prefix": "%math",
+    "body": ["%include \"math.inc\""]
+  },
+  "%Include string": {
+    "prefix": "%string",
+    "body": ["%include \"stdlib.inc\""]
+  },
+  "%Error": {
+    "prefix": "%error",
+    "body": ["%error ${1:message}"],
+    "description": "Выводит сообщение об ошибке и прекращает компиляцию."
+  },
+  "%Macro": {
+    "prefix": "%macro",
+    "body": ["%macro ${1:name} ${2:arg_length}", "\t$0", "%endmacro"],
+    "description": [
+      "Определяет макрос с именем `$name`, принимающий `$arg_length` аргументов.",
+      "- `$arg_length` - может быть как простым числом, так и диапазоном. Например: `1-2` или `2-*`",
+      "- `%%mark` - локальная метка.",
+      "- `%0` - число параметров.",
+      "- `%1`, `%2` и т.д. - аргументы макроса номерам.",
+      "- `%rotate $n` - сдвигает номера параметров на `$n` позиций по кругу (`%0` в ротации не участвует). `$n` Может быть отрицательным."
+    ]
+  },
+  "%Define": {
+    "prefix": "%define",
+    "body": ["%define ${1:CONST_NAME} ${2:value}"],
+    "description": "Задает константное значение, которое будет вставлено в код на этапе препроцессинга."
+  },
+  "%XDefine": {
+    "prefix": "%xdefine",
+    "body": ["%xdefine ${1:CONST_NAME} ${2:value}"],
+    "description": "Аналогично %define, но значение вычисляется и подставляется в код на этапе препроцессинга."
+  },
+  "%IDefine": {
+    "prefix": "%idefine",
+    "body": ["%idefine ${1:CONST_NAME} ${2:value}"],
+    "description": "Аналогично %define, но без учета регистра."
+  },
+  "%Undef": {
+    "prefix": "%undef",
+    "body": ["%undef ${1:CONST_NAME}"],
+    "description": "Отменяет определение ранее определенного макроса или константы."
+  },
+  "%Assign": {
+    "prefix": "%assign",
+    "body": ["%assign ${1:VAR_NAME} ${2:value}"],
+    "description": "Присваивает переменной `$NAME` значение `$value` (). В отличие от `%define`, `%assign` не только выполняет все подстановки в теле макроопределения, но и пытается _вычислить_ тело, как обыкновенное целочисленное арифметическое выражение (работает только с числовыми значениями и выражениями). Так же позволяет изменять значение переменной в процессе выполнения программы."
+  },
+  "%If": {
+    "prefix": "%if",
+    "body": ["%if ${1:condition}", "\t$0", "%endif"],
+    "description": "Условная компиляция. Выполняет блок кода, если выполнено условие: `%if $condition` - в зависимости от значения `$condition` (=, <, >, <=, >=, <>, !=, &&, ||, ^^). Все выражения использующиеся в директиве `%if` рассматриваются как _критические_."
+  },
+  "%Ifdef": {
+    "prefix": "%ifdef",
+    "body": ["%ifdef ${1:NAME}", "\t$0", "%endif"],
+    "description": "Условная компиляция. Выполняет блок кода, если выполнено условие: если константа `$NAME` определена."
+  },
+  "%Ifidn": {
+    "prefix": "%ifidn",
+    "body": ["%ifidn ${1:str1}, ${2:str2}", "\t$0", "%endif"],
+    "description": "Условная компиляция. Выполняет блок кода, если выполнено условие: если строки `$str1` и `$str2` идентичны (`%ifidni` без учета регистра)."
+  },
+  "%Ifidni": {
+    "prefix": "%ifidni",
+    "body": ["%ifidni ${1:str1}, ${2:str2}", "\t$0", "%endif"],
+    "description": "Условная компиляция. Выполняет блок кода, если выполнено условие: если строки `$str1` и `$str2` идентичны (`%ifidni` без учета регистра)."
+  },
+  "%Ifmacro": {
+    "prefix": "%ifmacro",
+    "body": ["%ifmacro ${1:name}", "\t$0", "%endif"],
+    "description": "Условная компиляция. Выполняет блок кода, если выполнено условие: если существует многострочный макрос с именем `$name`."
+  },
+  "%Ifid": {
+    "prefix": "%ifid",
+    "body": ["%ifid ${1:id}", "\t$0", "%endif"],
+    "description": "Условная компиляция. Выполняет блок кода, если выполнено условие: если аргумент является идентификатором."
+  },
+  "%Ifstr": {
+    "prefix": "%ifstr",
+    "body": ["%ifstr ${1:str}", "\t$0", "%endif"],
+    "description": "Условная компиляция. Выполняет блок кода, если выполнено условие: если аргумент является строкой."
+  },
+  "%Ifnum": {
+    "prefix": "%ifnum",
+    "body": ["%ifnum ${1:num}", "\t$0", "%endif"],
+    "description": "Условная компиляция. Выполняет блок кода, если выполнено условие: если аргумент является числовой константой."
+  },
+  "%Ifn": {
+    "prefix": "%ifn",
+    "body": ["%ifn ${1:condition}", "\t$0", "%endif"],
+    "description": "Условная компиляция с отрицанием. Выполняет блок кода, если условие не выполнено: `%ifn $condition` - в зависимости от значения `$condition` (=, <, >, <=, >=, <>, !=, &&, ||, ^^). Все выражения использующиеся в директиве `%ifn` рассматриваются как _критические_."
+  },
+  "%Ifndef": {
+    "prefix": "%ifndef",
+    "body": ["%ifndef ${1:NAME}", "\t$0", "%endif"],
+    "description": "Условная компиляция с отрицанием. Выполняет блок кода, если константа `$NAME` не определена."
+  },
+  "%Ifnidn": {
+    "prefix": "%ifnidn",
+    "body": ["%ifnidn ${1:str1}, ${2:str2}", "\t$0", "%endif"],
+    "description": "Условная компиляция с отрицанием. Выполняет блок кода, если строки `$str1` и `$str2` не идентичны (`%ifidni` без учета регистра)."
+  },
+  "%Ifnmacro": {
+    "prefix": "%ifnmacro",
+    "body": ["%ifnmacro ${1:name}", "\t$0", "%endif"],
+    "description": "Условная компиляция с отрицанием. Выполняет блок кода, если не существует многострочный макрос с именем `$name`."
+  },
+  "%Ifnid": {
+    "prefix": "%ifnid",
+    "body": ["%ifnid ${1:id}", "\t$0", "%endif"],
+    "description": "Условная компиляция с отрицанием. Выполняет блок кода, если аргумент не является идентификатором."
+  },
+  "%Ifnstr": {
+    "prefix": "%ifnstr",
+    "body": ["%ifnstr ${1:str}", "\t$0", "%endif"],
+    "description": "Условная компиляция с отрицанием. Выполняет блок кода, если аргумент не является строкой."
+  },
+  "%Ifnnum": {
+    "prefix": "%ifnnum",
+    "body": ["%ifnnum ${1:num}", "\t$0", "%endif"],
+    "description": "Условная компиляция с отрицанием. Выполняет блок кода, если аргумент не является числовой константой."
+  },
+  "%Elif": {
+    "prefix": "%elif",
+    "body": ["%elif ${1:condition}", "\t$0", "%endif"],
+    "description": "Выполняет блок кода, если условие `%if` не выполнено и `$condition` выполнено."
+  },
+  "%Else": {
+    "prefix": "%else",
+    "body": ["%else", "\t$0", "%endif"],
+    "description": "Выполняет блок кода, если ни одна из предыдущих проверок `%ifXXX` или `%elifXXX` не была выполнена."
+  },
+  "%Endif": {
+    "prefix": "%endif",
+    "body": ["%endif"],
+    "description": "Отмечает конец блока условной компиляции, начатого директивой `%ifXXX`."
+  },
+  "%Rep": {
+    "prefix": "%rep",
+    "body": ["%rep ${1:num}", "\t$0", "%endrep"],
+    "description": "Повторяет блок кода $num раз. Внутри блока можно использовать переменную `%%`, которая будет заменяться на номер текущей итерации (начиная с 1)."
+  },
+  "%Exitrep": {
+    "prefix": "%exitrep",
+    "body": ["%exitrep"],
+    "description": "Досрочное прекращение выполнения макроповторения."
+  },
+  "%Strlen": {
+    "prefix": "%strlen",
+    "body": ["%strlen ${1:NAME} '${2:str}'"],
+    "description": "Определение длины строки `$str` и записывает в макропеременную `$NAME`."
+  },
+  "%Substr": {
+    "prefix": "%substr",
+    "body": ["%substr ${1:NAME} '${2:str}' ${3:n}"],
+    "description": "Выделяет из строки символ с заданным номером (нумерация начинается с 1)."
+  },
+  "Mark": {
+    "prefix": "mark",
+    "body": ["${1:mark}:\n\t$0"],
+    "description": "Создание новой метки. Двоеточие не обязательно, но обычно его ставят всегда, кроме случаев, когда метка используется для указания на адрес ячейки памяти."
+  },
+  "Start": {
+    "prefix": "start",
+    "body": ["_start:\n\t$0"],
+    "description": "Специальная метка, которой помечается точка входа в программу. При запуске программы, адрес этой метки будет передан в регистр EIP."
+  },
+  "Global mark": {
+    "prefix": "global",
+    "body": ["global ${0:mark}"],
+    "description": "Директива, требующая от ассемблера считать следующую метку 'глобальной', т.е. видимой извне объектного модуля."
+  },
+  "Section": {
+    "prefix": "section",
+    "body": ["section .${0:text|data|bss}"],
+    "description": [
+      "Директива описывающая начало новой секции памяти.",
+      "- `.text` - секция исполняемого кода.",
+      "- `.data` - секция описания областей памяти с заданным начальным значением.",
+      "- `.bss` - секция описания областей памяти без заданния начальных значений."
+    ]
+  },
+  "Reserve Byte": {
+    "prefix": "resb",
+    "body": ["${1:mark} resb ${2:length}"],
+    "description": [
+      "Выделяет `Array[8-bit]` (byte) неинициализированной памяти указанной длины.",
+      "",
+      "| Command | Size        | Bit    |",
+      "| ------- | ----------- | ------ |",
+      "| resb    | Byte        | 8-bit  |",
+      "| resw    | Word        | 16-bit |",
+      "| resd    | Double word | 32-bit |",
+      "| resq    | Quadro word | 64-bit |"
+    ]
+  },
+  "Reserve Word": {
+    "prefix": "resw",
+    "body": ["${1:mark} resw ${2:length}"],
+    "description": [
+      "Выделяет `Array[16-bit]` (word) неинициализированной памяти указанной длины.",
+      "",
+      "| Command | Size        | Bit    |",
+      "| ------- | ----------- | ------ |",
+      "| resb    | Byte        | 8-bit  |",
+      "| resw    | Word        | 16-bit |",
+      "| resd    | Double word | 32-bit |",
+      "| resq    | Quadro word | 64-bit |"
+    ]
+  },
+  "Reserve Double word": {
+    "prefix": "resd",
+    "body": ["${1:mark} resd ${2:length}"],
+    "description": [
+      "Выделяет `Array[32-bit]` (double word) неинициализированной памяти указанной длины.",
+      "",
+      "| Command | Size        | Bit    |",
+      "| ------- | ----------- | ------ |",
+      "| resb    | Byte        | 8-bit  |",
+      "| resw    | Word        | 16-bit |",
+      "| resd    | Double word | 32-bit |",
+      "| resq    | Quadro word | 64-bit |"
+    ]
+  },
+  "Reserve Quadro word": {
+    "prefix": "resq",
+    "body": ["${1:mark} resq ${2:length}"],
+    "description": [
+      "Выделяет `Array[64-bit]` (quadro word) неинициализированной памяти указанной длины.",
+      "",
+      "| Command | Size        | Bit    |",
+      "| ------- | ----------- | ------ |",
+      "| resb    | Byte        | 8-bit  |",
+      "| resw    | Word        | 16-bit |",
+      "| resd    | Double word | 32-bit |",
+      "| resq    | Quadro word | 64-bit |"
+    ]
+  },
+  "Define Byte": {
+    "prefix": "db",
+    "body": ["${1:mark} db ${2:values}"],
+    "description": [
+      "Выделяет `Array[8-bit]` (byte) памяти с начальными значениями.",
+      "",
+      "| Command | Size        | Bit    |",
+      "| ------- | ----------- | ------ |",
+      "| db      | Byte        | 8-bit  |",
+      "| dw      | Word        | 16-bit |",
+      "| dd      | Double word | 32-bit |",
+      "| dq      | Quadro word | 64-bit |"
+    ]
+  },
+  "Define Word": {
+    "prefix": "dw",
+    "body": ["${1:mark} dw ${2:values}"],
+    "description": [
+      "Выделяет `Array[16-bit]` (word) памяти с начальным значением.",
+      "",
+      "| Command | Size        | Bit    |",
+      "| ------- | ----------- | ------ |",
+      "| db      | Byte        | 8-bit  |",
+      "| dw      | Word        | 16-bit |",
+      "| dd      | Double word | 32-bit |",
+      "| dq      | Quadro word | 64-bit |"
+    ]
+  },
+  "Define Double word": {
+    "prefix": "dd",
+    "body": ["${1:mark} dd ${2:values}"],
+    "description": [
+      "Выделяет `Array[32-bit]` (double word) памяти с начальным значением.",
+      "",
+      "| Command | Size        | Bit    |",
+      "| ------- | ----------- | ------ |",
+      "| db      | Byte        | 8-bit  |",
+      "| dw      | Word        | 16-bit |",
+      "| dd      | Double word | 32-bit |",
+      "| dq      | Quadro word | 64-bit |"
+    ]
+  },
+  "Define Quadro word": {
+    "prefix": "dq",
+    "body": ["${1:mark} dq ${2:values}"],
+    "description": [
+      "Выделяет `Array[64-bit]` (quadro word) памяти с начальным значением.",
+      "",
+      "| Command | Size        | Bit    |",
+      "| ------- | ----------- | ------ |",
+      "| db      | Byte        | 8-bit  |",
+      "| dw      | Word        | 16-bit |",
+      "| dd      | Double word | 32-bit |",
+      "| dq      | Quadro word | 64-bit |"
+    ]
+  },
+  "Equ": {
+    "prefix": ["equ", "length"],
+    "body": ["${1:mark} equ ${2:values}"],
+    "description": [
+      "Директива задания константы `$mark equ $values`. Часто используют, чтобы связать с некоторым именем (меткой) длину только что заданного массива. Для этого используются _псевдометка $_, которая в каждой строчке, где она появляется, обозначает текущий адрес.",
+      "",
+      "Пример:",
+      "",
+      "```asm",
+      "msg db \"Hello world\", 10, 0",
+      "msg_len equ $-msg ; Длина строки msg",
+      "```"
+    ]
+  },
+  "Times": {
+    "prefix": "times",
+    "body": ["times ${1:count} ${2:instruction}"],
+    "description": [
+      "Позволяет повторить какую-нибудь команду (или псевдокоманду) заданное количество раз.",
+      "",
+      "Например: `start times 4096 db '*'` задаст область памяти размером в 4096 байт, заполненную кодом символа '_', точно так же, как это сделали бы 4096 одинаковых строк, содержащих `db '_'` "
+    ]
+  },
+  "Convert Byte to Word": {
+    "prefix": "cbw",
+    "body": ["cbw"],
+    "description": [
+      "Расширяет регистр `AL` (8-bit) до регистра `AX` (16-bit).",
+      "",
+      "| Command | From         | To               |",
+      "| ------- | ------------ | ---------------- |",
+      "| cbw     | AL (8-bit)   | AX (16-bit)      |",
+      "| cwd     | AX (16-bit)  | DX:AX (32-bit)   |",
+      "| cwde    | AX (16-bit)  | EAX (32-bit)     |",
+      "| cdq     | EAX (32-bit) | EDX:EAX (64-bit) |"
+    ]
+  },
+  "Convert Word to Dword": {
+    "prefix": "cwd",
+    "body": ["cwd"],
+    "description": [
+      "Расширяет регистр `AX` (16-bit) до регистровой пары `DX:AX` (32-bit).",
+      "",
+      "| Command | From         | To               |",
+      "| ------- | ------------ | ---------------- |",
+      "| cbw     | AL (8-bit)   | AX (16-bit)      |",
+      "| cwd     | AX (16-bit)  | DX:AX (32-bit)   |",
+      "| cwde    | AX (16-bit)  | EAX (32-bit)     |",
+      "| cdq     | EAX (32-bit) | EDX:EAX (64-bit) |"
+    ]
+  },
+  "Convert Word to Dword, Extended": {
+    "prefix": "cwde",
+    "body": ["cwde"],
+    "description": [
+      "Расширяет регистр `AX` (16-bit) до регистра `EAX` (32-bit).",
+      "",
+      "| Command | From         | To               |",
+      "| ------- | ------------ | ---------------- |",
+      "| cbw     | AL (8-bit)   | AX (16-bit)      |",
+      "| cwd     | AX (16-bit)  | DX:AX (32-bit)   |",
+      "| cwde    | AX (16-bit)  | EAX (32-bit)     |",
+      "| cdq     | EAX (32-bit) | EDX:EAX (64-bit) |"
+    ]
+  },
+  "Convert Dword to Qword": {
+    "prefix": "cdq",
+    "body": ["cdq"],
+    "description": [
+      "Расширяет регистр `EAX` (32-bit) до регистровой пары `EDX:EAX` (64-bit) pairs.",
+      "",
+      "| Command | From         | To               |",
+      "| ------- | ------------ | ---------------- |",
+      "| cbw     | AL (8-bit)   | AX (16-bit)      |",
+      "| cwd     | AX (16-bit)  | DX:AX (32-bit)   |",
+      "| cwde    | AX (16-bit)  | EAX (32-bit)     |",
+      "| cdq     | EAX (32-bit) | EDX:EAX (64-bit) |"
+    ]
+  },
+  "Load Effective Address": {
+    "prefix": "lea",
+    "body": ["lea ${1:reg}, [${2:address|1000+ebx+8*ecx}]"],
+    "description": [
+      "Заносит в регистр `$reg` результат вычисления адреса `$address`, без обращения к адресу. ",
+      "",
+      "> Можно применять для обычных арифметических расчетов, в том числе никак не связанных с адресами."
+    ]
+  },
+  "Increment": {
+    "prefix": "inc",
+    "body": ["inc ${1:a}"],
+    "description": ["Инкремент. Увеличивает значение на 1.", "Операция: `a++`"]
+  },
+  "Decrement": {
+    "prefix": "dec",
+    "body": ["dec ${1:a}"],
+    "description": ["Декремент. Уменьшает значение на 1.", "Операция: `a++`"]
+  },
+  "Negative": {
+    "prefix": "neg",
+    "body": ["neg ${1:a}"],
+    "description": [
+      "Меняет знак (старший бит) на противоположный.",
+      "Операция: `-a`"
+    ]
+  },
+  "Add": {
+    "prefix": "add",
+    "body": ["add ${1:a}, ${2:b}"],
+    "description": [
+      "Сумма. Складывает `$a` и `$b`, результат помещает в `$a`.",
+      "Операция: `a = a + b`"
+    ]
+  },
+  "Add with CF": {
+    "prefix": "adc",
+    "body": ["adc ${1:a}, ${2:b}"],
+    "description": [
+      "Сумма с учетом CF. Складывает `$a` и `$b`, учитывая CF, результат помещает в `$a`.",
+      "Операция: `a = a + b`",
+      "Пример:",
+      "",
+      "```asm",
+      "add al bl",
+      "adc ah bh",
+      "```"
+    ]
+  },
+  "Subtraction": {
+    "prefix": "sub",
+    "body": ["sub ${1:a}, ${2:b}"],
+    "description": [
+      "Разность. Вычитает из `$a` - `$b`, результат помещает в `$a`.",
+      "Операция: `a = a - b`"
+    ]
+  },
+  "Subtraction with CF": {
+    "prefix": "sbb",
+    "body": ["sbb ${1:a}, ${2:b}"],
+    "description": [
+      "Разность с учетом CF. Вычитает из `$a` - `$b`, учитывая CF, результат помещает в `$a`.",
+      "Операция: `a = a - b`",
+      "Пример:",
+      "",
+      "```asm",
+      "sub al bl",
+      "sbb ah bh",
+      "```"
+    ]
+  },
+  "Multiply": {
+    "prefix": "mul",
+    "body": ["mul ${1:a}"],
+    "description": [
+      "Беззнаковое умножение. Умножает `$a` на регистр `EAX`, результат заносит в регистры `EDX:EAX` (в EDX хранится старшая часть результата).",
+      "Операция: `a * EAX = EDX:EAX`",
+      "",
+      "| Size   | Multiplier | Result  |",
+      "| ------ | ---------- | ------- |",
+      "| 8-bit  | AL         | AX      |",
+      "| 16-bit | AX         | DX:AX   |",
+      "| 32-bit | EAX        | EDX:EAX |"
+    ]
+  },
+  "Signed Multiply": {
+    "prefix": "imul",
+    "body": ["imul ${1:a}"],
+    "description": [
+      "Знаковое умножение. Умножает `$a` на регистр `EAX`, результат заносит в регистры `EDX:EAX` (в EDX хранится старшая часть результата).",
+      "Операция: `a * EAX = EDX:EAX`",
+      "",
+      "| Size   | Multiplier | Result  |",
+      "| ------ | ---------- | ------- |",
+      "| 8-bit  | AL         | AX      |",
+      "| 16-bit | AX         | DX:AX   |",
+      "| 32-bit | EAX        | EDX:EAX |"
+    ]
+  },
+  "Divide": {
+    "prefix": "div",
+    "body": ["div ${1:b}"],
+    "description": [
+      "Беззнаковое деление. Делит регистр `EDX:EAX` (в EDX хранится старшая часть делимого) на `$a`, частное заносит в регистр `EAX`, а остаток в регистр `EDX`.",
+      "Операция: `EDX:EAX / b = EAX (+EDX)`",
+      "",
+      "> Частное всегда округляется в сторону нуля.",
+      "",
+      "| Size   | Divisible | Privately | Remaining |",
+      "| ------ | --------- | --------- | --------- |",
+      "| 8-bit  | AX        | AL        | AH        |",
+      "| 16-bit | DX:AX     | AX        | DX        |",
+      "| 32-bit | EDX:EAX   | EAX       | EDX       |"
+    ]
+  },
+  "Signed Divide": {
+    "prefix": "idiv",
+    "body": ["idiv ${1:b}"],
+    "description": [
+      "знаковое деление. Делит регистр `EDX:EAX` (в EDX хранится старшая часть делимого) на `$a`, частное заносит в регистр `EAX`, а остаток в регистр `EDX`.",
+      "Операция: `EDX:EAX / b = EAX (+EDX)`",
+      "",
+      "> Частное всегда округляется в сторону нуля.",
+      "",
+      "| Size   | Divisible | Privately | Remaining |",
+      "| ------ | --------- | --------- | --------- |",
+      "| 8-bit  | AX        | AL        | AH        |",
+      "| 16-bit | DX:AX     | AX        | DX        |",
+      "| 32-bit | EDX:EAX   | EAX       | EDX       |"
+    ]
+  },
+  "Compare": {
+    "prefix": "cmp",
+    "body": ["cmp ${1:a}, ${2:b}"],
+    "description": [
+      "Сравнение. Сравнивает `$a` и `$b`. Аналогично команде `sub`, но без присваивания значения.",
+      "Операция: `FLAGS = a - b`"
+    ]
+  },
+  "Jump": {
+    "prefix": "jmp",
+    "body": ["jmp ${1:mark}"],
+    "description": [
+      "Безусловный переход. Принудительно записывает в регистр `EIP` новый адрес, заставляя процессор продолжить выполнение программы с другого места.",
+      "",
+      "> Необязательный параметр `short` может оптимизировать машинный код, если метка находится достаточно близко к текущей позиции."
+    ]
+  },
+  "Jump if Zero": {
+    "prefix": "jz",
+    "body": ["jz ${1:mark}"],
+    "description": [
+      "Compare: `a = b`",
+      "Flags: `ZF = 1`",
+      "Alt: `je`",
+      "",
+      "| Jump if...   | Command | Flag   |",
+      "| ------------ | ------- | ------ |",
+      "| Zero         | `jz`    | ZF = 1 |",
+      "| Not Zero     | `jnz`   | ZF = 0 |",
+      "| Sign         | `js`    | SF = 1 |",
+      "| Not Sign     | `jns`   | SF = 0 |",
+      "| Carry        | `jc`    | CF = 1 |",
+      "| Not Carry    | `jnc`   | CF = 0 |",
+      "| Overflow     | `jo`    | OF = 1 |",
+      "| Not Overflow | `jno`   | OF = 0 |",
+      "| Parity       | `jp`    | PF = 1 |",
+      "| Not Parity   | `jnp`   | PF = 0 |"
+    ]
+  },
+  "Jump if Not Zero": {
+    "prefix": "jnz",
+    "body": ["jnz ${1:mark}"],
+    "description": [
+      "Compare: `a ≠ b`",
+      "Flags: `ZF = 0`",
+      "Alt: `jne`",
+      "",
+      "| Jump if...   | Command | Flag   |",
+      "| ------------ | ------- | ------ |",
+      "| Zero         | `jz`    | ZF = 1 |",
+      "| Not Zero     | `jnz`   | ZF = 0 |",
+      "| Sign         | `js`    | SF = 1 |",
+      "| Not Sign     | `jns`   | SF = 0 |",
+      "| Carry        | `jc`    | CF = 1 |",
+      "| Not Carry    | `jnc`   | CF = 0 |",
+      "| Overflow     | `jo`    | OF = 1 |",
+      "| Not Overflow | `jno`   | OF = 0 |",
+      "| Parity       | `jp`    | PF = 1 |",
+      "| Not Parity   | `jnp`   | PF = 0 |"
+    ]
+  },
+  "Jump if Sign": {
+    "prefix": "js",
+    "body": ["js ${1:mark}"],
+    "description": [
+      "Flags: `SF = 1`",
+      "",
+      "| Jump if...   | Command | Flag   |",
+      "| ------------ | ------- | ------ |",
+      "| Zero         | `jz`    | ZF = 1 |",
+      "| Not Zero     | `jnz`   | ZF = 0 |",
+      "| Sign         | `js`    | SF = 1 |",
+      "| Not Sign     | `jns`   | SF = 0 |",
+      "| Carry        | `jc`    | CF = 1 |",
+      "| Not Carry    | `jnc`   | CF = 0 |",
+      "| Overflow     | `jo`    | OF = 1 |",
+      "| Not Overflow | `jno`   | OF = 0 |",
+      "| Parity       | `jp`    | PF = 1 |",
+      "| Not Parity   | `jnp`   | PF = 0 |"
+    ]
+  },
+  "Jump if Not Sign": {
+    "prefix": "jns",
+    "body": ["jns ${1:mark}"],
+    "description": [
+      "Flags: `SF = 0`",
+      "",
+      "| Jump if...   | Command | Flag   |",
+      "| ------------ | ------- | ------ |",
+      "| Zero         | `jz`    | ZF = 1 |",
+      "| Not Zero     | `jnz`   | ZF = 0 |",
+      "| Sign         | `js`    | SF = 1 |",
+      "| Not Sign     | `jns`   | SF = 0 |",
+      "| Carry        | `jc`    | CF = 1 |",
+      "| Not Carry    | `jnc`   | CF = 0 |",
+      "| Overflow     | `jo`    | OF = 1 |",
+      "| Not Overflow | `jno`   | OF = 0 |",
+      "| Parity       | `jp`    | PF = 1 |",
+      "| Not Parity   | `jnp`   | PF = 0 |"
+    ]
+  },
+  "Jump if Carry": {
+    "prefix": "jc",
+    "body": ["jc ${1:mark}"],
+    "description": [
+      "Flags: `CF = 1`",
+      "",
+      "| Jump if...   | Command | Flag   |",
+      "| ------------ | ------- | ------ |",
+      "| Zero         | `jz`    | ZF = 1 |",
+      "| Not Zero     | `jnz`   | ZF = 0 |",
+      "| Sign         | `js`    | SF = 1 |",
+      "| Not Sign     | `jns`   | SF = 0 |",
+      "| Carry        | `jc`    | CF = 1 |",
+      "| Not Carry    | `jnc`   | CF = 0 |",
+      "| Overflow     | `jo`    | OF = 1 |",
+      "| Not Overflow | `jno`   | OF = 0 |",
+      "| Parity       | `jp`    | PF = 1 |",
+      "| Not Parity   | `jnp`   | PF = 0 |"
+    ]
+  },
+  "Jump if Not Carry": {
+    "prefix": "jnc",
+    "body": ["jnc ${1:mark}"],
+    "description": [
+      "Flags: `CF = 0`",
+      "",
+      "| Jump if...   | Command | Flag   |",
+      "| ------------ | ------- | ------ |",
+      "| Zero         | `jz`    | ZF = 1 |",
+      "| Not Zero     | `jnz`   | ZF = 0 |",
+      "| Sign         | `js`    | SF = 1 |",
+      "| Not Sign     | `jns`   | SF = 0 |",
+      "| Carry        | `jc`    | CF = 1 |",
+      "| Not Carry    | `jnc`   | CF = 0 |",
+      "| Overflow     | `jo`    | OF = 1 |",
+      "| Not Overflow | `jno`   | OF = 0 |",
+      "| Parity       | `jp`    | PF = 1 |",
+      "| Not Parity   | `jnp`   | PF = 0 |"
+    ]
+  },
+  "Jump if Overflow": {
+    "prefix": "jo",
+    "body": ["jo ${1:mark}"],
+    "description": [
+      "Flags: `OF = 1`",
+      "",
+      "| Jump if...   | Command | Flag   |",
+      "| ------------ | ------- | ------ |",
+      "| Zero         | `jz`    | ZF = 1 |",
+      "| Not Zero     | `jnz`   | ZF = 0 |",
+      "| Sign         | `js`    | SF = 1 |",
+      "| Not Sign     | `jns`   | SF = 0 |",
+      "| Carry        | `jc`    | CF = 1 |",
+      "| Not Carry    | `jnc`   | CF = 0 |",
+      "| Overflow     | `jo`    | OF = 1 |",
+      "| Not Overflow | `jno`   | OF = 0 |",
+      "| Parity       | `jp`    | PF = 1 |",
+      "| Not Parity   | `jnp`   | PF = 0 |"
+    ]
+  },
+  "Jump if Not Overflow": {
+    "prefix": "jno",
+    "body": ["jno ${1:mark}"],
+    "description": [
+      "Flags: `OF = 0`",
+      "",
+      "| Jump if...   | Command | Flag   |",
+      "| ------------ | ------- | ------ |",
+      "| Zero         | `jz`    | ZF = 1 |",
+      "| Not Zero     | `jnz`   | ZF = 0 |",
+      "| Sign         | `js`    | SF = 1 |",
+      "| Not Sign     | `jns`   | SF = 0 |",
+      "| Carry        | `jc`    | CF = 1 |",
+      "| Not Carry    | `jnc`   | CF = 0 |",
+      "| Overflow     | `jo`    | OF = 1 |",
+      "| Not Overflow | `jno`   | OF = 0 |",
+      "| Parity       | `jp`    | PF = 1 |",
+      "| Not Parity   | `jnp`   | PF = 0 |"
+    ]
+  },
+  "Jump if Parity": {
+    "prefix": "jp",
+    "body": ["jp ${1:mark}"],
+    "description": [
+      "Flags: `PF = 1`",
+      "",
+      "| Jump if...   | Command | Flag   |",
+      "| ------------ | ------- | ------ |",
+      "| Zero         | `jz`    | ZF = 1 |",
+      "| Not Zero     | `jnz`   | ZF = 0 |",
+      "| Sign         | `js`    | SF = 1 |",
+      "| Not Sign     | `jns`   | SF = 0 |",
+      "| Carry        | `jc`    | CF = 1 |",
+      "| Not Carry    | `jnc`   | CF = 0 |",
+      "| Overflow     | `jo`    | OF = 1 |",
+      "| Not Overflow | `jno`   | OF = 0 |",
+      "| Parity       | `jp`    | PF = 1 |",
+      "| Not Parity   | `jnp`   | PF = 0 |"
+    ]
+  },
+  "Jump if Not Parity": {
+    "prefix": "jnp",
+    "body": ["jnp ${1:mark}"],
+    "description": [
+      "Flags: `PF = 0`",
+      "",
+      "| Jump if...   | Command | Flag   |",
+      "| ------------ | ------- | ------ |",
+      "| Zero         | `jz`    | ZF = 1 |",
+      "| Not Zero     | `jnz`   | ZF = 0 |",
+      "| Sign         | `js`    | SF = 1 |",
+      "| Not Sign     | `jns`   | SF = 0 |",
+      "| Carry        | `jc`    | CF = 1 |",
+      "| Not Carry    | `jnc`   | CF = 0 |",
+      "| Overflow     | `jo`    | OF = 1 |",
+      "| Not Overflow | `jno`   | OF = 0 |",
+      "| Parity       | `jp`    | PF = 1 |",
+      "| Not Parity   | `jnp`   | PF = 0 |"
+    ]
+  },
+  "Jump if Equal": {
+    "prefix": "je",
+    "body": ["je ${1:mark}"],
+    "description": [
+      "Compare: `a = b`",
+      "Flags: `ZF = 1`",
+      "Alt: `jz`",
+      "",
+      "| Jump if... | Command | Compare |",
+      "| ---------- | ------- | ------- |",
+      "| Equal      | `je`    | a = b   |",
+      "| Not Equal  | `jne`   | a ≠ b   |"
+    ]
+  },
+  "Jump if Not Equal": {
+    "prefix": "jne",
+    "body": ["jne ${1:mark}"],
+    "description": [
+      "Compare: `a ≠ b`",
+      "Flags: `ZF = 0`",
+      "Alt: `jnz`",
+      "",
+      "| Jump if... | Command | Compare |",
+      "| ---------- | ------- | ------- |",
+      "| Equal      | `je`    | a = b   |",
+      "| Not Equal  | `jne`   | a ≠ b   |"
+    ]
+  },
+  "Jump if Less": {
+    "prefix": "jl",
+    "body": ["jl ${1:mark}"],
+    "description": [
+      "Signed",
+      "Compare: `a < b`",
+      "Flags: `SF ≠ OF`",
+      "Alt: `jnge`",
+      "",
+      "| Jump if...           | Command | Compare |",
+      "| -------------------- | ------- | ------- |",
+      "| Less                 | `jl`    | a < b   |",
+      "| Not Greater or Equal | `jnge`  | a < b   |",
+      "| Less or Equal        | `jle`   | a ≤ b   |",
+      "| Not Greater          | `jng`   | a ≤ b   |",
+      "| Greater              | `jg`    | a > b   |",
+      "| Not Less or Equal    | `jnle`  | a > b   |",
+      "| Greater or Equal     | `jge`   | a ≥ b   |",
+      "| Not Less             | `jnl`   | a ≥ b   |"
+    ]
+  },
+  "Jump if Not Greater or Equal": {
+    "prefix": "jnge",
+    "body": ["jnge ${1:mark}"],
+    "description": [
+      "Signed",
+      "Compare: `a < b`",
+      "Flags: `SF ≠ OF`",
+      "Alt: `jl`",
+      "",
+      "| Jump if...           | Command | Compare |",
+      "| -------------------- | ------- | ------- |",
+      "| Less                 | `jl`    | a < b   |",
+      "| Not Greater or Equal | `jnge`  | a < b   |",
+      "| Less or Equal        | `jle`   | a ≤ b   |",
+      "| Not Greater          | `jng`   | a ≤ b   |",
+      "| Greater              | `jg`    | a > b   |",
+      "| Not Less or Equal    | `jnle`  | a > b   |",
+      "| Greater or Equal     | `jge`   | a ≥ b   |",
+      "| Not Less             | `jnl`   | a ≥ b   |"
+    ]
+  },
+  "Jump if Less or Equal": {
+    "prefix": "jle",
+    "body": ["jle ${1:mark}"],
+    "description": [
+      "Signed",
+      "Compare: `a ≤ b`",
+      "Flags: `SF ≠ OF or ZF = 1`",
+      "Alt: `jng`",
+      "",
+      "| Jump if...           | Command | Compare |",
+      "| -------------------- | ------- | ------- |",
+      "| Less                 | `jl`    | a < b   |",
+      "| Not Greater or Equal | `jnge`  | a < b   |",
+      "| Less or Equal        | `jle`   | a ≤ b   |",
+      "| Not Greater          | `jng`   | a ≤ b   |",
+      "| Greater              | `jg`    | a > b   |",
+      "| Not Less or Equal    | `jnle`  | a > b   |",
+      "| Greater or Equal     | `jge`   | a ≥ b   |",
+      "| Not Less             | `jnl`   | a ≥ b   |"
+    ]
+  },
+  "Jump if Not Greater": {
+    "prefix": "jng",
+    "body": ["jng ${1:mark}"],
+    "description": [
+      "Signed",
+      "Compare: `a ≤ b`",
+      "Flags: `SF ≠ OF or ZF = 1`",
+      "Alt: `jng`",
+      "",
+      "| Jump if...           | Command | Compare |",
+      "| -------------------- | ------- | ------- |",
+      "| Less                 | `jl`    | a < b   |",
+      "| Not Greater or Equal | `jnge`  | a < b   |",
+      "| Less or Equal        | `jle`   | a ≤ b   |",
+      "| Not Greater          | `jng`   | a ≤ b   |",
+      "| Greater              | `jg`    | a > b   |",
+      "| Not Less or Equal    | `jnle`  | a > b   |",
+      "| Greater or Equal     | `jge`   | a ≥ b   |",
+      "| Not Less             | `jnl`   | a ≥ b   |"
+    ]
+  },
+  "Jump if Greater": {
+    "prefix": "jg",
+    "body": ["jg ${1:mark}"],
+    "description": [
+      "Signed",
+      "Compare: `a > b`",
+      "Flags: `SF = OF and ZF = 0`",
+      "Alt: `jnle`",
+      "",
+      "| Jump if...           | Command | Compare |",
+      "| -------------------- | ------- | ------- |",
+      "| Less                 | `jl`    | a < b   |",
+      "| Not Greater or Equal | `jnge`  | a < b   |",
+      "| Less or Equal        | `jle`   | a ≤ b   |",
+      "| Not Greater          | `jng`   | a ≤ b   |",
+      "| Greater              | `jg`    | a > b   |",
+      "| Not Less or Equal    | `jnle`  | a > b   |",
+      "| Greater or Equal     | `jge`   | a ≥ b   |",
+      "| Not Less             | `jnl`   | a ≥ b   |"
+    ]
+  },
+  "Jump if Not Less or Equal": {
+    "prefix": "jnle",
+    "body": ["jnle ${1:mark}"],
+    "description": [
+      "Signed",
+      "Compare: `a > b`",
+      "Flags: `SF = OF and ZF = 0`",
+      "Alt: `jg`",
+      "",
+      "| Jump if...           | Command | Compare |",
+      "| -------------------- | ------- | ------- |",
+      "| Less                 | `jl`    | a < b   |",
+      "| Not Greater or Equal | `jnge`  | a < b   |",
+      "| Less or Equal        | `jle`   | a ≤ b   |",
+      "| Not Greater          | `jng`   | a ≤ b   |",
+      "| Greater              | `jg`    | a > b   |",
+      "| Not Less or Equal    | `jnle`  | a > b   |",
+      "| Greater or Equal     | `jge`   | a ≥ b   |",
+      "| Not Less             | `jnl`   | a ≥ b   |"
+    ]
+  },
+  "Jump if Greater or Equal": {
+    "prefix": "jge",
+    "body": ["jge ${1:mark}"],
+    "description": [
+      "Signed",
+      "Compare: `a ≥ b`",
+      "Flags: `SF = OF`",
+      "Alt: `jnl`",
+      "",
+      "| Jump if...           | Command | Compare |",
+      "| -------------------- | ------- | ------- |",
+      "| Less                 | `jl`    | a < b   |",
+      "| Not Greater or Equal | `jnge`  | a < b   |",
+      "| Less or Equal        | `jle`   | a ≤ b   |",
+      "| Not Greater          | `jng`   | a ≤ b   |",
+      "| Greater              | `jg`    | a > b   |",
+      "| Not Less or Equal    | `jnle`  | a > b   |",
+      "| Greater or Equal     | `jge`   | a ≥ b   |",
+      "| Not Less             | `jnl`   | a ≥ b   |"
+    ]
+  },
+  "Jump if Not Less": {
+    "prefix": "jnl",
+    "body": ["jnl ${1:mark}"],
+    "description": [
+      "Signed",
+      "Compare: `a ≥ b`",
+      "Flags: `SF = OF`",
+      "Alt: `jge`",
+      "",
+      "| Jump if...           | Command | Compare |",
+      "| -------------------- | ------- | ------- |",
+      "| Less                 | `jl`    | a < b   |",
+      "| Not Greater or Equal | `jnge`  | a < b   |",
+      "| Less or Equal        | `jle`   | a ≤ b   |",
+      "| Not Greater          | `jng`   | a ≤ b   |",
+      "| Greater              | `jg`    | a > b   |",
+      "| Not Less or Equal    | `jnle`  | a > b   |",
+      "| Greater or Equal     | `jge`   | a ≥ b   |",
+      "| Not Less             | `jnl`   | a ≥ b   |"
+    ]
+  },
+  "Jump if Below": {
+    "prefix": "jb",
+    "body": ["jb ${1:mark}"],
+    "description": [
+      "Unsigned",
+      "Compare: `a < b`",
+      "Flags: `CF = 1`",
+      "Alt: `jc`, `jnae`",
+      "",
+      "| Jump if...         | Command | Compare |",
+      "| ------------------ | ------- | ------- |",
+      "| Below              | `jb`    | a < b   |",
+      "| Not Above or Equal | `jnae`  | a < b   |",
+      "| Below or Equal     | `jbe`   | a ≤ b   |",
+      "| Not Above          | `jna`   | a ≤ b   |",
+      "| Above              | `ja`    | a > b   |",
+      "| Not Below or Equal | `jnbe`  | a > b   |",
+      "| Above or Equal     | `jae`   | a ≥ b   |",
+      "| Not Below          | `jnb`   | a ≥ b   |"
+    ]
+  },
+  "Jump if Not Above or Equal": {
+    "prefix": "jnae",
+    "body": ["jnae ${1:mark}"],
+    "description": [
+      "Unsigned",
+      "Compare: `a < b`",
+      "Flags: `CF = 1`",
+      "Alt: `jc`,`jb`",
+      "",
+      "| Jump if...         | Command | Compare |",
+      "| ------------------ | ------- | ------- |",
+      "| Below              | `jb`    | a < b   |",
+      "| Not Above or Equal | `jnae`  | a < b   |",
+      "| Below or Equal     | `jbe`   | a ≤ b   |",
+      "| Not Above          | `jna`   | a ≤ b   |",
+      "| Above              | `ja`    | a > b   |",
+      "| Not Below or Equal | `jnbe`  | a > b   |",
+      "| Above or Equal     | `jae`   | a ≥ b   |",
+      "| Not Below          | `jnb`   | a ≥ b   |"
+    ]
+  },
+  "Jump if Below or Equal": {
+    "prefix": "jbe",
+    "body": ["jbe ${1:mark}"],
+    "description": [
+      "Unsigned",
+      "Compare: `a ≤ b`",
+      "Flags: `CF = 1 or ZF = 1`",
+      "Alt: `jna`",
+      "",
+      "| Jump if...         | Command | Compare |",
+      "| ------------------ | ------- | ------- |",
+      "| Below              | `jb`    | a < b   |",
+      "| Not Above or Equal | `jnae`  | a < b   |",
+      "| Below or Equal     | `jbe`   | a ≤ b   |",
+      "| Not Above          | `jna`   | a ≤ b   |",
+      "| Above              | `ja`    | a > b   |",
+      "| Not Below or Equal | `jnbe`  | a > b   |",
+      "| Above or Equal     | `jae`   | a ≥ b   |",
+      "| Not Below          | `jnb`   | a ≥ b   |"
+    ]
+  },
+  "Jump if Not Above": {
+    "prefix": "jna",
+    "body": ["jna ${1:mark}"],
+    "description": [
+      "Unsigned",
+      "Compare: `a ≤ b`",
+      "Flags: `CF = 1 or ZF = 1`",
+      "Alt: `jbe`",
+      "",
+      "| Jump if...         | Command | Compare |",
+      "| ------------------ | ------- | ------- |",
+      "| Below              | `jb`    | a < b   |",
+      "| Not Above or Equal | `jnae`  | a < b   |",
+      "| Below or Equal     | `jbe`   | a ≤ b   |",
+      "| Not Above          | `jna`   | a ≤ b   |",
+      "| Above              | `ja`    | a > b   |",
+      "| Not Below or Equal | `jnbe`  | a > b   |",
+      "| Above or Equal     | `jae`   | a ≥ b   |",
+      "| Not Below          | `jnb`   | a ≥ b   |"
+    ]
+  },
+  "Jump if Above": {
+    "prefix": "ja",
+    "body": ["ja ${1:mark}"],
+    "description": [
+      "Unsigned",
+      "Compare: `a > b`",
+      "Flags: `CF = 0 and ZF = 0`",
+      "Alt: `jnbe`",
+      "",
+      "| Jump if...         | Command | Compare |",
+      "| ------------------ | ------- | ------- |",
+      "| Below              | `jb`    | a < b   |",
+      "| Not Above or Equal | `jnae`  | a < b   |",
+      "| Below or Equal     | `jbe`   | a ≤ b   |",
+      "| Not Above          | `jna`   | a ≤ b   |",
+      "| Above              | `ja`    | a > b   |",
+      "| Not Below or Equal | `jnbe`  | a > b   |",
+      "| Above or Equal     | `jae`   | a ≥ b   |",
+      "| Not Below          | `jnb`   | a ≥ b   |"
+    ]
+  },
+  "Jump if Not Below or Equal": {
+    "prefix": "jnbe",
+    "body": ["jnbe ${1:mark}"],
+    "description": [
+      "Unsigned",
+      "Compare: `a > b`",
+      "Flags: `CF = 0 and ZF = 0`",
+      "Alt: `ja`",
+      "",
+      "| Jump if...         | Command | Compare |",
+      "| ------------------ | ------- | ------- |",
+      "| Below              | `jb`    | a < b   |",
+      "| Not Above or Equal | `jnae`  | a < b   |",
+      "| Below or Equal     | `jbe`   | a ≤ b   |",
+      "| Not Above          | `jna`   | a ≤ b   |",
+      "| Above              | `ja`    | a > b   |",
+      "| Not Below or Equal | `jnbe`  | a > b   |",
+      "| Above or Equal     | `jae`   | a ≥ b   |",
+      "| Not Below          | `jnb`   | a ≥ b   |"
+    ]
+  },
+  "Jump if Above or Equal": {
+    "prefix": "jae",
+    "body": ["jae ${1:mark}"],
+    "description": [
+      "Unsigned",
+      "Compare: `a ≥ b`",
+      "Flags: `CF = 0`",
+      "Alt: `jnc`,`jnb`",
+      "",
+      "| Jump if...         | Command | Compare |",
+      "| ------------------ | ------- | ------- |",
+      "| Below              | `jb`    | a < b   |",
+      "| Not Above or Equal | `jnae`  | a < b   |",
+      "| Below or Equal     | `jbe`   | a ≤ b   |",
+      "| Not Above          | `jna`   | a ≤ b   |",
+      "| Above              | `ja`    | a > b   |",
+      "| Not Below or Equal | `jnbe`  | a > b   |",
+      "| Above or Equal     | `jae`   | a ≥ b   |",
+      "| Not Below          | `jnb`   | a ≥ b   |"
+    ]
+  },
+  "Jump if Not Below": {
+    "prefix": "jnb",
+    "body": ["jnb ${1:mark}"],
+    "description": [
+      "Unsigned",
+      "Compare: `a ≥ b`",
+      "Flags: `CF = 0`",
+      "Alt: `jnc`,`jae`",
+      "",
+      "| Jump if...         | Command | Compare |",
+      "| ------------------ | ------- | ------- |",
+      "| Below              | `jb`    | a < b   |",
+      "| Not Above or Equal | `jnae`  | a < b   |",
+      "| Below or Equal     | `jbe`   | a ≤ b   |",
+      "| Not Above          | `jna`   | a ≤ b   |",
+      "| Above              | `ja`    | a > b   |",
+      "| Not Below or Equal | `jnbe`  | a > b   |",
+      "| Above or Equal     | `jae`   | a ≥ b   |",
+      "| Not Below          | `jnb`   | a ≥ b   |"
+    ]
+  },
+  "While": {
+    "prefix": "while",
+    "body": [
+      ".while_${1:mark}:",
+      "\tcmp ${2:a}, ${3:b}",
+      "\tj${4:NX} .end_while_${1:mark}",
+      ".start_while_${1:mark}:",
+      "\t$0",
+      "\tjmp .while_${1:mark}",
+      ".end_while_${1:mark}:"
+    ],
+    "description": ["While loop"]
+  },
+  "If": {
+    "prefix": "if",
+    "body": [
+      ".if_${1:mark}:",
+      "\tcmp ${2:a}, ${3:b}",
+      "\tj${4:NX} .end_if_${1:mark}",
+      ".start_if_${1:mark}:",
+      "\t$0",
+      ".end_if_${1:mark}:"
+    ],
+    "description": ["If"]
+  },
+  "If Else": {
+    "prefix": "ifelse",
+    "body": [
+      ".if_${1:mark}:",
+      "\tcmp ${2:a}, ${3:b}",
+      "\tj${4:NX} .else_${1:mark}",
+      ".start_if_${1:mark}:",
+      "\t$0",
+      "\tjmp .end_if_${1:mark}",
+      ".else_${1:mark}:",
+      "\t$0",
+      ".end_if_${1:mark}:"
+    ],
+    "description": ["If Else"]
+  },
+  "Switch": {
+    "prefix": "switch",
+    "body": [
+      ".switch_${1:mark}:",
+      "\tcmp ${2:a}, ${3:b}",
+      "\tjz .case_${1:mark}__1",
+      "\tjmp .end_switch_${1:mark}",
+      ".case_${1:mark}__1:",
+      "\t$0",
+      "\tjmp .end_switch_${1:mark}",
+      ".end_switch_${1:mark}:"
+    ],
+    "description": ["Switch"]
+  },
+  "Jump if CX is Zero": {
+    "prefix": "jcxz",
+    "body": ["jcxz ${1:mark}"],
+    "description": ["Compare: `CX = 0`", "For ECX use `jecxz`"]
+  },
+  "Jump if ECX is Zero": {
+    "prefix": "jecxz",
+    "body": ["jecxz ${1:mark}"],
+    "description": ["Compare: `ECX = 0`", "For CX use `jcxz`"]
+  },
+  "Loop": {
+    "prefix": "loop",
+    "body": ["loop ${1:mark}"],
+    "description": [
+      "if `ECX != 0` then jmp $mark",
+      "loop $mark - уменьшает на единицу значение в регистре ECX и, если в результате значение не стало равным нулю, производит переход на заданную метку mark.",
+      "Выполняет только короткие (short) переходы."
+    ]
+  },
+  "Loope": {
+    "prefix": ["loope", "loopz"],
+    "body": ["loope ${1:mark}"],
+    "description": [
+      "if `ECX != 0` and `ZF = 1` then jmp $mark",
+      "Уменьшает на единицу значение в регистре ECX и, если в результате значение не стало равным нулю и при этом флаг ZF установлен (ZF = 1), производит переход на заданную метку mark.",
+      "Выполняет только короткие (short) переходы."
+    ]
+  },
+  "Loopne/Loopnz": {
+    "prefix": ["loopne", "loopnz"],
+    "body": ["loopne ${1:mark}"],
+    "description": [
+      "if `ECX != 0` and `ZF = 0` then jmp $mark",
+      "Уменьшает на единицу значение в регистре ECX и, если в результате значение не стало равным нулю и при этом флаг ZF сброшен (ZF = 0), производит переход на заданную метку mark.",
+      "Выполняет только короткие (short) переходы."
+    ]
+  },
+  "And": {
+    "prefix": "and",
+    "body": ["and ${1:a}, ${2:b}"],
+    "description": [
+      "Побитовое И. Результат записывается в `a`.",
+      "Операция: `a = a AND b`"
+    ]
+  },
+  "Test": {
+    "prefix": "test",
+    "body": ["test ${1:a}, ${2:b}"],
+    "description": [
+      "Тоже, что и `and`, но без записи результата (записываются только флаги).",
+      "Операция: `a AND b`"
+    ]
+  },
+  "or": {
+    "prefix": "or",
+    "body": ["or ${1:a}, ${2:b}"],
+    "description": [
+      "Побитовое ИЛИ. Результат записывается в `a`.",
+      "Операция: `a = a OR b`"
+    ]
+  },
+  "xor": {
+    "prefix": "xor",
+    "body": ["xor ${1:a}, ${2:b}"],
+    "description": [
+      "Побитовое исключающее ИЛИ. Результат записывается в `a`.",
+      "Операция: `a = a XOR b`"
+    ]
+  },
+  "not": {
+    "prefix": "not",
+    "body": ["not ${1:a}"],
+    "description": [
+      "Побитовое отрицание. Резльтат записывается в `a`.",
+      "Операция: `a = NOT a`"
+    ]
+  },
+  "Shift Left": {
+    "prefix": "shl",
+    "body": ["shl ${1:a}, ${2:CL|1-31}"],
+    "description": ["Побитовый сдвиг влево.", "Операция: `a = a << b`"]
+  },
+  "Shift Right": {
+    "prefix": "shr",
+    "body": ["shr ${1:a}, ${2:CL|1-31}"],
+    "description": ["Побитовый сдвиг вправо.", "Операция: `a = a << b`"]
+  },
+  "Shift Arithmetic Left": {
+    "prefix": "sal",
+    "body": ["sal ${1:a}, ${2:CL|1-31}"],
+    "description": [
+      "Побитовый сдвиг влево.",
+      "То же, что и `shl`.",
+      "Операция: `a = a << b`"
+    ]
+  },
+  "Shift Arithmetic Right": {
+    "prefix": "sar",
+    "body": ["sar ${1:a}, ${2:CL|1-31}"],
+    "description": [
+      "Побитовый сдвиг вправо с сохранением знака.",
+      "Операция: `a = a << b`"
+    ]
+  },
+  "Round Shift Left": {
+    "prefix": "rol",
+    "body": ["rol ${1:a}, ${2:CL|1-31}"],
+    "description": [
+      "Циклический побитовый сдвиг влево.",
+      "Операция: `a = a << b`"
+    ]
+  },
+  "Round Shift Right": {
+    "prefix": "ror",
+    "body": ["ror ${1:a}, ${2:CL|1-31}"],
+    "description": [
+      "Циклический побитовый сдвиг вправо.",
+      "Операция: `a = a << b`"
+    ]
+  },
+  "Clear Direction": {
+    "prefix": "cld",
+    "body": ["cld"],
+    "description": ["Устанавливает флаг `DF = 0`."]
+  },
+  "Set Direction": {
+    "prefix": "std",
+    "body": ["std"],
+    "description": ["Устанавливает флаг `DF = 1`."]
+  },
+  "Clear Carry": {
+    "prefix": ["clc"],
+    "body": ["clc"],
+    "description": ["Устанавливает флаг `CF = 0`."]
+  },
+  "Set Carry": {
+    "prefix": ["stc"],
+    "body": ["stc"],
+    "description": ["Устанавливает флаг `CF = 1`."]
+  },
+  "Store Byte": {
+    "prefix": "stosb",
+    "body": ["stosb"],
+    "description": [
+      "Записывает в память по адресу `[EDI]` соответствующий байт/слово/двойное слово из регистра AL/AX/EAX. После чего увеличивает или уменьшает (в зависимости от значения флага DF) регистр EDI на 1/2/4.",
+      "",
+      "> Prefix `rep` can be used.",
+      "",
+      "| Command | Register     | Inc/Dec |",
+      "| ------- | ------------ | ------- |",
+      "| stosb   | AL (8-bit)   | 1       |",
+      "| stosw   | AX (16-bit)  | 2       |",
+      "| stosd   | EAX (32-bit) | 4       |"
+    ]
+  },
+  "Store Word": {
+    "prefix": "stosw",
+    "body": ["stosw"],
+    "description": [
+      "Записывает в память по адресу `[EDI]` соответствующий байт/слово/двойное слово из регистра AL/AX/EAX. После чего увеличивает или уменьшает (в зависимости от значения флага DF) регистр EDI на 1/2/4.",
+      "",
+      "> Prefix `rep` can be used.",
+      "",
+      "| Command | Register     | Inc/Dec |",
+      "| ------- | ------------ | ------- |",
+      "| stosb   | AL (8-bit)   | 1       |",
+      "| stosw   | AX (16-bit)  | 2       |",
+      "| stosd   | EAX (32-bit) | 4       |"
+    ]
+  },
+  "Store Double Word": {
+    "prefix": "stosd",
+    "body": ["stosd"],
+    "description": [
+      "Записывает в память по адресу `[EDI]` соответствующий байт/слово/двойное слово из регистра AL/AX/EAX. После чего увеличивает или уменьшает (в зависимости от значения флага DF) регистр EDI на 1/2/4.",
+      "",
+      "> Prefix `rep` can be used.",
+      "",
+      "| Command | Register     | Inc/Dec |",
+      "| ------- | ------------ | ------- |",
+      "| stosb   | AL (8-bit)   | 1       |",
+      "| stosw   | AX (16-bit)  | 2       |",
+      "| stosd   | EAX (32-bit) | 4       |"
+    ]
+  },
+  "Load Byte": {
+    "prefix": "lodsb",
+    "body": ["lodsb"],
+    "description": [
+      "Считывает из памяти по адресу `[ESI]` соответствующий байт/слово/двойное слово и помещает прочитанное в регистр AL/AX/EAX. После чего увеличивает или уменьшает (в зависимости от значения флага DF) регистр ESI на 1/2/4.",
+      "",
+      "| Command | Register     | Inc/Dec |",
+      "| ------- | ------------ | ------- |",
+      "| lodsb   | AL (8-bit)   | 1       |",
+      "| lodsw   | AX (16-bit)  | 2       |",
+      "| lodsd   | EAX (32-bit) | 4       |"
+    ]
+  },
+  "Load Word": {
+    "prefix": "lodsw",
+    "body": ["lodsb"],
+    "description": [
+      "Считывает из памяти по адресу `[ESI]` соответствующий байт/слово/двойное слово и помещает прочитанное в регистр AL/AX/EAX. После чего увеличивает или уменьшает (в зависимости от значения флага DF) регистр ESI на 1/2/4.",
+      "",
+      "| Command | Register     | Inc/Dec |",
+      "| ------- | ------------ | ------- |",
+      "| lodsb   | AL (8-bit)   | 1       |",
+      "| lodsw   | AX (16-bit)  | 2       |",
+      "| lodsd   | EAX (32-bit) | 4       |"
+    ]
+  },
+  "Load Double Word": {
+    "prefix": "lodsb",
+    "body": ["lodsb"],
+    "description": [
+      "Считывает из памяти по адресу `[ESI]` соответствующий байт/слово/двойное слово и помещает прочитанное в регистр AL/AX/EAX. После чего увеличивает или уменьшает (в зависимости от значения флага DF) регистр ESI на 1/2/4.",
+      "",
+      "| Command | Register     | Inc/Dec |",
+      "| ------- | ------------ | ------- |",
+      "| lodsb   | AL (8-bit)   | 1       |",
+      "| lodsw   | AX (16-bit)  | 2       |",
+      "| lodsd   | EAX (32-bit) | 4       |"
+    ]
+  },
+  "Move": {
+    "prefix": "mov",
+    "body": ["mov ${1:to}, ${2:from}"],
+    "description": [
+      "Перемещение. Копирует данные из `$from` в `$to`.",
+      "Операция: `to = from`"
+    ]
+  },
+  "Move Byte": {
+    "prefix": "movsb",
+    "body": ["movsb"],
+    "description": [
+      "Копирует байт/слово/двойное слово из памяти по адресу `[ESI]` в память по адресу `[EDI]`. После чего увеличивает или уменьшает (в зависимости от значения флага DF) сразу оба регистра ESI и EDI на 1/2/4.",
+      "",
+      "> Prefix `rep` can be used.",
+      "",
+      "| Command | Size   | Inc/Dec |",
+      "| ------- | ------ | ------- |",
+      "| movsb   | 8-bit  | 1       |",
+      "| movsw   | 16-bit | 2       |",
+      "| movsd   | 32-bit | 4       |"
+    ]
+  },
+  "Move Word": {
+    "prefix": "movsw",
+    "body": ["movsw"],
+    "description": [
+      "Копирует байт/слово/двойное слово из памяти по адресу `[ESI]` в память по адресу `[EDI]`. После чего увеличивает или уменьшает (в зависимости от значения флага DF) сразу оба регистра ESI и EDI на 1/2/4.",
+      "",
+      "> Prefix `rep` can be used.",
+      "",
+      "| Command | Size   | Inc/Dec |",
+      "| ------- | ------ | ------- |",
+      "| movsb   | 8-bit  | 1       |",
+      "| movsw   | 16-bit | 2       |",
+      "| movsd   | 32-bit | 4       |"
+    ]
+  },
+  "Move Double Word": {
+    "prefix": "movsd",
+    "body": ["movsd"],
+    "description": [
+      "Копирует байт/слово/двойное слово из памяти по адресу `[ESI]` в память по адресу `[EDI]`. После чего увеличивает или уменьшает (в зависимости от значения флага DF) сразу оба регистра ESI и EDI на 1/2/4.",
+      "",
+      "> Prefix `rep` can be used.",
+      "",
+      "| Command | Size   | Inc/Dec |",
+      "| ------- | ------ | ------- |",
+      "| movsb   | 8-bit  | 1       |",
+      "| movsw   | 16-bit | 2       |",
+      "| movsd   | 32-bit | 4       |"
+    ]
+  },
+  "Repeat": {
+    "prefix": "rep",
+    "body": ["rep ${0:stosX|movsX}"],
+    "description": [
+      "Команды `stosX` и `movsX` (для `lodsX` не имеет смысла) можно снабдить префиксом `rep`. Команда, снабженная таким префиксом, будет выполнена столько раз, какое число было в регистре CX/ECX (если CX/ECX равен нулю, команда не будет выполнена ни разу)."
+    ]
+  },
+  "Scan String Byte": {
+    "prefix": "scasb",
+    "body": ["scasb"],
+    "description": [
+      "Сравнивает аккумулятор AL/AX/EAX с байтом/словом/двойным словом находящимся в памяти по адресу `[EDI]`, устанавливая соответствующие флаги. После чего увеличивает или умешьшает (в зависимости от значения флага DF) регистр EDI на 1/2/4.",
+      "",
+      "> Prefix `repz/repnz` can be used.",
+      "",
+      "| Command | Register | Size   | Inc/Dec |",
+      "| ------- | -------- | ------ | ------- |",
+      "| scasb   | AL       | 8-bit  | 1       |",
+      "| scasw   | AX       | 16-bit | 2       |",
+      "| scasd   | EAX      | 32-bit | 4       |"
+    ]
+  },
+  "Scan String Word": {
+    "prefix": "scasw",
+    "body": ["scasw"],
+    "description": [
+      "Сравнивает аккумулятор AL/AX/EAX с байтом/словом/двойным словом находящимся в памяти по адресу `[EDI]`, устанавливая соответствующие флаги. После чего увеличивает или умешьшает (в зависимости от значения флага DF) регистр EDI на 1/2/4.",
+      "",
+      "> Prefix `repz/repnz` can be used.",
+      "",
+      "| Command | Register | Size   | Inc/Dec |",
+      "| ------- | -------- | ------ | ------- |",
+      "| scasb   | AL       | 8-bit  | 1       |",
+      "| scasw   | AX       | 16-bit | 2       |",
+      "| scasd   | EAX      | 32-bit | 4       |"
+    ]
+  },
+  "Scan String Double Word": {
+    "prefix": "scasd",
+    "body": ["scasd"],
+    "description": [
+      "Сравнивает аккумулятор AL/AX/EAX с байтом/словом/двойным словом находящимся в памяти по адресу `[EDI]`, устанавливая соответствующие флаги. После чего увеличивает или умешьшает (в зависимости от значения флага DF) регистр EDI на 1/2/4.",
+      "",
+      "> Prefix `repz/repnz` can be used.",
+      "",
+      "| Command | Register | Size   | Inc/Dec |",
+      "| ------- | -------- | ------ | ------- |",
+      "| scasb   | AL       | 8-bit  | 1       |",
+      "| scasw   | AX       | 16-bit | 2       |",
+      "| scasd   | EAX      | 32-bit | 4       |"
+    ]
+  },
+  "Compare String Byte": {
+    "prefix": "cmpsb",
+    "body": ["cmpsb"],
+    "description": [
+      "Сравнивает байты/слова/двойные слова находящиеся в памяти по адресам `[ESI]` и `[EDI]`, услатавливая соответствующие флаги. После чего увеличивает и��и умешьшает (в зависимости от значения флага DF) сразу оба регистра ESI и EDI на 1/2/4.",
+      "",
+      "> Prefix `repz/repnz` can be used.",
+      "",
+      "| Command | Size   | Inc/Dec |",
+      "| ------- | ------ | ------- |",
+      "| cmpsb   | 8-bit  | 1       |",
+      "| cmpsw   | 16-bit | 2       |",
+      "| cmpsd   | 32-bit | 4       |"
+    ]
+  },
+  "Compare String Word": {
+    "prefix": "cmpsw",
+    "body": ["cmpsw"],
+    "description": [
+      "Сравнивает байты/слова/двойные слова находящиеся в памяти по адресам `[ESI]` и `[EDI]`, услатавливая соответствующие флаги. После чего увеличивает или умешьшает (в зависимости от значения флага DF) сразу оба регистра ESI и EDI на 1/2/4.",
+      "",
+      "> Prefix `repz/repnz` can be used.",
+      "",
+      "| Command | Size   | Inc/Dec |",
+      "| ------- | ------ | ------- |",
+      "| cmpsb   | 8-bit  | 1       |",
+      "| cmpsw   | 16-bit | 2       |",
+      "| cmpsd   | 32-bit | 4       |"
+    ]
+  },
+  "Compare String Double Word": {
+    "prefix": "cmpsb",
+    "body": ["cmpsb"],
+    "description": [
+      "Сравнивает байты/слова/двойные слова находящиеся в памяти по адресам `[ESI]` и `[EDI]`, услатавливая соответствующие флаги. После чего увеличивает или умешьшает (в зависимости от значения флага DF) сразу оба регистра ESI и EDI на 1/2/4.",
+      "",
+      "> Prefix `repz/repnz` can be used.",
+      "",
+      "| Command | Size   | Inc/Dec |",
+      "| ------- | ------ | ------- |",
+      "| cmpsb   | 8-bit  | 1       |",
+      "| cmpsw   | 16-bit | 2       |",
+      "| cmpsd   | 32-bit | 4       |"
+    ]
+  },
+  "Repeat While Zero": {
+    "prefix": ["repz", "repe"],
+    "body": ["repz ${0:stosX|movsX}"],
+    "description": [
+      "Команды `scasX` и `cmpsX` можно снабдить префиксом `repz`/`repnz`. Команда, снабженная таким префиксом, будет выполнена столько раз, какое число было в регистре CX/ECX (если CX/ECX равен нулю, команда не будет выполнена ни разу), проверяя при этом значение флага ZF и продолжая работу, только если этот флаг установлен/сброшен."
+    ]
+  },
+  "Repeat While Not Zero": {
+    "prefix": ["repnz", "repne"],
+    "body": ["repnz ${0:stosX|movsX}"],
+    "description": [
+      "Команды `scasX` и `cmpsX` можно снабдить префи��сом `repz`/`repnz`. Команда, снабженная таким префиксом, будет выполнена столько раз, какое число было в регистре CX/ECX (если CX/ECX равен нулю, команда не будет выполнена ни разу), проверяя при этом значение флага ZF и продолжая работу, только если этот флаг установлен/сброш��н."
+    ]
+  },
+  "Load AH from Flags": {
+    "prefix": ["lahf"],
+    "body": ["lahf"],
+    "description": [
+      "Часто используется вместе с `sahf`. Копирует содержимое регистров флагов в регистр AH: CF в 0 бит (младший), PF в 2 бит, AF в 4 бит, ZF в 6 бит, SF в 7 бит (старший)."
+    ]
+  },
+  "Save AH to Flags": {
+    "prefix": ["sahf"],
+    "body": ["sahf"],
+    "description": [
+      "Часто используется вместе с `lahf`. Копирует содержимое регистра AH в регистры флагов: (младший) 0 бит в CF, 2 бит в PF, 4 бит в AF, 6 бит в ZF, (старший) 7 бит в SF."
+    ]
+  },
+  "Move Zero Extension": {
+    "prefix": ["movzx"],
+    "body": ["movzx ${1:to}, ${2:from}"],
+    "description": [
+      "Перемещение с расширением нулями. Позволяет совместить копирование с увеличением разрядности. Первый операнд обязан быть регистровым, а его длина дожна быть вдвое больше длины второго. Недостающие разряды команда `movzx` заполняет нулями. Например: `1100->00001100`."
+    ]
+  },
+  "Move Signed Extension": {
+    "prefix": ["movsx"],
+    "body": ["movsx ${1:to}, ${2:from}"],
+    "description": [
+      "Перемещение со знаковым расширением. Позволяет совместить копирование с увеличением разрядности. Первый операнд обязан быть регистровым, а его длина дожна быть вдвое больше длины второго. Недостающие разряды команда `movsx` заполняет значением старшего бита исходного операнда. Например: `1100->11111100`."
+    ]
+  },
+  "Byte Swap": {
+    "prefix": ["bswap"],
+    "body": ["bswap ${0:a}"],
+    "description": [
+      "Переставляет байты заданного 32-битного регистра в обратном порядке. Например: `0x12345678->0x78563412.`"
+    ]
+  },
+  "Exchange": {
+    "prefix": ["xchg"],
+    "body": ["xchg ${1:a} ${2:b}"],
+    "description": [
+      "Меняет местами значения двух своих операндов за одно _неделимое действие_."
+    ]
+  },
+  "Lock": {
+    "prefix": ["lock"],
+    "body": ["lock ${0:cmd arg}"],
+    "description": [
+      "Префикс _неделимости_. Подходит для всех команд, ко��орые предполагают, что из памяти будет извлечено некое значение, на его основе вычеслено новое и записано в ту же память. Например `lock inc dword [x]`, `lock sub [x], eax` и т.д."
+    ]
+  },
+  "Push": {
+    "prefix": "push",
+    "body": ["push ${1:a}"],
+    "description": [
+      "Заносит значение `$a` в стек (рекомендуется использовать dword). Совмещает копирование данных со сдвигом вершины стека `ESP`."
+    ]
+  },
+  "Push All Doublewords": {
+    "prefix": "pushad",
+    "body": ["pushad"],
+    "description": ["Заносит значения всех регистров общего назначения в стек."]
+  },
+  "Push Flags": {
+    "prefix": "pushfd",
+    "body": ["pushfd"],
+    "description": ["Заносит зна��ения всех флагов в стек."]
+  },
+  "Pop": {
+    "prefix": "pop",
+    "body": ["pop ${1:a}"],
+    "description": [
+      "Извлекает значение из стека в `$a` (рекомендуется использовать dword). Совмещает копирование данных со сдвигом вершины стека `ESP`."
+    ]
+  },
+  "Pop All Doublewords": {
+    "prefix": "popad",
+    "body": ["popad"],
+    "description": [
+      "Извлекает значения всех регистров общего назначения из стека."
+    ]
+  },
+  "Pop Flags": {
+    "prefix": "popfd",
+    "body": ["popfd"],
+    "description": ["Извлекает значения всех флагов из стека."]
+  },
+  "Call": {
+    "prefix": "call",
+    "body": ["call ${1:mark}"],
+    "description": [
+      "Вызов подпрограммы. Записывает регистр `ESP` в 4 байта вершины стека и принудительно записывает в регистр EIP новый адрес, заставляя процессор продолжить выполнение программы с другого места (аналогично безусловному переходу `jmp`, но может использовать только форму `near`)."
+    ]
+  },
+  "Return": {
+    "prefix": "ret",
+    "body": ["ret"],
+    "description": [
+      "Возврат из подпрограммы. Извлекает 4 байта с вершины стека и записывает их в регистр `ESP`, в результате чего управление передается по адресу, который находится в памяти на вершине стека."
+    ]
+  },
+  "Local Mark": {
+    "prefix": [".local_mark", ".mark"],
+    "body": [".${1:mark}:\n\t$0"],
+    "description": [
+      "Создание новой локальной метки. Аналогична обычной метке, но видна только между двумя обычными (не локальными) метками."
+    ]
+  },
+  "Procedure": {
+    "prefix": "proc",
+    "body": [
+      "$proc_${1:name}:",
+      "\tpush ebp",
+      "\tmov ebp, esp",
+      "",
+      "\t${2:;code}",
+      "",
+      "\tmov esp, ebp",
+      "\tpop ebp",
+      "\tret",
+      "$end_proc_${1:name}:"
+    ],
+    "description": "Создание процедуры"
+  }
+}

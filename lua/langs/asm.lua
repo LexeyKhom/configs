@@ -3,11 +3,11 @@ return {
     "nasm",
   },
 
-  lsp = {
-    { "asm_lsp", mason = "asm-lsp" },
-  },
+  -- lsp = {
+  --   { "asm_lsp", mason = "asm-lsp" },
+  -- },
 
-  null = {
-    { "f.asmfmt", mason = "asmfmt" },
-  },
+  -- null = {
+  --   { "f.asmfmt", mason = "asmfmt" },
+  -- },
 }

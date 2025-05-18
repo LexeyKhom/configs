@@ -21,3 +21,9 @@ getmetatable("").__mod = function(s, tab)
     end)
   )
 end
+
+vim.filetype.add {
+  extension = {
+    inc = "asm",
+  },
+}

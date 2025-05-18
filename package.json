@@ -20,6 +20,10 @@
         "path": "./.snippets/license.json"
       },
       {
+        "language": "asm",
+        "path": "./.snippets/assembler.json"
+      },
+      {
         "language": "c",
         "path": "./.snippets/c.json"
       },
