@@ -1,14 +1,14 @@
 {
   "createt": {
     "prefix": "createt",
-    "body": ["CREATE TABLE ${1:tableName} (", "\t${2:attribute(s)}", ");"],
+    "body": ["CREATE TABLE ${1:tableName} (", "\t${2:attribute}", ");"],
     "description": "Create regular table"
   },
   "createti": {
     "prefix": "createti",
     "body": [
       "CREATE TABLE IF NOT EXISTS ${1:tableName} (",
-      "\t${2:attribute(s)}",
+      "\t${2:attribute}",
       ");"
     ],
     "description": "Create table with conditional"
@@ -23,86 +23,25 @@
     "body": ["CREATE DATABASE IF NOT EXISTS ${1:name};"],
     "description": "Create table with conditional"
   },
-  "insert": {
-    "prefix": "insert",
-    "body": [
-      "INSERT INTO ${1:tableName} (",
-      "\t${2:attribute(s)}",
-      ") VALUES ( ${3:values} )"
-    ],
-    "description": "Insert value(s)"
-  },
   "dropt": {
     "prefix": "dropt",
     "body": ["DROP TABLE ${1:tableName};"],
     "description": "Drop table"
-  },
-  "dropd": {
-    "prefix": "dropd",
-    "body": ["DROP DATABASE ${1:dbName};"],
-    "description": "Drop database"
   },
   "dropti": {
     "prefix": "dropti",
     "body": ["DROP TABLE IF EXISTS ${1:tableName};"],
     "description": "Drop table with conditional"
   },
+  "dropd": {
+    "prefix": "dropd",
+    "body": ["DROP DATABASE ${1:dbName};"],
+    "description": "Drop database"
+  },
   "dropdi": {
     "prefix": "dropdi",
     "body": ["DROP DATABASE IF EXISTS ${1:dbName};"],
     "description": "Drop database with conditional"
-  },
-  "showt": {
-    "prefix": "showt",
-    "body": ["SHOW TABLES;"],
-    "description": "Show tables"
-  },
-  "showd": {
-    "prefix": "showd",
-    "body": ["SHOW DATABASES;"],
-    "description": "Show databases"
-  },
-  "select": {
-    "prefix": "select",
-    "body": ["SELECT ${1:attribute(s)} FROM ${2:tableName};"],
-    "description": "Regular select"
-  },
-  "selectd": {
-    "prefix": "selectd",
-    "body": ["SELECT DISTINCT ${1:attribute(s)}", "\tFROM ${2:tableName};"],
-    "description": "Select Distinct"
-  },
-  "selectw": {
-    "prefix": "selectw",
-    "body": [
-      "SELECT ${1:attribute(s)}",
-      "\tFROM ${2:tableName}",
-      "\tWHERE ${3:condition};"
-    ],
-    "description": "Select with condition"
-  },
-  "selector": {
-    "prefix": "selector",
-    "body": [
-      "SELECT ${1:attribute(s)}",
-      "\tFROM ${2:tableName}",
-      "\tORDER BY ${3:attribute(s)} ${4:ASC|DESC};"
-    ],
-    "description": "Select with order"
-  },
-  "updatet": {
-    "prefix": "updatet",
-    "body": [
-      "UPDATE ${1:tableName}",
-      "\tSET ${2:attribute(s)}",
-      "\tWHERE ${3:condition};"
-    ],
-    "description": "Update table"
-  },
-  "delete": {
-    "prefix": "delete",
-    "body": ["DELETE FROM ${1:tableName}", "\tWHERE ${3:condition};"],
-    "description": "Delete records"
   },
   "altert": {
     "prefix": "altert",
@@ -132,74 +71,6 @@
     ],
     "description": "Alter database"
   },
-  "ijoin": {
-    "prefix": "ijoin",
-    "body": [
-      "SELECT ${1:attribute(s)}",
-      "\tFROM ${2:tableName}",
-      "\tINNER JOIN ${3:tableName2}",
-      "\tON ${4:match};"
-    ],
-    "description": "Inner Join"
-  },
-  "rjoin": {
-    "prefix": "rjoin",
-    "body": [
-      "SELECT ${1:attribute(s)}",
-      "\tFROM ${2:tableName}",
-      "\tRIGHT JOIN ${3:tableName2}",
-      "\tON ${4:match};"
-    ],
-    "description": "Right Join"
-  },
-  "ljoin": {
-    "prefix": "ljoin",
-    "body": [
-      "SELECT ${1:attribute(s)}",
-      "\tFROM ${2:tableName}",
-      "\tLEFT JOIN ${3:tableName2}",
-      "\tON ${4:match};"
-    ],
-    "description": "Left Join"
-  },
-  "fjoin": {
-    "prefix": "fjoin",
-    "body": [
-      "SELECT ${1:attribute(s)}",
-      "\tFROM ${2:tableName}",
-      "\tFULL JOIN OUTER ${3:tableName2}",
-      "\tON ${4:match}",
-      "\tWHERE ${5:condition};"
-    ],
-    "description": "Full Join"
-  },
-  "union": {
-    "prefix": "union",
-    "body": [
-      "SELECT ${1:attribute(s)} FROM ${2:tableName}",
-      "UNION",
-      "SELECT ${3:attribute(s)} FROM ${4:tableName2};"
-    ],
-    "description": "Regular union"
-  },
-  "uniona": {
-    "prefix": "uniona",
-    "body": [
-      "SELECT ${1:attribute(s)} FROM ${2:tableName}",
-      "UNION ALL",
-      "SELECT ${3:attribute(s)} FROM ${4:tableName2};"
-    ],
-    "description": "All union"
-  },
-  "groupb": {
-    "prefix": "groupb",
-    "body": [
-      "SELECT ${1:attribute(s)}",
-      "\tFROM ${2:tableName}",
-      "\tGROUP BY ${3:attribute(s)};"
-    ],
-    "description": "Group by"
-  },
   "bakupd": {
     "prefix": "bakupd",
     "body": ["BACKUP DATABASE ${1:dbName}", "\tTO DISK ${2:filepath};"],
@@ -213,36 +84,6 @@
       "\tWITH ${3:DIFERENTIAL};"
     ],
     "description": "Diferencial backup database"
-  },
-  "primaryk": {
-    "prefix": "primaryk",
-    "body": ["PRIMARY KEY(${1:attribute})"],
-    "description": "Primary Key"
-  },
-  "primarykc": {
-    "prefix": "primarykc",
-    "body": ["CONSTRAINT ${1:attribute} PRIMARY KEY(${2:attribute(s)})"],
-    "description": "Constraint rimary Key"
-  },
-  "foreingk": {
-    "prefix": "foreingk",
-    "body": [
-      "FOREIGN KEY(${1:attribute}) REFERENCES ${2:tableName}(${3:attribute})"
-    ],
-    "description": "Foreing Key"
-  },
-  "foreingkc": {
-    "prefix": "foreingkc",
-    "body": [
-      "CONSTRAINT ${1:attribute} FOREIGN KEY (${2:attribute(s)})",
-      "\tREFERENCES ${3:tableName}(${4:attribute})"
-    ],
-    "description": "Constraint foreing Key"
-  },
-  "check": {
-    "prefix": "check",
-    "body": ["CHECK ( ${1:condition} )"],
-    "description": "Check"
   },
   "creteuser": {
     "prefix": "createuser",
@@ -258,5 +99,191 @@
     "prefix": "grantuser",
     "body": "GRANT ALL PRIVILEGES ON ${1:db}.${2:tb} TO '${3:user_name}'@'${4:localhost}';",
     "description": "Grant privileges"
+  },
+  "insert": {
+    "prefix": "insert",
+    "body": [
+      "INSERT INTO ${1:tableName} (",
+      "\t${2:attribute}",
+      ") VALUES ( ${3:values} )"
+    ],
+    "description": "Insert value(s)"
+  },
+  "updatet": {
+    "prefix": "updatet",
+    "body": [
+      "UPDATE ${1:tableName}",
+      "\tSET ${2:attribute}",
+      "\tWHERE ${3:condition};"
+    ],
+    "description": "Update table"
+  },
+  "delete": {
+    "prefix": "delete",
+    "body": ["DELETE FROM ${1:tableName}", "\tWHERE ${2:condition};"],
+    "description": "Delete records"
+  },
+  "with": {
+    "prefix": "with",
+    "body": [
+      "WITH ${1:name} AS (",
+      "\tSELECT ${3:attribute} FROM ${2:tableName}",
+      ")"
+    ],
+    "description": "With"
+  },
+  "withr": {
+    "prefix": "withr",
+    "body": [
+      "WITH RECURSIVE ${1:name} AS (",
+      "\tSELECT ${3:attribute} FROM ${2:tableName}",
+      ")"
+    ],
+    "description": "With Recursive"
+  },
+  "select": {
+    "prefix": "select",
+    "body": ["SELECT ${2:attribute} FROM ${1:tableName}"],
+    "description": "Regular select"
+  },
+  "selectd": {
+    "prefix": "selectd",
+    "body": ["SELECT DISTINCT ${2:attribute}", "\tFROM ${1:tableName}"],
+    "description": "Select Distinct"
+  },
+  "values": {
+    "prefix": "values",
+    "body": ["VALUES (${1:values})"],
+    "description": "Values"
+  },
+  "join": {
+    "prefix": "join",
+    "body": ["INNER JOIN ${1:tableName}", "ON ${2:match}"],
+    "description": "Inner Join"
+  },
+  "joinright": {
+    "prefix": "joinright",
+    "body": ["RIGHT OUTER JOIN ${1:tableName}", "ON ${2:match}"],
+    "description": "Right Join"
+  },
+  "joinleft": {
+    "prefix": "joinleft",
+    "body": ["LEFT OUTER JOIN ${1:tableName}", "ON ${2:match}"],
+    "description": "Left Join"
+  },
+  "joinfull": {
+    "prefix": "joinfull",
+    "body": ["FULL OUTER JOIN ${1:tableName}", "ON ${2:match}"],
+    "description": "Full Join"
+  },
+  "union": {
+    "prefix": "union",
+    "body": ["UNION"],
+    "description": "Regular union"
+  },
+  "uniona": {
+    "prefix": "unionall",
+    "body": ["UNION ALL"],
+    "description": "All union"
+  },
+  "groupby": {
+    "prefix": "groupby",
+    "body": ["GROUP BY ${1:attribute}"],
+    "description": "Group by"
+  },
+  "primaryk": {
+    "prefix": "primaryk",
+    "body": ["PRIMARY KEY(${1:attribute})"],
+    "description": "Primary Key"
+  },
+  "primarykc": {
+    "prefix": "primarykc",
+    "body": ["CONSTRAINT ${1:attribute} PRIMARY KEY(${2:attribute})"],
+    "description": "Constraint rimary Key"
+  },
+  "foreingk": {
+    "prefix": "foreingk",
+    "body": [
+      "FOREIGN KEY(${1:attribute}) REFERENCES ${2:tableName}(${3:attribute})"
+    ],
+    "description": "Foreing Key"
+  },
+  "foreingkc": {
+    "prefix": "foreingkc",
+    "body": [
+      "CONSTRAINT ${1:attribute} FOREIGN KEY (${2:attribute})",
+      "\tREFERENCES ${3:tableName}(${4:attribute})"
+    ],
+    "description": "Constraint foreing Key"
+  },
+  "check": {
+    "prefix": "check",
+    "body": ["CHECK ( ${1:condition} )"],
+    "description": "Check"
+  },
+  "where": {
+    "prefix": "where",
+    "body": "WHERE ${1:condition}",
+    "description": "Where"
+  },
+  "orderby": {
+    "prefix": "orderby",
+    "body": "ORDER BY ${1:attribute} ${2:ASC|DESC}",
+    "description": "Order by"
+  },
+  "having": {
+    "prefix": "having",
+    "body": "HAVING ${1:condition}",
+    "description": "Having"
+  },
+  "window": {
+    "prefix": "window",
+    "body": [
+      "WINDOW ${1:windowName} AS (",
+      "\tPARTITION BY ${2:partition}",
+      "\tORDER BY ${3:attribute}",
+      ");"
+    ],
+    "description": "Window"
+  },
+  "over window": {
+    "prefix": "overwindow",
+    "body": [
+      "OVER (",
+      "\tPARTITION BY ${1:partition}",
+      "\tORDER BY ${2:attribute}",
+      ")"
+    ],
+    "description": "Window"
+  },
+  "limit": {
+    "prefix": "limit",
+    "body": "LIMIT ${1:number}",
+    "description": "Limit"
+  },
+  "offset": {
+    "prefix": "offset",
+    "body": "OFFSET ${1:number}",
+    "description": "Offset"
+  },
+  "count": {
+    "prefix": "count",
+    "body": "COUNT(${1:*})",
+    "description": "Function `count`"
+  },
+  "sum": {
+    "prefix": "sum",
+    "body": "SUM(${1:number_attribute})",
+    "description": "Function `sum`"
+  },
+  "avg": {
+    "prefix": "avg",
+    "body": "AVG(${1:number_attribute})",
+    "description": "Function `avg`"
+  },
+  "round": {
+    "prefix": "round",
+    "body": "ROUND(${1:number_attribute}, ${2:scale})",
+    "description": "Function `round`"
   }
 }
