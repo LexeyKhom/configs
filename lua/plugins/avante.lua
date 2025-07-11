@@ -19,15 +19,11 @@ return {
     provider = os.getenv "MAIN_PROVIDER",
     auto_suggestions_provider = os.getenv "AUTO_SUGGESTIONS_PROVIDER",
     file_selector = { provider = "telescope" },
-    behaviour = {
-      auto_suggestions = false,
-      auto_apply_diff_after_generation = false,
-    },
-    ollama = {
-      endpoint = os.getenv "OLLAMA_ENDPOINT",
-      model = os.getenv "OLLAMA_MODEL",
-    },
-    vendors = {
+    providers = {
+      ollama = {
+        endpoint = os.getenv "OLLAMA_ENDPOINT",
+        model = os.getenv "OLLAMA_MODEL",
+      },
       ["google"] = {
         __inherited_from = "openai",
         endpoint = os.getenv "GEMINI_ENDPOINT",
@@ -40,6 +36,10 @@ return {
         model = os.getenv "GEMINI_MODEL_LITE",
         api_key_name = "GEMINI_API_KEY",
       },
+    },
+    web_search_engine = {
+      provider = "google", -- tavily, serpapi, searchapi, google, kagi, brave, or searxng
+      proxy = nil, -- proxy support, e.g., http://127.0.0.1:7890
     },
     windows = {
       ---@type "right" | "left" | "top" | "bottom"
