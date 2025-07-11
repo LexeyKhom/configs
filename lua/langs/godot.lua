@@ -1,4 +1,8 @@
 return {
+  -- setting = {
+  --   expandtab = false,
+  -- },
+
   tree = {
     "gdscript",
     "godot_resource",
@@ -9,7 +13,7 @@ return {
   },
 
   null = {
-    { "d.gdlint", mason = "gdtoolkit" },
+    { "d.gdlint",   mason = "gdtoolkit" },
     { "f.gdformat", mason = "gdtoolkit" },
   },
 }
