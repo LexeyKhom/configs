@@ -53,9 +53,14 @@ local execute = function(onError, onSuccess)
   end
 
   execute.asm = function(name)
+    local extension = vim.fn.expand "%:e"
+    if extension == "inc" then
+      print "It is forbidden to execute '.inc' files"
+      return
+    end
     local join = require("utils.table").join
     local basename = vim.fn.expand "%:r"
-    local compile = "nasm -f elf -g -o ${basename}.o ${name}"
+    local compile = "nasm -f elf -dOS_LINUX -g -o ${basename}.o ${name}"
         % { name = name, basename = basename }
     local compile2 = "ld -m elf_i386 ${basename}.o -o ${basename}"
         % { name = name, basename = basename }
