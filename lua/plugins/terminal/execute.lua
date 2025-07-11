@@ -10,7 +10,7 @@ local execute = function(onError, onSuccess)
   end
 
   execute.typescript = function(name)
-    onSuccess("deno run " .. name)
+    onSuccess("bun " .. name)
   end
 
   execute.html = function(name)
