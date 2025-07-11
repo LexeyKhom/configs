@@ -6,56 +6,229 @@
       "%include \"stdio.inc\"",
       "global _start",
       "",
+      "section .bss",
+      "\targc resd 1 ; Количествое аргументов",
+      "\targvp resd 1 ; Указатель на первый аргумента",
+      "",
       "section .text",
       "_start:",
+      "\tpop dword [argc]",
+      "\tmov [argvp], esp",
       "",
       "$0",
       "",
       "_end:",
-      "\tFINISH"
+      "\tEXIT"
     ],
     "description": "Стартовый шаблон"
   },
-  "PRINT": {
-    "prefix": "PRINT",
-    "body": ["PRINT \"${1:text}\"", "$0"],
-    "description": "Выводит строку (массив символов) в стандартный вывод."
+  "EXIT": {
+    "prefix": "EXIT",
+    "body": ["EXIT $1"],
+    "description": ["Завершает программу с кодом $1"]
   },
-  "PUTCHAR": {
-    "prefix": "PUTCHAR",
-    "body": ["PUTCHAR ${1:al}"],
-    "description": "Выводит символ в стандартный вывод как символ ASCII. Можно использовать только 1-байтовые числа."
+  "PCALL": {
+    "prefix": ["pcall", "PCALL"],
+    "body": ["pcall $1"],
+    "description": ["Вызов процедуры с произвольным количеством аргументов."]
+  },
+  "ATOI": {
+    "prefix": "ATOI",
+    "body": ["ATOI ${1:str}"],
+    "description": [
+      "integer atoi(str: *string)",
+      "Функция для преобразования строки в целое число."
+    ]
+  },
+  "ITOA": {
+    "prefix": "ITOA",
+    "body": ["ITOA ${1:int}"],
+    "description": [
+      "*string itoa(int: integer)",
+      "Функция для преобразования целого числа в строку"
+    ]
+  },
+  "STRLEN": {
+    "prefix": "STRLEN",
+    "body": ["STRLEN ${1:string}"],
+    "description": [
+      "integer strlen(str: *string)",
+      "Возвращает длину строки в регистр eax."
+    ]
   },
   "GETCHAR": {
     "prefix": "GETCHAR",
     "body": ["GETCHAR"],
-    "description": "Получает символ из стандартного ввода и записывает его ASCII код в регистр `EAX`"
+    "description": [
+      "char getchar()",
+      "Получает символ из стандартного ввода и записывает его ASCII код в регистр `EAX`"
+    ]
   },
-  "FINISH": {
-    "prefix": "FINISH",
-    "body": ["FINISH $1"],
-    "description": "Завершает программу с кодом $1"
+  "PUTCHAR": {
+    "prefix": "PUTCHAR",
+    "body": ["PUTCHAR ${1:char}"],
+    "description": [
+      "void putchar(c: char)",
+      "Выводит символ в стандартный вывод как символ ASCII."
+    ]
+  },
+  "PUTS": {
+    "prefix": "PUTS",
+    "body": ["PUTS ${1:str}"],
+    "description": [
+      "integer puts(str: string)",
+      "Выводит строку в стандартный вывод."
+    ]
+  },
+  "GETS": {
+    "prefix": "GETS",
+    "body": ["GETS ${1:buffer}, ${2:buffer_size}"],
+    "description": [
+      "void gets(buffer: string, buffer_size: integer)",
+      "Получает строку из стандартного ввода и записывает её в буфер."
+    ]
+  },
+  "PRINTF": {
+    "prefix": "PRINTF",
+    "body": ["PRINTF \"${1:str}\""],
+    "description": [
+      "void printf(str: string, ...args: any)",
+      "Выводит строку в стандартный вывод.",
+      "",
+      "Формат аргументов:",
+      "  - %c - char: \"буква\", регистр, [адрес]",
+      "  - %s - string: \"строка\" или адрес",
+      "  - %d - integer: число, регистр, [адрес]",
+      "Спецсимволы:",
+      "  - \\n - новая строка",
+      "  - \\t - табуляция"
+    ]
+  },
+  "READ": {
+    "prefix": "READ",
+    "body": ["READ ${1:file_descriptor}, ${2:buffer}, ${buffer_size}"],
+    "description": [
+      "integer read(fd: file_descriptor, buffer: buffer, buffer_size: integer)",
+      "Читает из файлового дескритора, заносит в буфер и возвращает число прочитанных аргументов."
+    ]
+  },
+  "WRITE": {
+    "prefix": "WRITE",
+    "body": ["WRITE ${1:file_descriptor}, ${2:buffer}, ${buffer_size}"],
+    "description": [
+      "integer write(fd: file_descriptor, buffer: buffer, buffer_size: integer)",
+      "Записывает в файловый дескритор значения из буфера и возвращает число записанных аргументов."
+    ]
+  },
+  "FOPEN": {
+    "prefix": "FOPEN",
+    "body": ["FOPEN \"${1:filename}\", \"${2:open_flag}\""],
+    "description": [
+      "file_descriptor fopen(file_name: string, open_flag: char)",
+      "Открывает файл и возвращает дескриптор."
+    ]
+  },
+  "FCLOSE": {
+    "prefix": "FCLOSE",
+    "body": ["FCLOSE ${1:file_descriptor}"],
+    "description": ["void fclose(fd: file_descriptor)", "Закрывает файл."]
+  },
+  "FGETC": {
+    "prefix": "FGETC",
+    "body": ["FGETC ${1:file_descriptor}"],
+    "description": [
+      "char fgetc(fd: file_descriptor)",
+      "Получает символ из файла и записывает его ASCII код в регистр `EAX`"
+    ]
+  },
+  "FPUTC": {
+    "prefix": "FPUTC",
+    "body": ["FPUTC ${1:char}, ${2:file_descriptor}"],
+    "description": [
+      "void fputc(c: char, fd: file_descriptor)",
+      "Выводит символ в файл как символ ASCII."
+    ]
+  },
+  "FGETS": {
+    "prefix": "FGETS",
+    "body": ["FGETS ${1:buffer}, ${2:buffer_size}, ${3:file_descriptor}"],
+    "description": [
+      "void fgets(buffer: string, buffer_size: integer, fd: file_descriptor)",
+      "Получает строку из заданного дескриптора и записывает её в буфер."
+    ]
+  },
+  "FPUTS": {
+    "prefix": "FPUTS",
+    "body": ["FPUTS ${1:str}, ${2:file_descriptor}"],
+    "description": [
+      "integer fputs(str: string, fd: file_descriptor)",
+      "Выводит строку в заданный дескриптор."
+    ]
+  },
+  "FPRINTF": {
+    "prefix": "FPRINTF",
+    "body": ["FPRINTF ${1:file_descriptor}, \"${2:str}\""],
+    "description": [
+      "void fprintf(fd: file_descriptor, str: string, ...args: any)",
+      "Выводит строку в файл.",
+      "",
+      "Формат аргументов:",
+      "  - %c - char: \"буква\", регистр, [адрес]",
+      "  - %s - string: только адрес",
+      "  - %d - integer: число, регистр, [адрес]",
+      "Спецсимволы:",
+      "  - \\n - новая строка",
+      "  - \\t - символ табуляции"
+    ]
+  },
+  "GETPID": {
+    "prefix": "GETPID",
+    "body": ["GETPID"],
+    "description": [
+      "pid getpid()",
+      "Получает pid текущего процесса."
+    ]
+  },
+  "GETPPID": {
+    "prefix": "GETPPID",
+    "body": ["GETPPID"],
+    "description": [
+      "pid getppid()",
+      "Получает pid родительствого процесса."
+    ]
+  },
+  "KILL": {
+    "prefix": "KILL",
+    "body": ["KILL ${1:pid} ${2:sig}"],
+    "description": [
+      "void kill(process_id: pid, sig: signal)",
+      "Убивает процесс pid с заданным сигналом."
+    ]
   },
   "%Include": {
     "prefix": "%include",
     "body": ["%include \"${0:filename}\""],
     "description": "Предписывает ассемблеру вставить на место директивы все содержимое некоторого файла."
   },
-  "%Include stdlib": {
-    "prefix": "%stdlib",
-    "body": ["%include \"stdlib.inc\""]
+  "%Include signal": {
+    "prefix": ["%include \"signal.inc\""],
+    "body": ["%include \"signal.inc\""]
   },
   "%Include stdio": {
-    "prefix": "%stdio",
+    "prefix": ["%include \"stdio.inc\""],
     "body": ["%include \"stdio.inc\""]
   },
-  "%Include math": {
-    "prefix": "%math",
-    "body": ["%include \"math.inc\""]
+  "%Include stdlib": {
+    "prefix": ["%include \"stdlib.inc\""],
+    "body": ["%include \"stdlib.inc\""]
   },
   "%Include string": {
-    "prefix": "%string",
+    "prefix": ["%include \"string.inc\""],
     "body": ["%include \"stdlib.inc\""]
+  },
+  "%Include unistd": {
+    "prefix": ["%include \"unistd.inc\""],
+    "body": ["%include \"unistd.inc\""]
   },
   "%Error": {
     "prefix": "%error",
@@ -67,12 +240,18 @@
     "body": ["%macro ${1:name} ${2:arg_length}", "\t$0", "%endmacro"],
     "description": [
       "Определяет макрос с именем `$name`, принимающий `$arg_length` аргументов.",
-      "- `$arg_length` - может быть как простым числом, так и диапазоном. Например: `1-2` или `2-*`",
+      "`$arg_length` - может быть как простым числом, так и диапазоном. Например: `1-2` или `2-*`",
+      "",
       "- `%%mark` - локальная метка.",
       "- `%0` - число параметров.",
       "- `%1`, `%2` и т.д. - аргументы макроса номерам.",
       "- `%rotate $n` - сдвигает номера параметров на `$n` позиций по кругу (`%0` в ротации не участвует). `$n` Может быть отрицательным."
     ]
+  },
+  "%Rotate": {
+    "prefix": "%rotate",
+    "body": ["%rotate ${1:n}"],
+    "description": "Сдвигает номера параметров на $n позиций по кругу (`%0` в ротации не участвует). `$n` Может быть отрицательным. (Использовать внутри %macro)"
   },
   "%Define": {
     "prefix": "%define",
@@ -222,7 +401,12 @@
   "Global mark": {
     "prefix": "global",
     "body": ["global ${0:mark}"],
-    "description": "Директива, требующая от ассемблера считать следующую метку 'глобальной', т.е. видимой извне объектного модуля."
+    "description": "Директива, требующая от ассемблера считать следующую метку 'глобальной', т.е. видимой извне объектного модуля. Применяется в сочетании с global."
+  },
+  "Extern": {
+    "prefix": "extern",
+    "body": ["extern ${0:mark}"],
+    "description": "Директива, объявляющая метку `$mark` внешней, т.е. определенной в другом (filename.o) объектном модуле. Применяется в сочетании с global."
   },
   "Section": {
     "prefix": "section",
@@ -236,7 +420,7 @@
   },
   "Reserve Byte": {
     "prefix": "resb",
-    "body": ["${1:mark} resb ${2:length}"],
+    "body": ["${1:mark} resb ${2:length}", "${1:mark}_size equ $-${1:mark}"],
     "description": [
       "Выделяет `Array[8-bit]` (byte) неинициализированной памяти указанной длины.",
       "",
@@ -250,7 +434,7 @@
   },
   "Reserve Word": {
     "prefix": "resw",
-    "body": ["${1:mark} resw ${2:length}"],
+    "body": ["${1:mark} resw ${2:length}", "${1:mark}_size equ $-${1:mark}"],
     "description": [
       "Выделяет `Array[16-bit]` (word) неинициализированной памяти указанной длины.",
       "",
@@ -264,7 +448,7 @@
   },
   "Reserve Double word": {
     "prefix": "resd",
-    "body": ["${1:mark} resd ${2:length}"],
+    "body": ["${1:mark} resd ${2:length}", "${1:mark}_size equ $-${1:mark}"],
     "description": [
       "Выделяет `Array[32-bit]` (double word) неинициализированной памяти указанной длины.",
       "",
@@ -278,7 +462,7 @@
   },
   "Reserve Quadro word": {
     "prefix": "resq",
-    "body": ["${1:mark} resq ${2:length}"],
+    "body": ["${1:mark} resq ${2:length}", "${1:mark}_size equ $-${1:mark}"],
     "description": [
       "Выделяет `Array[64-bit]` (quadro word) неинициализированной памяти указанной длины.",
       "",
@@ -292,7 +476,7 @@
   },
   "Define Byte": {
     "prefix": "db",
-    "body": ["${1:mark} db ${2:values}"],
+    "body": ["${1:mark} db ${2:values}", "${1:mark}_size equ $-${1:mark}"],
     "description": [
       "Выделяет `Array[8-bit]` (byte) памяти с начальными значениями.",
       "",
@@ -306,7 +490,7 @@
   },
   "Define Word": {
     "prefix": "dw",
-    "body": ["${1:mark} dw ${2:values}"],
+    "body": ["${1:mark} dw ${2:values}", "${1:mark}_size equ $-${1:mark}"],
     "description": [
       "Выделяет `Array[16-bit]` (word) памяти с начальным значением.",
       "",
@@ -320,7 +504,7 @@
   },
   "Define Double word": {
     "prefix": "dd",
-    "body": ["${1:mark} dd ${2:values}"],
+    "body": ["${1:mark} dd ${2:values}", "${1:mark}_size equ $-${1:mark}"],
     "description": [
       "Выделяет `Array[32-bit]` (double word) памяти с начальным значением.",
       "",
@@ -334,7 +518,7 @@
   },
   "Define Quadro word": {
     "prefix": "dq",
-    "body": ["${1:mark} dq ${2:values}"],
+    "body": ["${1:mark} dq ${2:values}", "${1:mark}_size equ $-${1:mark}"],
     "description": [
       "Выделяет `Array[64-bit]` (quadro word) памяти с начальным значением.",
       "",
@@ -526,10 +710,10 @@
   },
   "Divide": {
     "prefix": "div",
-    "body": ["div ${1:b}"],
+    "body": ["div ${1:a}"],
     "description": [
       "Беззнаковое деление. Делит регистр `EDX:EAX` (в EDX хранится старшая часть делимого) на `$a`, частное заносит в регистр `EAX`, а остаток в регистр `EDX`.",
-      "Операция: `EDX:EAX / b = EAX (+EDX)`",
+      "Операция: `EDX:EAX / a = EAX (+EDX)`",
       "",
       "> Частное всегда округляется в сторону нуля.",
       "",
@@ -542,10 +726,10 @@
   },
   "Signed Divide": {
     "prefix": "idiv",
-    "body": ["idiv ${1:b}"],
+    "body": ["idiv ${1:a}"],
     "description": [
       "знаковое деление. Делит регистр `EDX:EAX` (в EDX хранится старшая часть делимого) на `$a`, частное заносит в регистр `EAX`, а остаток в регистр `EDX`.",
-      "Операция: `EDX:EAX / b = EAX (+EDX)`",
+      "Операция: `EDX:EAX / a = EAX (+EDX)`",
       "",
       "> Частное всегда округляется в сторону нуля.",
       "",
@@ -1141,60 +1325,6 @@
       "| Not Below          | `jnb`   | a ≥ b   |"
     ]
   },
-  "While": {
-    "prefix": "while",
-    "body": [
-      ".while_${1:mark}:",
-      "\tcmp ${2:a}, ${3:b}",
-      "\tj${4:NX} .end_while_${1:mark}",
-      ".start_while_${1:mark}:",
-      "\t$0",
-      "\tjmp .while_${1:mark}",
-      ".end_while_${1:mark}:"
-    ],
-    "description": ["While loop"]
-  },
-  "If": {
-    "prefix": "if",
-    "body": [
-      ".if_${1:mark}:",
-      "\tcmp ${2:a}, ${3:b}",
-      "\tj${4:NX} .end_if_${1:mark}",
-      ".start_if_${1:mark}:",
-      "\t$0",
-      ".end_if_${1:mark}:"
-    ],
-    "description": ["If"]
-  },
-  "If Else": {
-    "prefix": "ifelse",
-    "body": [
-      ".if_${1:mark}:",
-      "\tcmp ${2:a}, ${3:b}",
-      "\tj${4:NX} .else_${1:mark}",
-      ".start_if_${1:mark}:",
-      "\t$0",
-      "\tjmp .end_if_${1:mark}",
-      ".else_${1:mark}:",
-      "\t$0",
-      ".end_if_${1:mark}:"
-    ],
-    "description": ["If Else"]
-  },
-  "Switch": {
-    "prefix": "switch",
-    "body": [
-      ".switch_${1:mark}:",
-      "\tcmp ${2:a}, ${3:b}",
-      "\tjz .case_${1:mark}__1",
-      "\tjmp .end_switch_${1:mark}",
-      ".case_${1:mark}__1:",
-      "\t$0",
-      "\tjmp .end_switch_${1:mark}",
-      ".end_switch_${1:mark}:"
-    ],
-    "description": ["Switch"]
-  },
   "Jump if CX is Zero": {
     "prefix": "jcxz",
     "body": ["jcxz ${1:mark}"],
@@ -1263,6 +1393,11 @@
       "Побитовое исключающее ИЛИ. Результат записывается в `a`.",
       "Операция: `a = a XOR b`"
     ]
+  },
+  "No Operation": {
+    "prefix": "nop",
+    "body": ["nop"],
+    "description": "Ничего не делает."
   },
   "not": {
     "prefix": "not",
@@ -1410,7 +1545,7 @@
     "prefix": "lodsb",
     "body": ["lodsb"],
     "description": [
-      "Считывает из памяти по адресу `[ESI]` соответствующий байт/слово/двойное слово и помещает прочитанное в регистр AL/AX/EAX. После чего увеличивает или уменьшает (в зависимости от значения флага DF) регистр ESI на 1/2/4.",
+      "Считывает из памяти по адресу `[ESI]` соответствующий байт/слово/двойное слово и помещает прочитан��ое в регистр AL/AX/EAX. После чего увеличивает или уменьшает (в зависимости от значения флага DF) регистр ESI на 1/2/4.",
       "",
       "| Command | Register     | Inc/Dec |",
       "| ------- | ------------ | ------- |",
@@ -1528,7 +1663,7 @@
     "prefix": "cmpsb",
     "body": ["cmpsb"],
     "description": [
-      "Сравнивает байты/слова/двойные слова находящиеся в памяти по адресам `[ESI]` и `[EDI]`, услатавливая соответствующие флаги. После чего увеличивает и��и умешьшает (в зависимости от значения флага DF) сразу оба регистра ESI и EDI на 1/2/4.",
+      "Сравнивает байты/слова/двойные слова находящиеся в памяти по адресам `[ESI]` и `[EDI]`, услатавливая соответствующие флаги. После чего у��еличивает и��и умешьшает (в зависимости от значения флага DF) сразу оба регистра ESI и EDI на 1/2/4.",
       "",
       "> Prefix `repz/repnz` can be used.",
       "",
@@ -1573,14 +1708,14 @@
     "prefix": ["repz", "repe"],
     "body": ["repz ${0:stosX|movsX}"],
     "description": [
-      "Команды `scasX` и `cmpsX` можно снабдить префиксом `repz`/`repnz`. Команда, снабженная таким префиксом, будет выполнена столько раз, какое число было в регистре CX/ECX (если CX/ECX равен нулю, команда не будет выполнена ни разу), проверяя при этом значение флага ZF и продолжая работу, только если этот флаг установлен/сброшен."
+      "Команды `scasX` и `cmpsX` можно снабдить префиксом `repz`/`repnz`. Команда, снабженная таким префиксом, будет вы����олн������на столько раз, какое число было в регистре CX/ECX (если CX/ECX равен нулю, команда не будет выполнена ни разу), проверяя при этом значение флага ZF и продолжая работу, только если этот флаг установлен/сброшен."
     ]
   },
   "Repeat While Not Zero": {
     "prefix": ["repnz", "repne"],
     "body": ["repnz ${0:stosX|movsX}"],
     "description": [
-      "Команды `scasX` и `cmpsX` можно снабдить префи��сом `repz`/`repnz`. Команда, снабженная таким префиксом, будет выполнена столько раз, какое число было в регистре CX/ECX (если CX/ECX равен нулю, команда не будет выполнена ни разу), проверяя при этом значение флага ZF и продолжая работу, только если этот флаг установлен/сброш��н."
+      "Команды `scasX` и `cmpsX` можно снабдить преф����сом `repz`/`repnz`. Команда, снабженная таким префиксом, будет выпо����е��а столько раз, к����кое число было в регистре CX/ECX (если CX/ECX равен нулю, команда не будет выполнена ни разу), проверяя при этом значение флага ZF и продолжая работу, только если этот флаг установлен/сброш��н."
     ]
   },
   "Load AH from Flags": {
@@ -1700,8 +1835,7 @@
       "",
       "\tmov esp, ebp",
       "\tpop ebp",
-      "\tret",
-      "$end_proc_${1:name}:"
+      "\tret"
     ],
     "description": "Создание процедуры"
   }
