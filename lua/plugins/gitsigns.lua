@@ -1,6 +1,6 @@
 return {
   "lewis6991/gitsigns.nvim",
-  event = { "BufRead", "BufNewFile" },
+  event = { "BufReadPost", "InsertEnter" },
   opts = function()
     return {
       on_attach = function()

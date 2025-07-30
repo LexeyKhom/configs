@@ -1,6 +1,7 @@
 local g = vim.g
 
 g.mapleader = " "
+g.maplocalleader = "\\"
 g.is_horizontal = vim.o.columns > 2 * vim.o.lines
 g.term = "float" -- Default term
 g.vscode_snippets_path = vim.fn.stdpath "config"

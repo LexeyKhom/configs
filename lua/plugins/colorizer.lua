@@ -1,6 +1,6 @@
 return {
   "catgoose/nvim-colorizer.lua",
-  event = { "BufReadPre" },
+  event = { "BufReadPost", "InsertEnter" },
   opts = function()
     return {
       user_default_options = {

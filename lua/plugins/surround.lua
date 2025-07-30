@@ -1,6 +1,6 @@
 return {
   "kylechui/nvim-surround",
   version = "*",
-  event = { "BufRead", "BufNewFile" },
+  event = { "BufReadPost", "InsertEnter" },
   opts = {},
 }

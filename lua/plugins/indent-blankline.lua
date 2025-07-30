@@ -4,7 +4,7 @@ return {
     "HiPhish/rainbow-delimiters.nvim",
   },
   main = "ibl",
-  event = { "BufRead", "BufNewFile" },
+  event = { "BufReadPost", "InsertEnter" },
   opts = function()
     return {
       scope = {

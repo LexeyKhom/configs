@@ -23,7 +23,7 @@ end
 
 return {
   "nvimtools/none-ls.nvim",
-  event = { "BufRead", "BufNewFile" },
+  event = { "BufReadPost", "InsertEnter" },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "neovim/nvim-lspconfig",

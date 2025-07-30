@@ -4,7 +4,7 @@ return {
     "RRethy/nvim-treesitter-endwise",
     { "windwp/nvim-ts-autotag", opts = {} },
   },
-  event = { "BufRead", "BufNewFile" },
+  event = { "BufReadPost", "InsertEnter" },
   cmd = {
     "TSUpdate",
     "TSInstall",

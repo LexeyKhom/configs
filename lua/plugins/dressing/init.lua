@@ -1,5 +1,6 @@
 return {
   "stevearc/dressing.nvim",
+  lazy = true,
   dependencies = {
     "MunifTanjim/nui.nvim",
     "LexeyKhom/nvconfig",

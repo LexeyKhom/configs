@@ -2,7 +2,7 @@ return {
   "folke/todo-comments.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
   cmd = { "TodoTelescope" },
-  event = { "BufRead", "BufNewFile" },
+  event = { "BufReadPost", "InsertEnter" },
   opts = {
     keywords = {
       FIX = { icon = " ", alt = { "FIXME", "BUG", "FIXIT", "ISSUE" } },

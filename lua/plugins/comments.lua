@@ -1,6 +1,6 @@
 return {
   "folke/ts-comments.nvim",
-  event = "VeryLazy",
+  event = { "BufReadPost", "InsertEnter" },
   dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
   opts = {},
   keys = {

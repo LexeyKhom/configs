@@ -1,6 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
-  event = { "BufRead", "BufNewFile" },
+  event = { "BufReadPost", "InsertEnter" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "smjonas/inc-rename.nvim",
