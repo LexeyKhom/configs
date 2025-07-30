@@ -1,0 +1,35 @@
+{
+  "name": "Snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "asm",
+        "path": "./assembler.json"
+      },
+      {
+        "language": "gdscript",
+        "path": "./gdscript.json"
+      },
+      {
+        "language": "sql",
+        "path": "./sql.json"
+      },
+      {
+        "language": [
+          "javascript",
+          "javascriptreact",
+          "vue",
+          "svelte"
+        ],
+        "path": "./javascript/javascript.json"
+      },
+      {
+        "language": [
+          "typescript",
+          "typescriptreact"
+        ],
+        "path": "./javascript/typescript.json"
+      }
+    ]
+  }
+}

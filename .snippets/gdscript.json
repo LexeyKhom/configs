@@ -12,39 +12,39 @@
     "body": ["print($1)"]
   },
   "_ready method of Node": {
-    "prefix": "ready",
+    "prefix": "_ready",
     "body": ["func _ready() -> void:", "\t${1:pass}"]
   },
   "_init method of Object": {
-    "prefix": "init",
+    "prefix": "_init",
     "body": ["func _init(${1:args}) -> void:", "\t${0:pass}"]
   },
   "_physics_process method of Node": {
-    "prefix": "physics_process",
+    "prefix": "_physics_process",
     "body": ["func _physics_process(delta: float) -> void:", "\t${1:pass}"]
   },
   "_process method of Node": {
-    "prefix": "process",
+    "prefix": "_process",
     "body": ["func _process(delta: float) -> void:", "\t${1:pass}"]
   },
   "_draw method of Node": {
-    "prefix": "draw",
+    "prefix": "_draw",
     "body": ["func _draw() -> void:", "\t${1:pass}"]
   },
   "_unhandled_input method of Node": {
-    "prefix": "unhandled_input",
+    "prefix": "_unhandled_input",
     "body": ["func _unhandled_input(event: InputEvent) -> void:", "\t${1:pass}"]
   },
   "_input method of Node": {
-    "prefix": "input",
+    "prefix": "_input",
     "body": ["func _input(event: InputEvent) -> void:", "\t${1:pass}"]
   },
   "_input_event method of Node": {
-    "prefix": "input_event",
+    "prefix": "_input_event",
     "body": ["func _input_event(event: InputEvent) -> void:", "\t${1:pass}"]
   },
   "_gui_input method of Node": {
-    "prefix": "gui_input",
+    "prefix": "_gui_input",
     "body": ["func _gui_input(event: InputEvent) -> void:", "\t${1:pass}"]
   },
   "for loop": {
@@ -53,7 +53,7 @@
   },
   "for range loop": {
     "prefix": "forrange",
-    "body": ["for $1 in range(${2:start},${3:end}):", "\t${4:pass}"]
+    "body": ["for $1 in range(${2:start}, ${3:end}):", "\t${4:pass}"]
   },
   "if elif else": {
     "prefix": "ifelif",
@@ -92,7 +92,7 @@
   },
   "export variables": {
     "prefix": "@export",
-    "body": ["@export var ${1:name} :$3=$2"]
+    "body": ["@export var ${1:name}:$2 = $3"]
   },
   "export group": {
     "prefix": "@export_group",
@@ -108,7 +108,7 @@
   },
   "define onready variables": {
     "prefix": "@onready",
-    "body": ["@onready var ${1:name} :$3=$2"]
+    "body": ["@onready var ${1:name}:$3 = $2"]
   },
   "warning ignore": {
     "prefix": "@warning_ignore",
@@ -120,11 +120,11 @@
   },
   "define variables": {
     "prefix": "var",
-    "body": ["var ${1:name} :$3=$2"]
+    "body": ["var ${1:name}:$2 = $3"]
   },
   "define constants": {
     "prefix": "const",
-    "body": ["const ${1:name} :$3=$2"]
+    "body": ["const ${1:name}:$2 = $3"]
   },
   "Is instance of a class or script": {
     "prefix": "is",
