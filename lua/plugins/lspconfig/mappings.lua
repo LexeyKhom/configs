@@ -2,14 +2,14 @@ return {
   n = {
     ["[d"] = {
       function()
-        vim.diagnostic.goto_prev { float = { border = "single" } }
+        vim.diagnostic.jump { count = -1, float = { border = "single" } }
       end,
       "Previous diagnostic",
     },
 
     ["]d"] = {
       function()
-        vim.diagnostic.goto_next { float = { border = "single" } }
+        vim.diagnostic.jump { count = 1, float = { border = "single" } }
       end,
       "Next diagnostic",
     },
