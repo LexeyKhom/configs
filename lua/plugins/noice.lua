@@ -48,7 +48,4 @@ return {
       },
     }
   end,
-  config = function(_, opts)
-    require("noice").setup(opts)
-  end,
 }

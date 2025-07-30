@@ -107,7 +107,4 @@ return {
       },
     }
   end,
-  config = function(_, opts)
-    require("toggleterm").setup(opts)
-  end,
 }

@@ -24,7 +24,4 @@ return {
       },
     }
   end,
-  config = function(_, opts)
-    require("todo-comments").setup(opts)
-  end,
 }
