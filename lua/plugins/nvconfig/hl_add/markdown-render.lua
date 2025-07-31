@@ -14,10 +14,9 @@ return {
   RenderMarkdownH5Bg = { bg = c.darkgreen, fg = "green", bold = true },
   RenderMarkdownH6Bg = { bg = c.darkpurple, fg = "purple", bold = true },
 
-  RenderMarkdownWarn = { fg = "red" },
-  RenderMarkdownQuestion = { fg = "orange" },
-  RenderMarkdownProgress = { fg = "green" },
-  RenderMarkdownTodo = { fg = "green" },
-  RenderMarkdownUnchecked = { fg = "blue" },
-  RenderMarkdownChecked = { fg = "blue" },
+  RenderMarkdownImportant = { fg = "red" },
+  RenderMarkdownTodo = { fg = "yellow" },
+  RenderMarkdownChecked = { fg = "green" },
+  RenderMarkdownUnchecked = { fg = "cyan" },
+  RenderMarkdownReview = { fg = "purple" },
 }

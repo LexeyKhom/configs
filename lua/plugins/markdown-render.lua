@@ -27,20 +27,20 @@ return {
       unchecked = { icon = " " },
       checked = { icon = " " },
       custom = {
-        progress = {
+        todo = {
           raw = "[-]",
-          rendered = " ",
-          highlight = "RenderMarkdownProgress",
+          rendered = " ",
+          highlight = "RenderMarkdownTodo",
         },
-        question = {
-          raw = "[?]",
-          rendered = " ",
-          highlight = "RenderMarkdownQuestion",
-        },
-        warn = {
+        important = {
           raw = "[!]",
           rendered = " ",
-          highlight = "RenderMarkdownWarn",
+          highlight = "RenderMarkdownImportant",
+        },
+        review = {
+          raw = "[?]",
+          rendered = " ",
+          highlight = "RenderMarkdownReview",
         },
       },
     },
