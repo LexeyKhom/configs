@@ -1,8 +1,4 @@
 return {
-  -- setting = {
-  --   expandtab = false,
-  -- },
-
   tree = {
     "gdscript",
     "godot_resource",
