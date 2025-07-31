@@ -37,7 +37,7 @@ local KEYS = {
   EXECUTE = "<A-e>",
 }
 
-require("utils.load").mappings {
+require("utils.loader").mappings {
   -- Normal
   n = {
     [";"] = { ":", "Enter command mode", { nowait = true } },

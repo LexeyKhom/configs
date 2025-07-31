@@ -1,6 +1,6 @@
-local Load = {}
+local Loader = {}
 
-Load.dir = function(path)
+Loader.dir = function(path)
   local readdir = require("utils.fs").readdir
   local split = require("utils.string").split
   local join = require("utils.table").join
@@ -21,9 +21,9 @@ Load.dir = function(path)
   return modules
 end
 
-Load.mergeDir = function(path)
+Loader.merge_dir = function(path)
   local assign = require("utils.table").assign
-  local dir = Load.dir(path)
+  local dir = Loader.dir(path)
   local result = {}
   for _, tb in ipairs(dir) do
     result = assign(result, tb)
@@ -31,26 +31,26 @@ Load.mergeDir = function(path)
   return result
 end
 
-Load.mappings = function(mappings, defaultOpts)
+Loader.mappings = function(mappings, default_opts)
   local assign = require("utils.table").assign
   local split = require("utils.string").split
-  local splitStr = ","
+  local split_str = ","
   for mode, keys in pairs(mappings) do
-    for keyStr, value in pairs(keys) do
+    for key_str, value in pairs(keys) do
       local bind = value[1]
       local desc = value[2]
-      local bindOpts = value[3] or {}
-      local opts = defaultOpts or {}
-      opts = assign(opts, bindOpts)
+      local bind_opts = value[3] or {}
+      local opts = default_opts or {}
+      opts = assign(opts, bind_opts)
       opts.desc = desc
-      for _, key in pairs(split(keyStr, splitStr)) do
+      for _, key in pairs(split(key_str, split_str)) do
         vim.keymap.set(mode, key, bind, opts)
       end
     end
   end
 end
 
-Load.plugins = function(pluginsPath)
+Loader.plugins = function(pluginsPath)
   local LAZY_OPTS = {
     ui = {
       icons = {
@@ -86,33 +86,33 @@ Load.plugins = function(pluginsPath)
   require("lazy").setup(pluginsPath, LAZY_OPTS)
 end
 
-Load.langs = function(pluginName, filter)
+Loader.langs = function(pluginName, filter)
   local LANGS_DIR = "langs"
   local contains = require("utils.table").contains
-  local langs = Load.dir(LANGS_DIR)
+  local langs = Loader.dir(LANGS_DIR)
   local results = {}
   local settings = {}
   for _, lang in pairs(langs) do
     if lang[pluginName] then
-      local pluginConfigs = lang[pluginName]
-      for _, config in pairs(pluginConfigs) do
-        local isTable = type(config) == "table"
-        local isFiltered = isTable
+      local plugin_configs = lang[pluginName]
+      for _, config in pairs(plugin_configs) do
+        local is_table = type(config) == "table"
+        local is_filtered = is_table
             and config.filter
             and contains(config.filter, filter)
-        local result = isTable and config[1] or config
-        local setting = isTable and config.setting or nil
-        if not isFiltered and not contains(results, result) then
+        local result = is_table and config[1] or config
+        local setting = is_table and config.setting or nil
+        if not is_filtered and not contains(results, result) then
           table.insert(results, result)
           settings[result] = setting
         end
       end
     end
     if pluginName == "mason" then
-      for _, pluginConfigs in pairs(lang) do
-        for _, config in pairs(pluginConfigs) do
-          local isTable = type(config) == "table"
-          local result = isTable and config["mason"] or nil
+      for _, plugin_configs in pairs(lang) do
+        for _, config in pairs(plugin_configs) do
+          local is_table = type(config) == "table"
+          local result = is_table and config["mason"] or nil
           if result and not contains(results, result) then
             table.insert(results, result)
           end
@@ -123,7 +123,7 @@ Load.langs = function(pluginName, filter)
   return results, settings
 end
 
-Load.db_configs = function()
+Loader.db_configs = function()
   local DB_CONFIG_PATH = os.getenv "DB_CONFIG_PATH"
   local configs = {}
   if DB_CONFIG_PATH then
@@ -132,4 +132,4 @@ Load.db_configs = function()
   return configs
 end
 
-return Load
+return Loader

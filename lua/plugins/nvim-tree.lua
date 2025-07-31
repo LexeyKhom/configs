@@ -7,7 +7,7 @@ return {
   cmd = { "NvimTreeToggle", "NvimTreeFocus" },
   keys = function()
     local KEYS = require "core.mappings"
-    require("utils.load").mappings {
+    require("utils.loader").mappings {
       n = {
         [KEYS.NAV_FILES] = { "<cmd> NvimTreeToggle <CR>", "Nvimtree toggle" },
         ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Nvimtree focus" },

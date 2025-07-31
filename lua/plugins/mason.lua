@@ -2,7 +2,7 @@ return {
   "williamboman/mason.nvim",
   cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
   opts = {
-    ensure_installed = require("utils.load").langs "mason",
+    ensure_installed = require("utils.loader").langs "mason",
     PATH = "skip",
     ui = {
       icons = {

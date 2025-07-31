@@ -6,7 +6,7 @@ return {
   },
   cmd = "IncRename",
   keys = function()
-    require("utils.load").mappings {
+    require("utils.loader").mappings {
       n = {
         ["<leader>lr"] = {
           function()

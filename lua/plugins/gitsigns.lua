@@ -4,7 +4,7 @@ return {
   opts = function()
     return {
       on_attach = function()
-        require("utils.load").mappings {
+        require("utils.loader").mappings {
           n = {
             -- Navigation through hunks
             ["]g"] = {

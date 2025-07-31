@@ -4,7 +4,7 @@ return {
   ft = { "markdown" },
   build = "cd app && yarn install",
   keys = function()
-    require("utils.load").mappings {
+    require("utils.loader").mappings {
       n = {
         ["<leader>tm"] = {
           "<cmd> MarkdownPreviewToggle <CR>",

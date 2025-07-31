@@ -39,7 +39,7 @@ Table.assign = function(tb1, tb2)
   return tb1
 end
 
-Table.toString = function(tb)
+Table.tostring = function(tb)
   local str = "{"
   for key, value in pairs(tb) do
     value = "'" .. tostring(value) .. "'"

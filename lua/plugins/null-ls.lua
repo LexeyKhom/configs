@@ -2,7 +2,7 @@ local loadSources = function()
   local builtins = require("null-ls").builtins
   local split = require("utils.string").split
   local unpack = require("utils.table").unpack
-  local configs, settings = require("utils.load").langs "null"
+  local configs, settings = require("utils.loader").langs "null"
   local def = {
     a = "code_actions",
     c = "completion",
@@ -29,7 +29,7 @@ return {
     "neovim/nvim-lspconfig",
   },
   keys = function()
-    require("utils.load").mappings {
+    require("utils.loader").mappings {
       n = {
         ["<A-f>,<C-f>"] = {
           function()

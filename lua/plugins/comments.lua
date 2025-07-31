@@ -4,7 +4,7 @@ return {
   dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
   opts = {},
   keys = {
-    require("utils.load").mappings {
+    require("utils.loader").mappings {
       n = {
         ["<leader>/"] = { "gcc", "Toggle comment line", { remap = true } },
       },

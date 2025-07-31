@@ -6,9 +6,9 @@ return {
   },
   lazy = false,
   opts = function()
-    local mergeDir = require("utils.load").mergeDir
-    local hl_add = mergeDir "plugins/nvconfig/hl_add"
-    local hl_override = mergeDir "plugins/nvconfig/hl_override"
+    local merge_dir = require("utils.loader").merge_dir
+    local hl_add = merge_dir "plugins/nvconfig/hl_add"
+    local hl_override = merge_dir "plugins/nvconfig/hl_override"
     local M = {}
 
     M.path = "plugins/nvconfig/init.lua" -- config path. Need for cmd "Telescope themes"

@@ -9,7 +9,7 @@ return {
     "DiffviewClose",
   },
   keys = function()
-    require("utils.load").mappings {
+    require("utils.loader").mappings {
       n = {
         ["<leader>gd"] = { "<cmd> DiffviewOpen <CR>", "GitDiff" },
         ["<leader>gx"] = { "<cmd> DiffviewClose <CR>", "GitDiff close" },

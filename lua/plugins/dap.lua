@@ -6,7 +6,7 @@ return {
     { "theHamsta/nvim-dap-virtual-text", opts = {} },
   },
   keys = function()
-    require("utils.load").mappings {
+    require("utils.loader").mappings {
       n = {
         ["<F1>"] = {
           function()

@@ -23,7 +23,7 @@ return {
   },
   cmd = "Telescope",
   keys = function()
-    require("utils.load").mappings {
+    require("utils.loader").mappings {
       n = {
         -- Find
         ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },

@@ -15,7 +15,7 @@ return {
   build = ":TSUpdate",
   opts = function()
     return {
-      ensure_installed = require("utils.load").langs "tree",
+      ensure_installed = require("utils.loader").langs "tree",
       auto_install = true,
       indent = { enable = true },
       highlight = {

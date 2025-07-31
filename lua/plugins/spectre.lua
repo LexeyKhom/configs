@@ -5,7 +5,7 @@ return {
     "nvim-lua/plenary.nvim",
   },
   keys = function()
-    require("utils.load").mappings {
+    require("utils.loader").mappings {
       n = {
         ["<leader>ss"] = {
           '<cmd>lua require("spectre").open()<CR>',

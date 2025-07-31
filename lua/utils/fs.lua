@@ -7,7 +7,7 @@ Fs.readdir = function(path)
   return dir
 end
 
-Fs.getCurDir = function()
+Fs.get_curdir = function()
   local substitute = vim.fn.substitute
   local getcwd = vim.fn.getcwd
   return substitute(getcwd(), "^.*/", "", "")

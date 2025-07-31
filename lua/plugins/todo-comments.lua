@@ -15,7 +15,7 @@ return {
     },
   },
   keys = function()
-    require("utils.load").mappings {
+    require("utils.loader").mappings {
       n = {
         ["<leader>qt"] = {
           "<cmd>TodoTelescope<CR>",

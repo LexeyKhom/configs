@@ -17,13 +17,13 @@ return {
   opts = function()
     local opts = {}
 
-    local servers, settings = require("utils.load").langs "lsp"
+    local servers, settings = require("utils.loader").langs "lsp"
     opts.servers = servers
     opts.settings = settings
 
     opts.on_attach = function(_, bufnr)
       local maps = require "plugins.lspconfig.mappings"
-      require("utils.load").mappings(maps, { buffer = bufnr })
+      require("utils.loader").mappings(maps, { buffer = bufnr })
     end
 
     opts.capabilities = require("cmp_nvim_lsp").default_capabilities()

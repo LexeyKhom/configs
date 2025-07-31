@@ -8,7 +8,7 @@ return {
   lazy = false,
   init = function()
     local KEYS = require "core.mappings"
-    require("utils.load").mappings {
+    require("utils.loader").mappings {
       n = {
         [KEYS.UP .. ",<Tab>"] = {
           "<cmd> BufferLineCycleNext <CR>",
@@ -80,7 +80,7 @@ return {
         offsets = {
           {
             filetype = "NvimTree",
-            text = require("utils.fs").getCurDir,
+            text = require("utils.fs").get_curdir,
             text_align = "center",
             separator = true,
             highlight = "BufferLineFill",
@@ -101,7 +101,7 @@ return {
           },
           {
             filetype = "DiffviewFiles",
-            text = require("utils.fs").getCurDir,
+            text = require("utils.fs").get_curdir,
             text_align = "center",
             separator = true,
             highlight = "BufferLineFill",

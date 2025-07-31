@@ -1,4 +1,4 @@
-local configs = require("utils.load").db_configs()
+local configs = require("utils.loader").db_configs()
 local dbs = {}
 for i, c in pairs(configs) do
   dbs[i] = {
@@ -13,7 +13,7 @@ return {
     { "tpope/vim-dadbod", lazy = true },
   },
   keys = function()
-    require("utils.load").mappings {
+    require("utils.loader").mappings {
       n = {
         ["<A-N>"] = {
           "<cmd>DBUIToggle<CR>",

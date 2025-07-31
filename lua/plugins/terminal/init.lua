@@ -6,7 +6,7 @@ return {
   cmd = Term.cmd,
   keys = function()
     local KEYS = require "core.mappings"
-    require("utils.load").mappings {
+    require("utils.loader").mappings {
       n = {
         [KEYS.TERMINAL] = {
           function()

@@ -1,4 +1,4 @@
-local configs = require("utils.load").db_configs()
+local configs = require("utils.loader").db_configs()
 local connections = {}
 for i, c in pairs(configs) do
   connections[i] = {

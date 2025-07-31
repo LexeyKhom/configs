@@ -1,4 +1,4 @@
-local Load = require "utils.load"
+local Loader = require "utils.loader"
 
-Load.dir "core"
-Load.plugins "plugins"
+Loader.dir "core"
+Loader.plugins "plugins"
