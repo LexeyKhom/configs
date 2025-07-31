@@ -1,4 +1,5 @@
 local Term = {}
+local DEFAULT_TERM = "float"
 
 Term.cmd = { "ToggleTerm", "TermExec" }
 
@@ -19,7 +20,7 @@ Term.toggle = function(direction)
 end
 
 Term.exec = function(cmd, direction)
-  direction = direction or vim.g.term
+  direction = direction or DEFAULT_TERM
   local n = Term.get(direction)
   vim.cmd(n .. "TermExec direction=" .. direction .. ' cmd="' .. cmd .. '"')
 end

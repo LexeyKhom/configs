@@ -53,7 +53,7 @@ return {
       },
 
       t = {
-        [KEYS.TERMINAL .. "," .. KEYS.TERMINAL_VERTICAL .. "," .. KEYS.TERMINAL_HORIZONTAL] = {
+        [KEYS.TERMINAL .. "," .. KEYS.TERMINAL_VERTICAL] = {
           function()
             vim.cmd "ToggleTerm"
           end,
