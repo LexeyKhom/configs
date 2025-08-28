@@ -6,13 +6,27 @@ return {
     "smjonas/inc-rename.nvim",
   },
   init = function()
-    -- Change default signs
-    local signs =
-    { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-    end
+    local s = vim.diagnostic.severity
+    vim.diagnostic.config {
+      signs = {
+        text = {
+          [s.ERROR] = "󰅚",
+          [s.WARN] = "󰀪",
+          [s.INFO] = "",
+          [s.HINT] = "󰌶",
+        },
+        linehl = {
+          [s.ERROR] = "DiagnosticLineError",
+          [s.WARN] = "DiagnosticSignWarn",
+        },
+        numhl = {
+          [s.ERROR] = "DiagnosticSignError",
+          [s.WARN] = "DiagnosticSignWarn",
+          [s.INFO] = "DiagnosticSignInfo",
+          [s.HINT] = "DiagnosticSignHint",
+        },
+      },
+    }
   end,
   opts = function()
     local opts = {}
