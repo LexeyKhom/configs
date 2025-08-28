@@ -4,13 +4,13 @@
     "body": [
       "%include \"stdlib.inc\"",
       "%include \"stdio.inc\"",
-      "global _start",
+      "[global _start]",
       "",
-      "section .bss",
+      "[section .bss]",
       "\targc resd 1  ; Количествое аргументов",
       "\targvp resd 1 ; Указатель на массив аргументов",
       "",
-      "section .text",
+      "[section .text]",
       "_start:",
       "\tpop dword [argc]",
       "\tmov [argvp], esp",
@@ -273,6 +273,22 @@
     "body": ["%undef ${1:CONST_NAME}"],
     "description": "Отменяет определение ранее определенного макроса или константы."
   },
+  "%Push": {
+    "prefix": "%push",
+    "body": ["%push"],
+    "description": [
+      "Сохраняет текущий контекст (например, для локальных меток) внутри макросов.",
+      "Полезно для предотвращения конфликтов имен при использовании локальных меток во вложенных макросах."
+    ]
+  },
+  "%Pop": {
+    "prefix": "%pop",
+    "body": ["%pop"],
+    "description": [
+      "Восстанавливает ранее сохраненный контекст (например, для локальных меток) внутри макросов.",
+      "Используется в паре с `%push`."
+    ]
+  },
   "%Assign": {
     "prefix": "%assign",
     "body": ["%assign ${1:VAR_NAME} ${2:value}"],
@@ -400,17 +416,17 @@
   },
   "Global mark": {
     "prefix": "global",
-    "body": ["global ${0:mark}"],
+    "body": ["[global ${0:mark}]"],
     "description": "Директива, требующая от ассемблера считать следующую метку 'глобальной', т.е. видимой извне объектного модуля. Применяется в сочетании с global."
   },
   "Extern": {
     "prefix": "extern",
-    "body": ["extern ${0:mark}"],
+    "body": ["[extern ${0:mark}]"],
     "description": "Директива, объявляющая метку `$mark` внешней, т.е. определенной в другом (filename.o) объектном модуле. Применяется в сочетании с global."
   },
   "Section": {
     "prefix": "section",
-    "body": ["section .${0:text|data|bss}"],
+    "body": ["[section .${0:text|data|bss}]"],
     "description": [
       "Директива описывающая начало новой секции памяти.",
       "- `.text` - секция исполняемого кода.",
