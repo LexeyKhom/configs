@@ -9,9 +9,9 @@ Loader.dir = function(path)
   local files = readdir(path)
   path = join(split(path, "/"), ".")
   for _, file in ipairs(files) do
-    local fileName = unpack(split(file, "."))
-    local fullFileName = path .. "." .. fileName
-    local success, module = pcall(require, fullFileName)
+    local filename = unpack(split(file, "."))
+    local full_filename = path .. "." .. filename
+    local success, module = pcall(require, full_filename)
     if success then
       table.insert(modules, module)
     else
@@ -50,7 +50,7 @@ Loader.mappings = function(mappings, default_opts)
   end
 end
 
-Loader.plugins = function(pluginsPath)
+Loader.plugins = function(plugins_path)
   local LAZY_OPTS = {
     ui = {
       icons = {
@@ -74,7 +74,7 @@ Loader.plugins = function(pluginsPath)
     if vim.v.shell_error ~= 0 then
       vim.api.nvim_echo({
         { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-        { out, "WarningMsg" },
+        { out,                            "WarningMsg" },
         { "\nPress any key to exit..." },
       }, true, {})
       vim.fn.getchar()
@@ -83,18 +83,18 @@ Loader.plugins = function(pluginsPath)
   end
   vim.opt.rtp:prepend(lazypath)
 
-  require("lazy").setup(pluginsPath, LAZY_OPTS)
+  require("lazy").setup(plugins_path, LAZY_OPTS)
 end
 
-Loader.langs = function(pluginName, filter)
+Loader.langs = function(plugin_name, filter)
   local LANGS_DIR = "langs"
   local contains = require("utils.table").contains
   local langs = Loader.dir(LANGS_DIR)
   local results = {}
   local settings = {}
   for _, lang in pairs(langs) do
-    if lang[pluginName] then
-      local plugin_configs = lang[pluginName]
+    if lang[plugin_name] then
+      local plugin_configs = lang[plugin_name]
       for _, config in pairs(plugin_configs) do
         local is_table = type(config) == "table"
         local is_filtered = is_table
@@ -108,7 +108,7 @@ Loader.langs = function(pluginName, filter)
         end
       end
     end
-    if pluginName == "mason" then
+    if plugin_name == "mason" then
       for _, plugin_configs in pairs(lang) do
         for _, config in pairs(plugin_configs) do
           local is_table = type(config) == "table"
