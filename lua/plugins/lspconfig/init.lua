@@ -17,7 +17,6 @@ return {
         },
         linehl = {
           [s.ERROR] = "DiagnosticLineError",
-          [s.WARN] = "DiagnosticSignWarn",
         },
         numhl = {
           [s.ERROR] = "DiagnosticSignError",
