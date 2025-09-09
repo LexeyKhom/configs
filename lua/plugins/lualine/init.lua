@@ -27,7 +27,7 @@ return {
     "nvim-tree/nvim-web-devicons",
     "LexeyKhom/nvconfig",
   },
-  lazy = false,
+  event = "VeryLazy",
   opts = function()
     local theme = require "plugins.lualine.theme"
     return {

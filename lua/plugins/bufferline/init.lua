@@ -5,7 +5,7 @@ return {
     "LexeyKhom/nvconfig",
   },
   version = "*",
-  lazy = false,
+  event = "VeryLazy",
   init = function()
     local KEYS = require "core.mappings"
     require("utils.loader").mappings {
