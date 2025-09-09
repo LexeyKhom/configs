@@ -37,7 +37,7 @@ local execute = function(onError, onSuccess)
     local join = require("utils.table").join
     local basename = vim.fn.expand "%:r"
     local compile = "gcc -Wall -g -lm ${name} -o ${basename}"
-        % { name = name, basename = basename }
+      % { name = name, basename = basename }
     local separator = "echo -----"
     local run = "./" .. basename
     onSuccess(join({ compile, separator, run }, " && "))
@@ -60,13 +60,17 @@ local execute = function(onError, onSuccess)
     end
     local join = require("utils.table").join
     local basename = vim.fn.expand "%:r"
+    local macroprocessing = "nasm -E -dOS_LINUX ${name} > ${basename}.expanded.asm"
+      % { name = name, basename = basename }
     local compile = "nasm -f elf -dOS_LINUX -g -o ${basename}.o ${name}"
-        % { name = name, basename = basename }
+      % { name = name, basename = basename }
     local compile2 = "ld -m elf_i386 ${basename}.o -o ${basename}"
-        % { name = name, basename = basename }
+      % { basename = basename }
     local separator = "clear"
     local run = "./" .. basename
-    onSuccess(join({ compile, compile2, separator, run }, "&&"))
+    onSuccess(
+      join({ macroprocessing, compile, compile2, separator, run }, "&&")
+    )
   end
 
   execute.sh = function(name)
