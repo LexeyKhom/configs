@@ -15,7 +15,6 @@ opt.splitright = true
 -- Editor
 opt.mouse = "a"
 opt.cursorline = true
-opt.colorcolumn = "80"
 opt.fillchars = { eob = " " }
 opt.whichwrap:append "<>[]hl" -- go to previous/next line
 
@@ -31,7 +30,6 @@ opt.showmode = false
 
 -- Numbers column
 opt.number = true
-opt.numberwidth = 2
 opt.relativenumber = false
 opt.signcolumn = "yes"
 
