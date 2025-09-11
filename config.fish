@@ -19,3 +19,9 @@ set -gxa PATH "$BUN_INSTALL/bin"
 # Ethereum/Solidity
 set -gx FOUNDRY_INSTALL "$HOME/.foundry"
 set -gxa PATH "$FOUNDRY_INSTALL/bin"
+
+# PNPM
+set -gx PNPM_HOME "/home/lexey/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
+end
