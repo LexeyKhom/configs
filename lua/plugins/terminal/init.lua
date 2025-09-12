@@ -64,7 +64,7 @@ return {
   end,
   opts = function()
     local SMALL_SCREEN_WIDTH = 100
-    local c = require("base46").get_theme_tb "base_30"
+    local highlights = require "plugins.terminal.theme"
     return {
       direction = "float",
       start_in_insert = true,
@@ -96,15 +96,7 @@ return {
           return height
         end,
       },
-      highlights = {
-        NormalFloat = {
-          guibg = c.darker_black,
-        },
-        FloatBorder = {
-          guifg = c.darker_black,
-          guibg = c.darker_black,
-        },
-      },
+      highlights = highlights,
     }
   end,
 }
