@@ -17,6 +17,28 @@ return {
       theme_toggle = { "yoru" },
       hl_add = hl_add,
       hl_override = hl_override,
+      integrations = {
+        "avante",
+        -- "blankline",
+        -- "bufferline",
+        "cmp",
+        "dap",
+        "defaults",
+        "devicons",
+        "diffview",
+        "git",
+        "lsp",
+        "mason",
+        "nvimtree",
+        "rainbowdelimiters",
+        "render-markdown",
+        "semantic_tokens",
+        "syntax",
+        "telescope",
+        -- "todo",
+        "treesitter",
+        "whichkey",
+      },
     }
 
     return M

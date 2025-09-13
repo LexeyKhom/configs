@@ -25,7 +25,6 @@ return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
-    "LexeyKhom/nvconfig",
   },
   event = "VeryLazy",
   opts = function()

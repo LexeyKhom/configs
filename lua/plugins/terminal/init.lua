@@ -1,7 +1,6 @@
 local Term = require "plugins.terminal.term"
 return {
   "akinsho/toggleterm.nvim",
-  dependencies = { "LexeyKhom/nvconfig" },
   version = "*",
   cmd = Term.cmd,
   keys = function()

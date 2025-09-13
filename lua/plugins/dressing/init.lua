@@ -3,7 +3,6 @@ return {
   lazy = true,
   dependencies = {
     "MunifTanjim/nui.nvim",
-    "LexeyKhom/nvconfig",
   },
   opts = function()
     local mappings = require "plugins.dressing.mappings"
