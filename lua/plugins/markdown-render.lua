@@ -9,11 +9,6 @@ return {
   opts = {
     file_types = { "markdown", "Avante" },
     sign = { enabled = false },
-    latex = {
-      converter = "utftex",
-      top_pad = 1,
-      bottom_pad = 0,
-    },
     heading = {
       width = "full", -- full | block
       border = true,

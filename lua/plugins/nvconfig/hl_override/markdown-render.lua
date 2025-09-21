@@ -7,6 +7,13 @@ local c = {
   darkpurple = "#31273B",
 }
 return {
+  ["@markup.heading.1.markdown"] = { fg = "red" },
+  ["@markup.heading.2.markdown"] = { fg = "yellow" },
+  ["@markup.heading.3.markdown"] = { fg = "cyan" },
+  ["@markup.heading.4.markdown"] = { fg = "orange" },
+  ["@markup.heading.5.markdown"] = { fg = "green" },
+  ["@markup.heading.6.markdown"] = { fg = "purple" },
+
   RenderMarkdownH1Bg = { bg = c.darkred, fg = "red", bold = true },
   RenderMarkdownH2Bg = { bg = c.darkyellow, fg = "yellow", bold = true },
   RenderMarkdownH3Bg = { bg = c.darkcyan, fg = "cyan", bold = true },
