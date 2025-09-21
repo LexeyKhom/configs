@@ -1,4 +1,4 @@
-local execute = function(onError, onSuccess)
+local execute = function(on_error, on_success)
   -- (https://vimdoc.sourceforge.net/htmldoc/cmdline.html#filename-modifiers)
   local fileName = vim.fn.expand "%:p:~:."
   local fileType = vim.bo.filetype
@@ -6,31 +6,31 @@ local execute = function(onError, onSuccess)
   local execute = {}
 
   execute.javascript = function(name)
-    onSuccess("node " .. name)
+    on_success("node " .. name)
   end
 
   execute.typescript = function(name)
-    onSuccess("bun " .. name)
+    on_success("bun " .. name)
   end
 
   execute.html = function(name)
-    onSuccess("firefox '" .. name .. "'")
+    on_success("firefox '" .. name .. "'")
   end
 
   execute.gdscript = function()
-    onSuccess "godot"
+    on_success "godot"
   end
 
   execute.python = function(name)
-    onSuccess("python " .. name)
+    on_success("python " .. name)
   end
 
   execute.php = function(name)
-    onSuccess("php " .. name)
+    on_success("php " .. name)
   end
 
   execute.go = function(name)
-    onSuccess("go run " .. name)
+    on_success("go run " .. name)
   end
 
   execute.c = function(name)
@@ -40,7 +40,7 @@ local execute = function(onError, onSuccess)
       % { name = name, basename = basename }
     local separator = "echo -----"
     local run = "./" .. basename
-    onSuccess(join({ compile, separator, run }, " && "))
+    on_success(join({ compile, separator, run }, " && "))
   end
 
   execute.pascal = function(name)
@@ -49,7 +49,7 @@ local execute = function(onError, onSuccess)
     local compile = "fpc " .. name
     local separator = "clear"
     local run = "./" .. basename
-    onSuccess(join({ compile, separator, run }, "&&"))
+    on_success(join({ compile, separator, run }, "&&"))
   end
 
   execute.asm = function(name)
@@ -68,22 +68,22 @@ local execute = function(onError, onSuccess)
       % { basename = basename }
     local separator = "clear"
     local run = "./" .. basename
-    onSuccess(
+    on_success(
       join({ macroprocessing, compile, compile2, separator, run }, "&&")
     )
   end
 
   execute.sh = function(name)
-    onSuccess("./" .. name)
+    on_success("./" .. name)
   end
 
   execute.terminal = function(_)
-    onSuccess "clear"
+    on_success "clear"
   end
 
   execute.err = function(type)
     return function(name)
-      onError(
+      on_error(
         "No execute defined. Type: '" .. type .. "', File: '" .. name .. "'"
       )
     end

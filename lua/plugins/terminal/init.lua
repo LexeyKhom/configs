@@ -31,13 +31,13 @@ return {
         [KEYS.EXECUTE] = {
           function()
             local execute = require "plugins.terminal.execute"
-            local onError = function(errorMessage)
+            local on_error = function(errorMessage)
               print(errorMessage)
             end
-            local onSuccess = function(cmd)
+            local on_success = function(cmd)
               Term.exec(cmd)
             end
-            execute(onError, onSuccess)
+            execute(on_error, on_success)
           end,
           "Execute this",
         },
