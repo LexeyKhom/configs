@@ -9,7 +9,11 @@ return {
   },
 
   null = {
-    { "f.clang_format", mason = "clang-format" },
+    {
+      "f.clang_format",
+      mason = "clang-format",
+      setting = { extra_filetypes = { "gdshader" } },
+    },
   },
 
   dap = {
