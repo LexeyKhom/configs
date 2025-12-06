@@ -31,8 +31,8 @@ return {
         [KEYS.EXECUTE] = {
           function()
             local execute = require "plugins.terminal.execute"
-            local on_error = function(errorMessage)
-              print(errorMessage)
+            local on_error = function(error_message)
+              print(error_message)
             end
             local on_success = function(cmd)
               Term.exec(cmd)

@@ -18,7 +18,7 @@ local function recording()
   if record == "" then
     return ""
   end
-  return "запись @" .. record
+  return "record @" .. record
 end
 
 return {

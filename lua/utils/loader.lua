@@ -74,7 +74,7 @@ Loader.plugins = function(plugins_path)
     if vim.v.shell_error ~= 0 then
       vim.api.nvim_echo({
         { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-        { out,                            "WarningMsg" },
+        { out, "WarningMsg" },
         { "\nPress any key to exit..." },
       }, true, {})
       vim.fn.getchar()
@@ -98,8 +98,8 @@ Loader.langs = function(plugin_name, filter)
       for _, config in pairs(plugin_configs) do
         local is_table = type(config) == "table"
         local is_filtered = is_table
-            and config.filter
-            and contains(config.filter, filter)
+          and config.filter
+          and contains(config.filter, filter)
         local result = is_table and config[1] or config
         local setting = is_table and config.setting or nil
         if not is_filtered and not contains(results, result) then
