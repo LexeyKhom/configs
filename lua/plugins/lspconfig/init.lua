@@ -29,28 +29,24 @@ return {
   end,
   opts = function()
     local opts = {}
-
     local servers, settings = require("utils.loader").langs "lsp"
     opts.servers = servers
     opts.settings = settings
-
+    opts.capabilities = require("cmp_nvim_lsp").default_capabilities()
     opts.on_attach = function(_, bufnr)
       local maps = require "plugins.lspconfig.mappings"
       require("utils.loader").mappings(maps, { buffer = bufnr })
     end
-
-    opts.capabilities = require("cmp_nvim_lsp").default_capabilities()
-
     return opts
   end,
   config = function(_, opts)
-    local lspconfig = require "lspconfig"
     for _, lsp in ipairs(opts.servers) do
-      lspconfig[lsp].setup {
+      vim.lsp.config(lsp, {
         on_attach = opts.on_attach,
         capabilities = opts.capabilities,
         settings = opts.settings[lsp] or {},
-      }
+      })
     end
+    vim.lsp.enable(opts.servers)
   end,
 }
