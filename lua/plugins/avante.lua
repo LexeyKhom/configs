@@ -1,3 +1,5 @@
+local mappings = require "core.mappings"
+
 return {
   "yetone/avante.nvim",
   version = false,
@@ -16,8 +18,8 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
   },
   opts = {
-    provider = os.getenv "MAIN_PROVIDER",
-    auto_suggestions_provider = os.getenv "AUTO_SUGGESTIONS_PROVIDER",
+    provider = os.getenv "AI_PROVIDER",
+    auto_suggestions_provider = os.getenv "AI_PROVIDER_LITE",
     file_selector = { provider = "telescope" },
     providers = {
       ollama = {
@@ -30,7 +32,7 @@ return {
         model = os.getenv "GEMINI_MODEL_MAIN",
         api_key_name = "GEMINI_API_KEY",
       },
-      ["google_lite"] = {
+      ["google-lite"] = {
         __inherited_from = "openai",
         endpoint = os.getenv "GEMINI_ENDPOINT",
         model = os.getenv "GEMINI_MODEL_LITE",
@@ -47,10 +49,6 @@ return {
       width = vim.g.is_horizontal and 50 or 100,
       height = 50,
       sidebar_header = { rounded = false },
-      input = {
-        prefix = "> ",
-        height = 6,
-      },
     },
     mappings = {
       --- @class AvanteConflictMappings
@@ -62,10 +60,10 @@ return {
         insert = "<Enter>",
       },
       sidebar = {
-        close = { "q", require("core.mappings").QUIT },
+        close = { "<Esc>", "q", mappings.QUIT },
         close_from_input = {
-          normal = { "q", require("core.mappings").QUIT },
-          insert = { require("core.mappings").QUIT },
+          normal = { "<Esc>", "q", mappings.QUIT },
+          insert = { mappings.QUIT },
         },
       },
     },
