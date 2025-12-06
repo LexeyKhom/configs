@@ -16,12 +16,14 @@ set -gxa PATH "$DENO_INSTALL/bin"
 set -gx BUN_INSTALL "$HOME/.bun"
 set -gxa PATH "$BUN_INSTALL/bin"
 
+# PNPM
+set -gx PNPM_INSTALL "$HOME/.local/share/pnpm"
+set -gxa PATH "$PNPM_INSTALL"
+
 # Ethereum/Solidity
 set -gx FOUNDRY_INSTALL "$HOME/.foundry"
 set -gxa PATH "$FOUNDRY_INSTALL/bin"
 
-# PNPM
-set -gx PNPM_HOME "/home/lexey/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
-end
+# Godot/GDShader
+set -gx GODOT_INSTALL "$HOME/.godot"
+set -gxa PATH "$GODOT_INSTALL"
