@@ -17,15 +17,9 @@ return {
       },
       ["webpack.config.js"] = {
         icon = "󰜫",
-        color = "#5d87bf",
-        cterm_color = "67",
+        color = "#519ABA",
+        cterm_color = "74",
         name = "WebpackConfig",
-      },
-      ["vite.config.js"] = {
-        icon = "󰹭",
-        color = "#7239b3",
-        cterm_color = "91",
-        name = "ViteConfig",
       },
       [".eslintrc.json"] = {
         icon = "",
@@ -41,14 +35,14 @@ return {
       },
       [".stylelintrc"] = {
         icon = "",
-        color = "#ffffff", -- color = "#333333",
-        cterm_color = "231", -- cterm_color = "236",
+        color = "#ffffff",
+        cterm_color = "231",
         name = "Stylelintrc",
       },
       [".stylelintignore"] = {
         icon = "",
-        color = "#ffffff", -- color = "#333333",
-        cterm_color = "231", -- cterm_color = "236",
+        color = "#ffffff",
+        cterm_color = "231",
         name = "Stylelintrc",
       },
       ["gd"] = {
@@ -72,22 +66,10 @@ return {
         cterm_color = "68",
         name = "ASM",
       },
-      ["deb"] = {
-        icon = "",
-        color = "#e535ab",
-        cterm_color = "199",
-        name = "deb",
-      },
-      ["rpm"] = {
-        icon = "",
-        color = "#b30b00",
-        cterm_color = "124",
-        name = "rpm",
-      },
       ["gdshader"] = {
         icon = "",
-        color = "#e535ab",
-        cterm_color = "199",
+        color = "#6b4d83",
+        cterm_color = "96",
         name = "GodotShader",
       },
     },
