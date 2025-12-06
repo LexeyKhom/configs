@@ -2,7 +2,11 @@ return {
   "folke/ts-comments.nvim",
   event = { "BufReadPost", "InsertEnter" },
   dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
-  opts = {},
+  opts = {
+    lang = {
+      gdshader = "// %s",
+    },
+  },
   keys = {
     require("utils.loader").mappings {
       n = {
