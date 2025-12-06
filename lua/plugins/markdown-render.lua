@@ -9,6 +9,8 @@ return {
   opts = {
     file_types = { "markdown", "Avante" },
     sign = { enabled = false },
+    code = { language_name = false },
+    quote = { repeat_linebreak = true },
     heading = {
       width = "full", -- full | block
       border = true,
@@ -38,6 +40,5 @@ return {
         },
       },
     },
-    quote = { repeat_linebreak = true },
   },
 }
