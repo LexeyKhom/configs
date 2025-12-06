@@ -184,18 +184,12 @@
   "GETPID": {
     "prefix": "GETPID",
     "body": ["GETPID"],
-    "description": [
-      "pid getpid()",
-      "Получает pid текущего процесса."
-    ]
+    "description": ["pid getpid()", "Получает pid текущего процесса."]
   },
   "GETPPID": {
     "prefix": "GETPPID",
     "body": ["GETPPID"],
-    "description": [
-      "pid getppid()",
-      "Получает pid родительствого процесса."
-    ]
+    "description": ["pid getppid()", "Получает pid родительствого процесса."]
   },
   "KILL": {
     "prefix": "KILL",
