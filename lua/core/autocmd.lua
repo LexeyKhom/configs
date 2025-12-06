@@ -19,3 +19,11 @@ autocmd("VimResized", {
     vim.g.is_horizontal = vim.o.columns > 2 * vim.o.lines
   end,
 })
+
+autocmd("FileType", {
+  pattern = { "markdown" },
+  callback = function()
+    vim.opt_local.wrap = false
+  end,
+  desc = "Disable wrap for specific file types to avoid rendering issues",
+})
