@@ -121,13 +121,13 @@ return {
           height = 0.96,
           horizontal = {
             prompt_position = "top",
-            preview_width = 0.54,
+            preview_width = 0.6,
             preview_cutoff = 80,
           },
           vertical = {
             prompt_position = "top",
             mirror = true,
-            preview_height = 0.44,
+            preview_height = 0.5,
             preview_cutoff = 20,
           },
         },
