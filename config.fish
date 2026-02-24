@@ -25,5 +25,6 @@ set -gx FOUNDRY_INSTALL "$HOME/.foundry"
 set -gxa PATH "$FOUNDRY_INSTALL/bin"
 
 # Godot/GDShader
+set -gx GODOT_BIN "/usr/bin/godot"
 set -gx GODOT_INSTALL "$HOME/.godot"
 set -gxa PATH "$GODOT_INSTALL"
