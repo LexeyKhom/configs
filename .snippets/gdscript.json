@@ -1,11 +1,11 @@
 {
   "Class name": {
     "prefix": "class_name",
-    "body": ["class_name ${1:Name}"]
+    "body": ["class_name ${1:ClassName} extends ${2:Node}"]
   },
   "Inner class": {
     "prefix": "class",
-    "body": ["class $1 extends ${2:Reference}", "\t$3"]
+    "body": ["class ${1:ClassName} extends ${2:Reference}", "\t$3"]
   },
   "Print messages to console": {
     "prefix": ["print"],
@@ -47,6 +47,14 @@
     "prefix": "_gui_input",
     "body": ["func _gui_input(event: InputEvent) -> void:", "\t${1:pass}"]
   },
+  "_to_string method of Object": {
+    "prefix": "_to_string",
+    "body": ["func _to_string() -> String:", "\t${1:pass}"],
+    "description": [
+      "Override this method to customize the return value of",
+      "`to_string`, and therefore the object's representation as a `String`."
+    ]
+  },
   "for loop": {
     "prefix": "for",
     "body": ["for $1 in $2:", "\t${3:pass}"]
@@ -79,36 +87,70 @@
     "body": ["while ${1:condition}:", "\t${2:pass}"]
   },
   "function define": {
-    "prefix": "func",
+    "prefix": ["f", "func"],
     "body": ["func ${1:method}($2) -> ${3:void}:", "\t${4:pass}"]
+  },
+  "anonymous function define": {
+    "prefix": ["af", "afunc"],
+    "body": ["func($1) -> void: return $0"]
   },
   "match": {
     "prefix": "match",
-    "body": ["match ${1:expression}: \n\t${2:pattern}:\n\t\t$0\n"]
+    "body": [
+      "match ${1:expression}:",
+      "\t${2:pattern}:",
+      "\t\t${3:pass}",
+      "\t_:",
+      "\t\tpass",
+      "$0"
+    ]
   },
   "signal declaration": {
     "prefix": "signal",
     "body": ["signal ${1:signalname}(${2:args})"]
   },
+  "abstract": {
+    "prefix": "@abstract",
+    "body": ["@abstract"],
+    "description": "Makes the class abstract."
+  },
+  "tool": {
+    "prefix": "@tool",
+    "body": ["@tool"],
+    "description": "Allows you to run the code in the editor."
+  },
+  "export tool button": {
+    "prefix": "@export_tool_button",
+    "body": ["@export_tool_button"],
+    "description": [
+      "Adds an action button to the editor.",
+      "",
+      "> Can only be used with @tool!"
+    ]
+  },
   "export variables": {
     "prefix": "@export",
-    "body": ["@export var ${1:name}:$2 = $3"]
+    "body": ["@export var ${1:name}: ${2:Type} = $3"]
+  },
+  "export dir": {
+    "prefix": "@export_dir",
+    "body": ["@export_dir var ${1:dir_path}: ${2:Type} = $3"]
   },
   "export group": {
     "prefix": "@export_group",
-    "body": ["@export_group('${1:name}')"]
+    "body": ["@export_group(\"${1:name}\")"]
   },
   "export category": {
     "prefix": "@export_category",
-    "body": ["@export_category('${1:name}')"]
+    "body": ["@export_category(\"${1:name}\")"]
   },
   "export range": {
     "prefix": "@export_range",
-    "body": ["@export_range(${1:0.0}, ${2:1.0}) var ${3:name} :$5=$4"]
+    "body": ["@export_range(${1:0.0}, ${2:1.0}) var ${3:name}: ${4:Type} = $5"]
   },
   "define onready variables": {
     "prefix": "@onready",
-    "body": ["@onready var ${1:name}:$3 = $2"]
+    "body": ["@onready var ${1:name}: ${2:Type} = $3"]
   },
   "warning ignore": {
     "prefix": "@warning_ignore",
@@ -119,12 +161,12 @@
     "body": ["@warning_ignore(\"unused_signal\")"]
   },
   "define variables": {
-    "prefix": "var",
-    "body": ["var ${1:name}:$2 = $3"]
+    "prefix": ["v", "var"],
+    "body": ["var ${1:name}: ${2:Type} = $3"]
   },
   "define constants": {
-    "prefix": "const",
-    "body": ["const ${1:name}:$2 = $3"]
+    "prefix": ["c", "const"],
+    "body": ["const ${1:NAME}: ${2:Type} = $3"]
   },
   "Is instance of a class or script": {
     "prefix": "is",
@@ -137,5 +179,115 @@
   "pass statement": {
     "prefix": "pass",
     "body": ["pass"]
+  },
+  "#signals": {
+    "prefix": "#signals",
+    "body": [
+      "# ===========================================================================",
+      "# Signals",
+      "# ===========================================================================",
+      "",
+      "$0"
+    ]
+  },
+  "#constants": {
+    "prefix": "#constants",
+    "body": [
+      "# ===========================================================================",
+      "# Constants",
+      "# ===========================================================================",
+      "",
+      "$0"
+    ]
+  },
+  "#export": {
+    "prefix": "#export",
+    "body": [
+      "# ===========================================================================",
+      "# Export",
+      "# ===========================================================================",
+      "",
+      "$0"
+    ]
+  },
+  "#state": {
+    "prefix": "#state",
+    "body": [
+      "# ===========================================================================",
+      "# State",
+      "# ===========================================================================",
+      "",
+      "$0"
+    ]
+  },
+  "#lifecycle": {
+    "prefix": "#lifecycle",
+    "body": [
+      "# ===========================================================================",
+      "# Lifecycle",
+      "# ===========================================================================",
+      "",
+      "$0"
+    ]
+  },
+  "#public interface": {
+    "prefix": "#public_interface",
+    "body": [
+      "# ===========================================================================",
+      "# Public interface",
+      "# ===========================================================================",
+      "",
+      "$0"
+    ]
+  },
+  "#handlers": {
+    "prefix": "#handlers",
+    "body": [
+      "# ===========================================================================",
+      "# Handlers",
+      "# ===========================================================================",
+      "",
+      "$0"
+    ]
+  },
+  "#setget": {
+    "prefix": "#setget",
+    "body": [
+      "# ===========================================================================",
+      "# Set/Get",
+      "# ===========================================================================",
+      "",
+      "$0"
+    ]
+  },
+  "#private_methods": {
+    "prefix": "#private_methods",
+    "body": [
+      "# ===========================================================================",
+      "# Private Methods",
+      "# ===========================================================================",
+      "",
+      "$0"
+    ]
+  },
+  "#helper_methods": {
+    "prefix": "#helper_methods",
+    "body": [
+      "# ===========================================================================",
+      "# Helper Methods",
+      "# ===========================================================================",
+      "",
+      "$0"
+    ]
+  },
+  "#header": {
+    "prefix": ["#header", "#text"],
+    "body": [
+      "# ===========================================================================",
+      "# ${1:Text}",
+      "# ===========================================================================",
+      "",
+      "$0"
+    ]
   }
 }
