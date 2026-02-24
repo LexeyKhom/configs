@@ -17,6 +17,7 @@ return {
   opts = function()
     return {
       filters = {
+        custom = { "^.*\\.uid$" },
         dotfiles = false,
         git_ignored = false,
       },
