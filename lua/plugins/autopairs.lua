@@ -2,7 +2,6 @@ return {
   "windwp/nvim-autopairs",
   event = "InsertEnter",
   opts = {
-    fast_wrap = { map = "<A-g>" },
     disable_filetype = { "TelescopePrompt", "spectre_panel", "vim" },
   },
   config = function(_, opts)
