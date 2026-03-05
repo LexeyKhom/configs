@@ -3,7 +3,7 @@
 ## Language settings
 
 - [Mason](https://mason-registry.dev/registry/list)
-- [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages)
+- [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md)
 - [LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md)
 - [Null-ls](https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md)
 - [DAP](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation)
