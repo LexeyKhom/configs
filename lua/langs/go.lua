@@ -1,6 +1,7 @@
 return {
   tree = {
     "go",
+    "gomod",
   },
 
   lsp = {
