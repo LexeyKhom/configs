@@ -1,3 +1,11 @@
+local function toggle_diffview(cmd)
+  if next(require("diffview.lib").views) == nil then
+    vim.cmd(cmd)
+  else
+    vim.cmd "DiffviewClose"
+  end
+end
+
 return {
   "sindrets/diffview.nvim",
   dependencies = {
@@ -11,10 +19,20 @@ return {
   keys = function()
     require("utils.loader").mappings {
       n = {
-        ["<leader>gd"] = { "<cmd> DiffviewOpen <CR>", "GitDiff" },
+        ["<leader>gd"] = {
+          function()
+            toggle_diffview "DiffviewOpen"
+          end,
+          "GitDiff",
+        },
+        ["<leader>gl"] = {
+          function()
+            toggle_diffview "DiffviewFileHistory"
+          end,
+          "Git log",
+        },
         ["<leader>gx"] = { "<cmd> DiffviewClose <CR>", "GitDiff close" },
         ["<leader>gq"] = { "<cmd> DiffviewClose <CR>", "GitDiff quit" },
-        ["<leader>gl"] = { "<cmd> DiffviewFileHistory <CR>", "Git log" },
       },
     }
   end,
