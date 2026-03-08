@@ -9,7 +9,7 @@ return {
   },
 
   null = {
-    { "d.golangci_lint", mason = "golangci_lint" },
+    { "d.golangci_lint", mason = "golangci-lint" },
     { "f.gofumpt", mason = "gofumpt" },
     { "f.goimports", mason = "goimports" },
     { "f.goimports_reviser", mason = "goimports-reviser" },
