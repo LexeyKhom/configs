@@ -1,4 +1,7 @@
 if status is-interactive
+    # Copy to clipboard buffer
+    alias clip="xclip -selection clipboard"
+
     # For NoeVim tests
     alias tvim='XDG_DATA_HOME=~/Documents/NeoVim/.local/share XDG_CONFIG_HOME=~/Documents/NeoVim/ nvim'
 
