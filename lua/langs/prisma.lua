@@ -8,6 +8,6 @@ return {
   },
 
   null = {
-    "f.prisma_format"
-  }
+    "f.prisma_format",
+  },
 }

@@ -22,7 +22,7 @@ end
 Term.exec = function(cmd, direction)
   direction = direction or DEFAULT_TERM
   local n = Term.get(direction)
-  vim.cmd(n .. "TermExec direction=" .. direction .. ' cmd="' .. cmd .. '"')
+  vim.cmd(n .. "TermExec direction=" .. direction .. " cmd='" .. cmd .. "'")
 end
 
 return Term
