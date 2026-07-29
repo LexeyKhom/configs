@@ -1,6 +1,8 @@
 function fish_user_key_bindings
-    # Switch to normal mode (like <ESC>)
-    bind -s --preset -M insert kj "if commandline -P; commandline -f cancel; else; set fish_bind_mode default; commandline -f backward-char repaint-mode; end"
+    fish_vi_key_bindings
+
+    # Normal Mode
+    bind -M insert -m default kj backward-char repaint
 
     # Paste
     bind -M default \ep fish_clipboard_paste

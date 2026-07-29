@@ -27,7 +27,8 @@ function load_dotenv
         set -l value (echo $line | cut -d= -f2)
 
         # Заменяем переменные окружения в значении с обработкой кавычек
-        set -l value (eval echo $value)
+        set -l value (string replace -r -a '[;&|]|\$\(|\`' '' -- $value)
+        eval set -l value $value
 
         # Создание переменной окружения с обработкой пустых значений
         set -gx $key $value
