@@ -1,3 +1,12 @@
+vim.filetype.add {
+  extension = {
+    gdformatrc = "yaml",
+    gdlintrc = "yaml",
+    godot = "toml",
+    import = "toml"
+  },
+}
+
 return {
   tree = {
     "gdscript",
