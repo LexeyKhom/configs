@@ -45,11 +45,23 @@ return {
         cterm_color = "231",
         name = "Stylelintrc",
       },
-      ["gd"] = {
+      [".gdformatrc"] = {
         icon = "",
-        color = "#519aba",
-        cterm_color = "74",
-        name = "GDScript",
+        color = "#B83A1D",
+        cterm_color = "160",
+        name = "GDformat",
+      },
+      [".gdlintrc"] = {
+        icon = "",
+        color = "#B83A1D",
+        cterm_color = "160",
+        name = "GDlint",
+      },
+      [".gdignore"] = {
+        icon = "",
+        color = "#B83A1D",
+        cterm_color = "160",
+        name = "GDlint",
       },
     },
 
@@ -65,6 +77,12 @@ return {
         color = "#4273ca",
         cterm_color = "68",
         name = "ASM",
+      },
+      ["gd"] = {
+        icon = "",
+        color = "#519aba",
+        cterm_color = "74",
+        name = "GDScript",
       },
       ["gdshader"] = {
         icon = "",
