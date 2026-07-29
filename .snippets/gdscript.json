@@ -55,6 +55,16 @@
       "`to_string`, and therefore the object's representation as a `String`."
     ]
   },
+  "_setter": {
+    "prefix": ["_set"],
+    "body": [
+      "func _set_${1:name}(new_${1:name}: ${2:ClassName}) -> void:",
+      "\tif ${1:name} == new_${1:name}:",
+      "\t\treturn",
+      "\t${1:name} = new_${1:name}",
+      "\t$0"
+    ]
+  },
   "for loop": {
     "prefix": "for",
     "body": ["for $1 in $2:", "\t${3:pass}"]
@@ -160,6 +170,14 @@
     "prefix": "@unused_signal",
     "body": ["@warning_ignore(\"unused_signal\")"]
   },
+  "warning ignore integer division": {
+    "prefix": "@integer_division",
+    "body": ["@warning_ignore(\"integer_division\")"]
+  },
+  "warning ignore missing await": {
+    "prefix": "@missing_await",
+    "body": ["@warning_ignore(\"missing_await\")"]
+  },
   "define variables": {
     "prefix": ["v", "var"],
     "body": ["var ${1:name}: ${2:Type} = $3"]
@@ -230,16 +248,6 @@
       "$0"
     ]
   },
-  "#public interface": {
-    "prefix": "#public_interface",
-    "body": [
-      "# ===========================================================================",
-      "# Public interface",
-      "# ===========================================================================",
-      "",
-      "$0"
-    ]
-  },
   "#handlers": {
     "prefix": "#handlers",
     "body": [
@@ -254,29 +262,27 @@
     "prefix": "#setget",
     "body": [
       "# ===========================================================================",
-      "# Set/Get",
+      "# Set-Get",
       "# ===========================================================================",
       "",
       "$0"
     ]
   },
-  "#private_methods": {
-    "prefix": "#private_methods",
+  "#public interface": {
+    "prefix": "#public_interface",
     "body": [
       "# ===========================================================================",
-      "# Private Methods",
+      "# Public Interface",
       "# ===========================================================================",
-      "",
       "$0"
     ]
   },
   "#helper_methods": {
-    "prefix": "#helper_methods",
+    "prefix": "#helpers",
     "body": [
       "# ===========================================================================",
-      "# Helper Methods",
+      "# Helpers",
       "# ===========================================================================",
-      "",
       "$0"
     ]
   },
