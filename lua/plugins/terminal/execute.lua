@@ -17,8 +17,17 @@ local execute = function(on_error, on_success)
     on_success("firefox '" .. name .. "'")
   end
 
-  execute.gdscript = function()
-    on_success "godot"
+  execute.gdscript = function(name)
+    if name:match "%test.gd$" then
+      on_success(
+        'godot --headless --path "$PWD" -s "res://addons/gut/gut_cmdln.gd" -gexit -gdir="" -gtest="res://'
+        .. name
+        .. '"'
+      )
+      return
+    end
+    local basename = vim.fn.expand "%:.:r"
+    on_success('godot "res://' .. basename .. '.tscn"')
   end
 
   execute.python = function(name)
