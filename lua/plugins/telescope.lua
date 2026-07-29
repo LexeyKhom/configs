@@ -121,7 +121,7 @@ return {
           height = 0.96,
           horizontal = {
             prompt_position = "top",
-            preview_width = 0.6,
+            preview_width = 0.5,
             preview_cutoff = 80,
           },
           vertical = {
@@ -132,7 +132,14 @@ return {
           },
         },
         file_sorter = require("telescope.sorters").get_fuzzy_file,
-        file_ignore_patterns = { "node_modules", "%.o", "%.a", "%.zip","%.uid" },
+        file_ignore_patterns = {
+          "node_modules",
+          "addons",
+          "%.o",
+          "%.a",
+          "%.zip",
+          "%.uid",
+        },
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
         path_display = { "truncate" },
         winblend = 0,
