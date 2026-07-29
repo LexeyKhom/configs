@@ -70,11 +70,11 @@ local execute = function(on_error, on_success)
     local join = require("utils.table").join
     local basename = vim.fn.expand "%:r"
     local macroprocessing = "nasm -E -dOS_LINUX ${name} > ${basename}.expanded.asm"
-      % { name = name, basename = basename }
+        % { name = name, basename = basename }
     local compile = "nasm -f elf -dOS_LINUX -g -o ${basename}.o ${name}"
-      % { name = name, basename = basename }
+        % { name = name, basename = basename }
     local compile2 = "ld -m elf_i386 ${basename}.o -o ${basename}"
-      % { basename = basename }
+        % { basename = basename }
     local separator = "clear"
     local run = "./" .. basename
     on_success(
